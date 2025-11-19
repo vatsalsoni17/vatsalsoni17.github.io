@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Vatsal Soni - Business & Data Analyst</title>
-    
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
+
     <!-- Google Fonts: Poppins -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
+
     <!-- Feather Icons -->
     <script src="https://unpkg.com/feather-icons"></script>
 
@@ -21,286 +21,21 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
     <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #f8fafc; /* slate-50 */
-        }
+        body { font-family: 'Poppins', sans-serif; background-color: #f8fafc; }
         .text-gradient {
-            background-clip: text;
-            -webkit-background-clip: text;
-            color: transparent;
-            background-image: linear-gradient(to right, #4f46e5, #7c3aed); /* Indigo to Purple */
+            background-clip: text; -webkit-background-clip: text; color: transparent;
+            background-image: linear-gradient(to right, #4f46e5, #7c3aed);
         }
-        .nav-link-active {
-            color: #4f46e5; /* Indigo-600 */
-        }
-        .timeline-item {
-            position: relative;
-            padding-left: 2.5rem;
-            padding-bottom: 2.5rem;
-            border-left: 2px solid #e2e8f0; /* slate-200 */
-        }
-        .timeline-item:last-child {
-            border-left-color: transparent;
-            padding-bottom: 0;
-        }
-        .timeline-dot {
-            position: absolute;
-            left: -0.6rem;
-            top: 0.1rem;
-            height: 1.1rem;
-            width: 1.1rem;
-            border-radius: 50%;
-            background-color: #4f46e5;
-            border: 3px solid #f8fafc;
-        }
-        .achievement-check {
-            color: #16a34a; /* green-600 */
-        }
-        #particles-js {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-        }
-        .hero-content {
-            position: relative;
-            z-index: 1;
-        }
-        .chat-bubble {
-            max-width: 75%;
-        }
-        .user-bubble {
-            background-color: #4f46e5;
-            color: white;
-            align-self: flex-end;
-        }
-        .ai-bubble {
-            background-color: #e5e7eb;
-            color: #1f2937;
-            align-self: flex-start;
-        }
-    </style>
-</head>
-<body class="text-slate-700">
-
-    <!-- Header -->
-    <header id="header" class="bg-white/90 backdrop-blur-lg fixed top-0 left-0 right-0 z-50 transition-all duration-300 shadow-sm">
-        <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
-            <a href="#home" class="text-2xl font-bold text-slate-900">Vatsal Soni</a>
-            <div class="hidden md:flex space-x-8 items-center">
-                <a href="#about" class="hover:text-indigo-600 transition-colors duration-300 nav-link font-medium">About</a>
-                <a href="#experience" class="hover:text-indigo-600 transition-colors duration-300 nav-link font-medium">Experience</a>
-                <a href="#skills" class="hover:text-indigo-600 transition-colors duration-300 nav-link font-medium">Skills</a>
-                 <a href="#ai-chatbot" class="hover:text-indigo-600 transition-colors duration-300 nav-link font-medium">AI Chatbot</a>
-                <a href="#projects" class="hover:text-indigo-600 transition-colors duration-300 nav-link font-medium">Projects</a>
-                <a href="#contact" class="bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded-lg transition-all duration-300 transform hover:scale-105">Contact</a>
-            </div>
-            <button id="mobile-menu-button" class="md:hidden text-slate-800">
-                <i data-feather="menu"></i>
-            </button>
-        </nav>
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white">
-            <a href="#about" class="block py-2 px-6 text-sm hover:bg-slate-50">About</a>
-            <a href="#experience" class="block py-2 px-6 text-sm hover:bg-slate-50">Experience</a>
-            <a href="#skills" class="block py-2 px-6 text-sm hover:bg-slate-50">Skills</a>
-            <a href="#ai-chatbot" class="block py-2 px-6 text-sm hover:bg-slate-50">AI Chatbot</a>
-            <a href="#projects" class="block py-2 px-6 text-sm hover:bg-slate-50">Projects</a>
-            <a href="#contact" class="block py-2 px-6 text-sm hover:bg-slate-50">Contact</a>
-        </div>
-    </header>
-
-    <main>
-        <!-- Hero Section -->
-        <section id="home" class="min-h-screen flex items-center bg-slate-50 relative">
-            <div id="particles-js"></div>
-            <div class="container mx-auto px-6 text-center hero-content" data-aos="fade-up">
-                <h1 class="text-4xl md:text-6xl font-bold text-slate-900 mb-4">
-                    Hi, I'm Vatsal Soni
-                </h1>
-                <p class="text-xl md:text-3xl font-semibold mb-8 text-gradient">
-                    Business & Data Analyst
-                </p>
-                <p class="max-w-3xl mx-auto text-lg text-slate-600 mb-10">
-                    Dedicated and results-driven professional leveraging data to uncover actionable insights, optimize operations, and drive organizational success.
-                </p>
-                <a href="#projects" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-8 rounded-lg text-lg transition-transform duration-300 hover:scale-105 inline-block">
-                    View My Work
-                </a>
-            </div>
-        </section>
-
-        <!-- About Section -->
-        <section id="about" class="py-24 bg-white">
-            <div class="container mx-auto px-6">
-                <div class="flex flex-col md:flex-row items-center gap-12 md:gap-16">
-                    <div class="md:w-1/3" data-aos="fade-right">
-                        <img src="assets/Vatsal.jpg" alt="Vatsal Soni" class="rounded-lg shadow-2xl mx-auto w-80 h-80 object-cover">
-                    </div>
-                    <div class="md:w-2/3 text-lg text-left" data-aos="fade-left">
-                        <h2 class="text-4xl font-bold text-slate-900 mb-6">About Me</h2>
-                        <p class="mb-4 text-slate-700">
-                           Hello! My journey began with a Mechanical Engineering degree and evolved into a passion for data, leading me to an MBA in Business Analytics. I specialize in transforming raw data into clear, actionable insights.
-                        </p>
-                        <p class="mb-4 text-slate-700">
-                           I am proficient in creating impactful dashboards with tools like Power BI and Looker Studio, performing statistical analysis, and developing data-driven strategies to enhance efficiency and support leadership goals. From automating business processes to forecasting sales, I enjoy applying my analytical skills to solve real-world problems and drive growth.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Experience Section -->
-        <section id="experience" class="py-24 bg-slate-50">
-            <div class="container mx-auto px-6" data-aos="fade-up">
-                <h2 class="text-4xl font-bold text-center text-slate-900 mb-16">Work Experience</h2>
-                <div class="max-w-4xl mx-auto">
-                    <!-- Timeline Item 1 -->
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <p class="font-semibold text-slate-500 text-sm mb-1">09/2024 - Present</p>
-                        <h3 class="text-2xl font-bold text-slate-900">Business Administrative Personnel</h3>
-                        <p class="text-indigo-600 font-medium mb-4">Internal Quality Assurance Cell, CHARUSAT University</p>
-                        <ul class="list-disc list-inside text-slate-600 space-y-2 mb-4">
-                            <li>Gathering, cleaning, and organizing institutional data to ensure accuracy and consistency.</li>
-                            <li>Creating insightful dashboards (Power BI, Looker Studio) for key stakeholders.</li>
-                            <li>Developing data-driven strategies to improve university rankings.</li>
-                            <li>Managing data and reports for NAAC inspections to ensure compliance.</li>
-                        </ul>
-                        <p class="font-semibold text-slate-800 flex items-center"><i data-feather="check-circle" class="w-5 h-5 mr-2 achievement-check"></i>Developed an interactive quiz HTML webpage for IQAC events.</p>
-                    </div>
-                    <!-- Timeline Item 2 -->
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <p class="font-semibold text-slate-500 text-sm mb-1">06/2023 - 08/2024</p>
-                        <h3 class="text-2xl font-bold text-slate-900">Data Analyst</h3>
-                        <p class="text-indigo-600 font-medium mb-4">Acorn Universal Consultancy LLP</p>
-                        <ul class="list-disc list-inside text-slate-600 space-y-2 mb-4">
-                            <li>Spearheaded automation of daily business processes, increasing productivity.</li>
-                            <li>Implemented an efficient inventory management system for real-time visibility.</li>
-                            <li>Analyzed revenue reports and streamlined complex data for better decision-making.</li>
-                        </ul>
-                         <p class="font-semibold text-slate-800 flex items-center"><i data-feather="check-circle" class="w-5 h-5 mr-2 achievement-check"></i>Pioneered a predictive sales potential project to stimulate demand.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Skills & Expertise Section -->
-        <section id="skills" class="py-24 bg-white">
-            <div class="container mx-auto px-6" data-aos="fade-up">
-                <h2 class="text-4xl font-bold text-center text-slate-900 mb-16">Skills & Expertise</h2>
-                
-                <h3 class="text-2xl font-bold text-center text-slate-800 mb-8">Technical Skills</h3>
-                <div class="max-w-5xl mx-auto grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-8 text-center mb-16">
-                    <div class="p-4 transition-all duration-300 transform hover:scale-110"><img src="https://www.vectorlogo.zone/logos/microsoft_powerbi/microsoft_powerbi-icon.svg" class="h-16 mx-auto mb-3" alt="Power BI"><h4 class="font-semibold">Power BI</h4></div>
-                    <div class="p-4 transition-all duration-300 transform hover:scale-110"><img src="assets/Tableau.png" class="h-16 mx-auto mb-3" alt="Tableau"><h4 class="font-semibold">Tableau</h4></div>
-                    <div class="p-4 transition-all duration-300 transform hover:scale-110"><img src="assets/looker_studio.png" class="h-16 mx-auto mb-3" alt="Looker Studio"><h4 class="font-semibold">Looker Studio</h4></div>
-                    <div class="p-4 transition-all duration-300 transform hover:scale-110"><img src="assets/excel.png" class="h-16 mx-auto mb-3" alt="Advanced Excel"><h4 class="font-semibold">Advanced Excel</h4></div>
-                    <div class="p-4 transition-all duration-300 transform hover:scale-110"><img src="assets/google_sheets.png" class="h-16 mx-auto mb-3" alt="Google Sheet"><h4 class="font-semibold">Google Sheet</h4></div>
-                    <div class="p-4 transition-all duration-300 transform hover:scale-110"><img src="https://www.vectorlogo.zone/logos/mysql/mysql-icon.svg" class="h-16 mx-auto mb-3" alt="MySQL"><h4 class="font-semibold">MySQL</h4></div>
-                    <div class="p-4 transition-all duration-300 transform hover:scale-110"><img src="https://www.vectorlogo.zone/logos/python/python-icon.svg" class="h-16 mx-auto mb-3" alt="Python"><h4 class="font-semibold">Python</h4></div>
-                    <div class="p-4 transition-all duration-300 transform hover:scale-110"><img src="assets/solidwork.png" class="h-16 mx-auto mb-3" alt="SolidWorks"><h4 class="font-semibold">SolidWorks</h4></div>
-                    <div class="p-4 transition-all duration-300 transform hover:scale-110"><img src="assets/Autocad.png" class="h-16 mx-auto mb-3" alt="AutoCAD"><h4 class="font-semibold">AutoCAD</h4></div>
-                    <div class="p-4 transition-all duration-300 transform hover:scale-110"><img src="https://www.vectorlogo.zone/logos/amazon/amazon-icon.svg" class="h-16 mx-auto mb-3" alt="Amazon Seller Central"><h4 class="font-semibold">Amazon Seller Central</h4></div>
-                    <div class="p-4 transition-all duration-300 transform hover:scale-110"><img src="https://www.vectorlogo.zone/logos/ebay/ebay-icon.svg" class="h-16 mx-auto mb-3" alt="eBay"><h4 class="font-semibold">eBay</h4></div>
-                </div>
-
-                <h3 class="text-2xl font-bold text-center text-slate-800 mb-8">Professional Skills</h3>
-                <div class="max-w-5xl mx-auto flex flex-wrap justify-center gap-4">
-                    <span class="bg-indigo-100 text-indigo-800 text-md font-medium px-4 py-2 rounded-full">Business Process Automation</span>
-                    <span class="bg-indigo-100 text-indigo-800 text-md font-medium px-4 py-2 rounded-full">Predictive Modeling</span>
-                    <span class="bg-indigo-100 text-indigo-800 text-md font-medium px-4 py-2 rounded-full">Trend Data Analysis</span>
-                    <span class="bg-indigo-100 text-indigo-800 text-md font-medium px-4 py-2 rounded-full">GAP Analysis</span>
-                    <span class="bg-indigo-100 text-indigo-800 text-md font-medium px-4 py-2 rounded-full">Inventory Management</span>
-                    <span class="bg-indigo-100 text-indigo-800 text-md font-medium px-4 py-2 rounded-full">Analytical Problem Solving</span>
-                    <span class="bg-indigo-100 text-indigo-800 text-md font-medium px-4 py-2 rounded-full">E-commerce Platforms</span>
-                </div>
-            </div>
-        </section>
-        <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vatsal Soni - Business & Data Analyst</title>
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Google Fonts: Poppins -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Feather Icons -->
-    <script src="https://unpkg.com/feather-icons"></script>
-
-    <!-- Animate On Scroll Library -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-
-    <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #f8fafc; /* slate-50 */
-        }
-        .text-gradient {
-            background-clip: text;
-            -webkit-background-clip: text;
-            color: transparent;
-            background-image: linear-gradient(to right, #4f46e5, #7c3aed); /* Indigo to Purple */
-        }
-        .nav-link-active {
-            color: #4f46e5; /* Indigo-600 */
-        }
-        .timeline-item {
-            position: relative;
-            padding-left: 2.5rem;
-            padding-bottom: 2.5rem;
-            border-left: 2px solid #e2e8f0; /* slate-200 */
-        }
-        .timeline-item:last-child {
-            border-left-color: transparent;
-            padding-bottom: 0;
-        }
-        .timeline-dot {
-            position: absolute;
-            left: -0.6rem;
-            top: 0.1rem;
-            height: 1.1rem;
-            width: 1.1rem;
-            border-radius: 50%;
-            background-color: #4f46e5;
-            border: 3px solid #f8fafc;
-        }
-        .achievement-check {
-            color: #16a34a; /* green-600 */
-        }
-        #particles-js {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-        }
-        .hero-content {
-            position: relative;
-            z-index: 1;
-        }
-        .chat-bubble {
-            max-width: 75%;
-        }
-        .user-bubble {
-            background-color: #4f46e5;
-            color: white;
-            align-self: flex-end;
-        }
-        .ai-bubble {
-            background-color: #e5e7eb;
-            color: #1f2937;
-            align-self: flex-start;
-        }
+        .nav-link-active { color: #4f46e5; }
+        .timeline-item { position: relative; padding-left: 2.5rem; padding-bottom: 2.5rem; border-left: 2px solid #e2e8f0; }
+        .timeline-item:last-child { border-left-color: transparent; padding-bottom: 0; }
+        .timeline-dot { position: absolute; left: -0.6rem; top: 0.1rem; height: 1.1rem; width: 1.1rem; border-radius: 50%; background-color: #4f46e5; border: 3px solid #f8fafc; }
+        .achievement-check { color: #16a34a; }
+        #particles-js { position: absolute; width: 100%; height: 100%; z-index: 0; }
+        .hero-content { position: relative; z-index: 1; }
+        .chat-bubble { max-width: 75%; }
+        .user-bubble { background-color: #4f46e5; color: white; align-self: flex-end; }
+        .ai-bubble { background-color: #e5e7eb; color: #1f2937; align-self: flex-start; }
     </style>
 </head>
 <body class="text-slate-700">
@@ -314,7 +49,7 @@
                 <a href="#experience" class="hover:text-indigo-600 transition-colors duration-300 nav-link font-medium">Experience</a>
                 <a href="#skills" class="hover:text-indigo-600 transition-colors duration-300 nav-link font-medium">Skills</a>
                 <a href="#amazon-services" class="hover:text-indigo-600 transition-colors duration-300 nav-link font-medium">Services</a>
-                 <a href="#ai-chatbot" class="hover:text-indigo-600 transition-colors duration-300 nav-link font-medium">AI Chatbot</a>
+                <a href="#ai-chatbot" class="hover:text-indigo-600 transition-colors duration-300 nav-link font-medium">AI Chatbot</a>
                 <a href="#projects" class="hover:text-indigo-600 transition-colors duration-300 nav-link font-medium">Projects</a>
                 <a href="#contact" class="bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded-lg transition-all duration-300 transform hover:scale-105">Contact</a>
             </div>
@@ -339,135 +74,242 @@
         <section id="home" class="min-h-screen flex items-center bg-slate-50 relative">
             <div id="particles-js"></div>
             <div class="container mx-auto px-6 text-center hero-content" data-aos="fade-up">
-                <h1 class="text-4xl md:text-6xl font-bold text-slate-900 mb-4">
-                    Hi, I'm Vatsal Soni
-                </h1>
-                <p class="text-xl md:text-3xl font-semibold mb-8 text-gradient">
-                    Business & Data Analyst
-                </p>
+                <h1 class="text-4xl md:text-6xl font-bold text-slate-900 mb-4">Hi, I'm Vatsal Soni</h1>
+                <p class="text-xl md:text-3xl font-semibold mb-8 text-gradient">Business & Data Analyst</p>
                 <p class="max-w-3xl mx-auto text-lg text-slate-600 mb-10">
                     Dedicated and results-driven professional leveraging data to uncover actionable insights, optimize operations, and drive organizational success.
                 </p>
-                <a href="#projects" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-8 rounded-lg text-lg transition-transform duration-300 hover:scale-105 inline-block">
-                    View My Work
-                </a>
+                <a href="#projects" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-8 rounded-lg text-lg transition-transform duration-300 hover:scale-105 inline-block">View My Work</a>
             </div>
         </section>
 
         <!-- AMAZON SERVICES SECTION (placed right after hero for visibility) -->
-<section id="amazon-services" class="py-16 bg-white">
-  <div class="container mx-auto px-6" data-aos="fade-up">
-    <div class="flex flex-col lg:flex-row items-start gap-8">
-      <div class="lg:w-1/2 bg-gradient-to-r from-indigo-50 to-purple-50 p-8 rounded-2xl shadow-lg">
-        <div class="flex items-center gap-4 mb-4">
-          <img src="https://www.vectorlogo.zone/logos/amazon/amazon-icon.svg" alt="Amazon" class="h-12 w-12">
-          <div>
-            <h2 class="text-2xl font-bold text-slate-900">Amazon Seller Consulting</h2>
-            <p class="text-slate-600">Services tailored for small brands & part-time sellers — listings, pricing, inventory and operations.</p>
-          </div>
-        </div>
+        <section id="amazon-services" class="py-16 bg-white">
+          <div class="container mx-auto px-6" data-aos="fade-up">
+            <div class="flex flex-col lg:flex-row items-start gap-8">
+              <div class="lg:w-1/2 bg-gradient-to-r from-indigo-50 to-purple-50 p-8 rounded-2xl shadow-lg">
+                <div class="flex items-center gap-4 mb-4">
+                  <img src="https://www.vectorlogo.zone/logos/amazon/amazon-icon.svg" alt="Amazon" class="h-12 w-12">
+                  <div>
+                    <h2 class="text-2xl font-bold text-slate-900">Amazon Seller Consulting</h2>
+                    <p class="text-slate-600">Services tailored for small brands & part-time sellers — listings, pricing, inventory and operations.</p>
+                  </div>
+                </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6">
-          <div class="bg-white p-4 rounded-lg shadow-sm">
-            <h3 class="font-semibold">Core Services</h3>
-            <ul class="text-slate-600 list-disc list-inside mt-2 text-sm">
-              <li>Listing creation & optimization</li>
-              <li>Keyword research & SEO</li>
-              <li>Pricing & repricing suggestions</li>
-            </ul>
-          </div>
-          <div class="bg-white p-4 rounded-lg shadow-sm">
-            <h3 class="font-semibold">Workflow</h3>
-            <ul class="text-slate-600 list-disc list-inside mt-2 text-sm">
-              <li>Free 15-min audit</li>
-              <li>Weekly updates & monthly report</li>
-              <li>Flexible part-time support</li>
-            </ul>
-          </div>
-        </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6">
+                  <div class="bg-white p-4 rounded-lg shadow-sm">
+                    <h3 class="font-semibold">Core Services</h3>
+                    <ul class="text-slate-600 list-disc list-inside mt-2 text-sm">
+                      <li>Listing creation & optimization</li>
+                      <li>Keyword research & SEO</li>
+                      <li>Pricing & repricing suggestions</li>
+                    </ul>
+                  </div>
+                  <div class="bg-white p-4 rounded-lg shadow-sm">
+                    <h3 class="font-semibold">Workflow</h3>
+                    <ul class="text-slate-600 list-disc list-inside mt-2 text-sm">
+                      <li>Free 15-min audit</li>
+                      <li>Weekly updates & monthly report</li>
+                      <li>Flexible part-time support</li>
+                    </ul>
+                  </div>
+                </div>
 
-        <div class="mt-6 flex flex-wrap gap-3">
-          <a href="#contact" class="inline-block bg-indigo-600 text-white px-4 py-2 rounded-lg">Book Free Audit</a>
-          <button id="view-portfolio-btn-2" class="inline-block border border-indigo-100 px-4 py-2 rounded-lg">View Sample Portfolio</button>
-          <a href="mailto:vatsalsoni908@gmail.com?subject=Amazon%20Consulting%20Inquiry" class="inline-block border px-4 py-2 rounded-lg">Email Me</a>
-        </div>
-      </div>
+                <div class="mt-6 flex flex-wrap gap-3">
+                  <a href="#contact" class="inline-block bg-indigo-600 text-white px-4 py-2 rounded-lg">Book Free Audit</a>
+                  <button id="view-portfolio-btn-2" class="inline-block border border-indigo-100 px-4 py-2 rounded-lg">View Sample Portfolio</button>
+                  <a href="mailto:vatsalsoni908@gmail.com?subject=Amazon%20Consulting%20Inquiry" class="inline-block border px-4 py-2 rounded-lg">Email Me</a>
+                </div>
+              </div>
 
-      <div class="lg:w-1/2">
-        <div class="bg-white p-6 rounded-2xl shadow-lg">
-          <h3 class="text-xl font-bold text-slate-900 mb-4">Packages & Pricing</h3>
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div class="border rounded-lg p-4">
-              <h4 class="font-semibold">Basic</h4>
-              <div class="text-lg font-bold mt-2">₹4,000 / month</div>
-              <ul class="text-slate-600 list-disc list-inside mt-2 text-sm">
-                <li>Up to 5 listings optimized</li>
-                <li>Weekly price check</li>
-                <li>Monthly report</li>
-              </ul>
+              <div class="lg:w-1/2">
+                <div class="bg-white p-6 rounded-2xl shadow-lg">
+                  <h3 class="text-xl font-bold text-slate-900 mb-4">Packages & Pricing</h3>
+                  <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="border rounded-lg p-4">
+                      <h4 class="font-semibold">Basic</h4>
+                      <div class="text-lg font-bold mt-2">₹4,000 / month</div>
+                      <ul class="text-slate-600 list-disc list-inside mt-2 text-sm">
+                        <li>Up to 5 listings optimized</li>
+                        <li>Weekly price check</li>
+                        <li>Monthly report</li>
+                      </ul>
+                    </div>
+                    <div class="border rounded-lg p-4">
+                      <h4 class="font-semibold">Standard</h4>
+                      <div class="text-lg font-bold mt-2">₹12,000 / month</div>
+                      <ul class="text-slate-600 list-disc list-inside mt-2 text-sm">
+                        <li>Everything in Basic</li>
+                        <li>Competitor research</li>
+                        <li>Listing A/B suggestions</li>
+                      </ul>
+                    </div>
+                    <div class="border rounded-lg p-4 bg-gradient-to-b from-white to-indigo-50">
+                      <h4 class="font-semibold">Premium</h4>
+                      <div class="text-lg font-bold mt-2">₹24,000 / month</div>
+                      <ul class="text-slate-600 list-disc list-inside mt-2 text-sm">
+                        <li>Ads setup & monitoring</li>
+                        <li>Daily sales dashboard</li>
+                        <li>Customer message handling</li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  <div class="mt-6">
+                    <h4 class="font-semibold mb-2">Tools I Use</h4>
+                    <div class="flex flex-wrap gap-2">
+                      <span class="bg-indigo-50 text-indigo-800 px-3 py-1 rounded-full text-sm">Helium10</span>
+                      <span class="bg-indigo-50 text-indigo-800 px-3 py-1 rounded-full text-sm">Keepa</span>
+                      <span class="bg-indigo-50 text-indigo-800 px-3 py-1 rounded-full text-sm">Seller Central</span>
+                      <span class="bg-indigo-50 text-indigo-800 px-3 py-1 rounded-full text-sm">Google Sheets</span>
+                      <span class="bg-indigo-50 text-indigo-800 px-3 py-1 rounded-full text-sm">Excel</span>
+                      <span class="bg-indigo-50 text-indigo-800 px-3 py-1 rounded-full text-sm">Power BI</span>
+                    </div>
+                  </div>
+
+                </div>
+
+                <div class="mt-6">
+                  <img src="https://placehold.co/900x220/eaf2ff/4338ca?text=Portfolio+Preview" alt="portfolio preview" class="rounded-lg shadow-md w-full h-44 object-cover">
+                </div>
+              </div>
             </div>
-            <div class="border rounded-lg p-4">
-              <h4 class="font-semibold">Standard</h4>
-              <div class="text-lg font-bold mt-2">₹12,000 / month</div>
-              <ul class="text-slate-600 list-disc list-inside mt-2 text-sm">
-                <li>Everything in Basic</li>
-                <li>Competitor research</li>
-                <li>Listing A/B suggestions</li>
-              </ul>
+          </div>
+
+          <!-- Modal for Amazon portfolio -->
+          <div id="portfolio-modal-2" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-6">
+            <div class="bg-white rounded-xl max-w-3xl w-full p-6 overflow-auto">
+              <div class="flex justify-between items-center mb-4">
+                <h3 class="text-xl font-bold">Sample Portfolio</h3>
+                <button id="close-portfolio-2" class="text-slate-600">Close</button>
+              </div>
+              <div>
+                <h4 class="font-semibold">Listing Optimization — Before / After</h4>
+                <p class="text-slate-600">Before: short title, missing keywords, poor images. After: keyword-rich title, benefit-driven bullets, image plan and A+ suggestions.</p>
+                <hr class="my-4">
+                <h4 class="font-semibold">Pricing Strategy</h4>
+                <p class="text-slate-600">Sample repricing sheet and margin impact analysis using simple formulas and competitor data.</p>
+                <hr class="my-4">
+                <h4 class="font-semibold">Inventory Management</h4>
+                <p class="text-slate-600">Google Sheets-based reorder alerts, lead time calculation and safety stock formula examples.</p>
+              </div>
             </div>
-            <div class="border rounded-lg p-4 bg-gradient-to-b from-white to-indigo-50">
-              <h4 class="font-semibold">Premium</h4>
-              <div class="text-lg font-bold mt-2">₹24,000 / month</div>
-              <ul class="text-slate-600 list-disc list-inside mt-2 text-sm">
-                <li>Ads setup & monitoring</li>
-                <li>Daily sales dashboard</li>
-                <li>Customer message handling</li>
-              </ul>
+          </div>
+        </section>
+
+        <!-- DATA ANALYST SERVICES SECTION (added immediately after Amazon Services) -->
+        <section id="data-analyst-services" class="py-16 bg-slate-50">
+          <div class="container mx-auto px-6" data-aos="fade-up">
+            <div class="flex flex-col lg:flex-row items-start gap-8">
+              <div class="lg:w-1/2 bg-gradient-to-r from-white to-indigo-50 p-8 rounded-2xl shadow-lg">
+                <div class="flex items-center gap-4 mb-4">
+                  <img src="https://www.vectorlogo.zone/logos/microsoft_powerbi/microsoft_powerbi-icon.svg" alt="Data" class="h-12 w-12">
+                  <div>
+                    <h2 class="text-2xl font-bold text-slate-900">Data Analyst Services</h2>
+                    <p class="text-slate-600">End-to-end data analysis, dashboards and automation — suitable for small businesses and internal teams.</p>
+                  </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6">
+                  <div class="bg-white p-4 rounded-lg shadow-sm">
+                    <h3 class="font-semibold">What I Offer</h3>
+                    <ul class="text-slate-600 list-disc list-inside mt-2 text-sm">
+                      <li>Dashboard development (Power BI, Looker Studio, Tableau)</li>
+                      <li>Data cleaning & transformation (Excel / SQL / Python)</li>
+                      <li>Sales forecasting & trend analysis</li>
+                    </ul>
+                  </div>
+                  <div class="bg-white p-4 rounded-lg shadow-sm">
+                    <h3 class="font-semibold">Workflow</h3>
+                    <ul class="text-slate-600 list-disc list-inside mt-2 text-sm">
+                      <li>Free 15-min audit & data sample review</li>
+                      <li>Onboarding, secure data transfer & access</li>
+                      <li>Weekly dashboards & monthly insights report</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="mt-6 flex flex-wrap gap-3">
+                  <a href="#contact" class="inline-block bg-indigo-600 text-white px-4 py-2 rounded-lg">Book Free Audit</a>
+                  <button id="view-data-portfolio-btn" class="inline-block border border-indigo-100 px-4 py-2 rounded-lg">View Data Portfolio</button>
+                  <a href="mailto:vatsalsoni908@gmail.com?subject=Data%20Analyst%20Services%20Inquiry" class="inline-block border px-4 py-2 rounded-lg">Email Me</a>
+                </div>
+              </div>
+
+              <div class="lg:w-1/2">
+                <div class="bg-white p-6 rounded-2xl shadow-lg">
+                  <h3 class="text-xl font-bold text-slate-900 mb-4">Packages & Pricing</h3>
+                  <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="border rounded-lg p-4">
+                      <h4 class="font-semibold">Starter</h4>
+                      <div class="text-lg font-bold mt-2">₹5,000 / month</div>
+                      <ul class="text-slate-600 list-disc list-inside mt-2 text-sm">
+                        <li>Basic dashboard (1-2 pages)</li>
+                        <li>Data cleaning for one dataset</li>
+                        <li>Monthly insights report</li>
+                      </ul>
+                    </div>
+                    <div class="border rounded-lg p-4">
+                      <h4 class="font-semibold">Growth</h4>
+                      <div class="text-lg font-bold mt-2">₹15,000 / month</div>
+                      <ul class="text-slate-600 list-disc list-inside mt-2 text-sm">
+                        <li>Multi-source dashboards</li>
+                        <li>Automated reporting</li>
+                        <li>Forecasting & anomaly detection</li>
+                      </ul>
+                    </div>
+                    <div class="border rounded-lg p-4 bg-gradient-to-b from-white to-indigo-50">
+                      <h4 class="font-semibold">Enterprise</h4>
+                      <div class="text-lg font-bold mt-2">₹35,000 / month</div>
+                      <ul class="text-slate-600 list-disc list-inside mt-2 text-sm">
+                        <li>Full analytics pipeline</li>
+                        <li>Custom ML/forecast models</li>
+                        <li>Dedicated weekly analytics support</li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  <div class="mt-6">
+                    <h4 class="font-semibold mb-2">Tools & Techniques</h4>
+                    <div class="flex flex-wrap gap-2">
+                      <span class="bg-indigo-50 text-indigo-800 px-3 py-1 rounded-full text-sm">Power BI</span>
+                      <span class="bg-indigo-50 text-indigo-800 px-3 py-1 rounded-full text-sm">Looker Studio</span>
+                      <span class="bg-indigo-50 text-indigo-800 px-3 py-1 rounded-full text-sm">Excel (Power Query)</span>
+                      <span class="bg-indigo-50 text-indigo-800 px-3 py-1 rounded-full text-sm">SQL</span>
+                      <span class="bg-indigo-50 text-indigo-800 px-3 py-1 rounded-full text-sm">Python (pandas)</span>
+                      <span class="bg-indigo-50 text-indigo-800 px-3 py-1 rounded-full text-sm">Google Sheets</span>
+                    </div>
+                  </div>
+
+                </div>
+
+                <div class="mt-6">
+                  <img src="https://placehold.co/900x220/fff7ed/ff8a00?text=Data+Portfolio+Preview" alt="data portfolio preview" class="rounded-lg shadow-md w-full h-44 object-cover">
+                </div>
+              </div>
             </div>
           </div>
 
-          <div class="mt-6">
-            <h4 class="font-semibold mb-2">Tools I Use</h4>
-            <div class="flex flex-wrap gap-2">
-              <span class="bg-indigo-50 text-indigo-800 px-3 py-1 rounded-full text-sm">Helium10</span>
-              <span class="bg-indigo-50 text-indigo-800 px-3 py-1 rounded-full text-sm">Keepa</span>
-              <span class="bg-indigo-50 text-indigo-800 px-3 py-1 rounded-full text-sm">Seller Central</span>
-              <span class="bg-indigo-50 text-indigo-800 px-3 py-1 rounded-full text-sm">Google Sheets</span>
-              <span class="bg-indigo-50 text-indigo-800 px-3 py-1 rounded-full text-sm">Excel</span>
-              <span class="bg-indigo-50 text-indigo-800 px-3 py-1 rounded-full text-sm">Power BI</span>
+          <!-- Modal for Data portfolio -->
+          <div id="data-portfolio-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-6">
+            <div class="bg-white rounded-xl max-w-3xl w-full p-6 overflow-auto">
+              <div class="flex justify-between items-center mb-4">
+                <h3 class="text-xl font-bold">Data Portfolio</h3>
+                <button id="close-data-portfolio" class="text-slate-600">Close</button>
+              </div>
+              <div>
+                <h4 class="font-semibold">Dashboard Development</h4>
+                <p class="text-slate-600">Interactive dashboards with drill-downs, filters, and scheduled refresh recommendations.</p>
+                <hr class="my-4">
+                <h4 class="font-semibold">Data Cleaning & Automation</h4>
+                <p class="text-slate-600">Examples of merged datasets, automated transformations using Power Query / Python, and scheduled exports.</p>
+                <hr class="my-4">
+                <h4 class="font-semibold">Forecasting & Insights</h4>
+                <p class="text-slate-600">Time-series forecasting samples, anomaly detection examples, and actionable recommendations.</p>
+              </div>
             </div>
           </div>
-
-        </div>
-
-        <div class="mt-6">
-          <img src="https://placehold.co/900x220/eaf2ff/4338ca?text=Portfolio+Preview" alt="portfolio preview" class="rounded-lg shadow-md w-full h-44 object-cover">
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Modal for portfolio -->
-  <div id="portfolio-modal-2" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-6">
-    <div class="bg-white rounded-xl max-w-3xl w-full p-6 overflow-auto">
-      <div class="flex justify-between items-center mb-4">
-        <h3 class="text-xl font-bold">Sample Portfolio</h3>
-        <button id="close-portfolio-2" class="text-slate-600">Close</button>
-      </div>
-      <div>
-        <h4 class="font-semibold">Listing Optimization — Before / After</h4>
-        <p class="text-slate-600">Before: short title, missing keywords, poor images. After: keyword-rich title, benefit-driven bullets, image plan and A+ suggestions.</p>
-        <hr class="my-4">
-        <h4 class="font-semibold">Pricing Strategy</h4>
-        <p class="text-slate-600">Sample repricing sheet and margin impact analysis using simple formulas and competitor data.</p>
-        <hr class="my-4">
-        <h4 class="font-semibold">Inventory Management</h4>
-        <p class="text-slate-600">Google Sheets-based reorder alerts, lead time calculation and safety stock formula examples.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
+        </section>
 
         <!-- About Section -->
         <section id="about" class="py-24 bg-white">
@@ -524,12 +366,12 @@
                 </div>
             </div>
         </section>
-        
+
         <!-- Skills & Expertise Section -->
         <section id="skills" class="py-24 bg-white">
             <div class="container mx-auto px-6" data-aos="fade-up">
                 <h2 class="text-4xl font-bold text-center text-slate-900 mb-16">Skills & Expertise</h2>
-                
+
                 <h3 class="text-2xl font-bold text-center text-slate-800 mb-8">Technical Skills</h3>
                 <div class="max-w-5xl mx-auto grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-8 text-center mb-16">
                     <div class="p-4 transition-all duration-300 transform hover:scale-110"><img src="https://www.vectorlogo.zone/logos/microsoft_powerbi/microsoft_powerbi-icon.svg" class="h-16 mx-auto mb-3" alt="Power BI"><h4 class="font-semibold">Power BI</h4></div>
@@ -649,16 +491,13 @@
             <p>&copy; 2024 Vatsal Soni. All Rights Reserved.</p>
         </div>
     </footer>
-    
+
     <!-- Particles.js -->
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 
     <script>
         // AOS Initialization
-        AOS.init({
-            duration: 800,
-            once: true,
-        });
+        AOS.init({ duration: 800, once: true });
 
         // Feather Icons Initialization
         feather.replace();
@@ -666,28 +505,21 @@
         // Mobile Menu Toggle
         const mobileMenuButton = document.getElementById('mobile-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
-        mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
+        mobileMenuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
 
         document.querySelectorAll('#mobile-menu a, .nav-link').forEach(link => {
             link.addEventListener('click', () => {
-                if (!mobileMenu.classList.contains('hidden')) {
-                    mobileMenu.classList.add('hidden');
-                }
+                if (!mobileMenu.classList.contains('hidden')) mobileMenu.classList.add('hidden');
             });
         });
 
         // Header scroll effect
         const header = document.getElementById('header');
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                header.classList.add('shadow-lg');
-            } else {
-                header.classList.remove('shadow-lg');
-            }
+            if (window.scrollY > 50) header.classList.add('shadow-lg');
+            else header.classList.remove('shadow-lg');
         });
-        
+
         // Active navigation link highlighting on scroll
         const sections = document.querySelectorAll('main section');
         const navLinks = document.querySelectorAll('.nav-link');
@@ -703,109 +535,62 @@
                     });
                 }
             });
-        }, {
-            threshold: 0.5
-        });
+        }, { threshold: 0.5 });
 
-        sections.forEach(section => {
-            observer.observe(section);
-        });
+        sections.forEach(section => observer.observe(section));
 
         // Particles.js configuration
         particlesJS('particles-js', {
           "particles": {
-            "number": {
-              "value": 80,
-              "density": {
-                "enable": true,
-                "value_area": 800
-              }
-            },
-            "color": {
-              "value": "#4f46e5"
-            },
-            "shape": {
-              "type": "circle",
-            },
-            "opacity": {
-              "value": 0.5,
-              "random": false,
-            },
-            "size": {
-              "value": 3,
-              "random": true,
-            },
-            "line_linked": {
-              "enable": true,
-              "distance": 150,
-              "color": "#7c3aed",
-              "opacity": 0.4,
-              "width": 1
-            },
-            "move": {
-              "enable": true,
-              "speed": 6,
-              "direction": "none",
-              "random": false,
-              "straight": false,
-              "out_mode": "out",
-              "bounce": false,
-            }
+            "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
+            "color": { "value": "#4f46e5" },
+            "shape": { "type": "circle" },
+            "opacity": { "value": 0.5, "random": false },
+            "size": { "value": 3, "random": true },
+            "line_linked": { "enable": true, "distance": 150, "color": "#7c3aed", "opacity": 0.4, "width": 1 },
+            "move": { "enable": true, "speed": 6, "direction": "none", "random": false, "straight": false, "out_mode": "out", "bounce": false }
           },
           "interactivity": {
             "detect_on": "canvas",
-            "events": {
-              "onhover": {
-                "enable": true,
-                "mode": "repulse"
-              },
-              "onclick": {
-                "enable": true,
-                "mode": "push"
-              },
-              "resize": true
-            },
-            "modes": {
-              "repulse": {
-                "distance": 100,
-                "duration": 0.4
-              },
-              "push": {
-                "particles_nb": 4
-              },
-            }
+            "events": { "onhover": { "enable": true, "mode": "repulse" }, "onclick": { "enable": true, "mode": "push" }, "resize": true },
+            "modes": { "repulse": { "distance": 100, "duration": 0.4 }, "push": { "particles_nb": 4 } }
           },
           "retina_detect": true
         });
 
-        // Portfolio modal handlers (Amazon section)
+        // Portfolio modal handlers (Amazon)
         const openPortfolioBtn = document.getElementById('view-portfolio-btn-2');
         const portfolioModal = document.getElementById('portfolio-modal-2');
         const closePortfolioBtn = document.getElementById('close-portfolio-2');
 
         if (openPortfolioBtn && portfolioModal && closePortfolioBtn) {
-            openPortfolioBtn.addEventListener('click', () => {
-                portfolioModal.classList.remove('hidden');
-            });
-            closePortfolioBtn.addEventListener('click', () => {
-                portfolioModal.classList.add('hidden');
-            });
-            portfolioModal.addEventListener('click', (e) => {
-                if (e.target === portfolioModal) portfolioModal.classList.add('hidden');
-            });
+            openPortfolioBtn.addEventListener('click', () => portfolioModal.classList.remove('hidden'));
+            closePortfolioBtn.addEventListener('click', () => portfolioModal.classList.add('hidden'));
+            portfolioModal.addEventListener('click', (e) => { if (e.target === portfolioModal) portfolioModal.classList.add('hidden'); });
+        }
+
+        // Portfolio modal handlers (Data)
+        const openDataBtn = document.getElementById('view-data-portfolio-btn');
+        const dataModal = document.getElementById('data-portfolio-modal');
+        const closeDataBtn = document.getElementById('close-data-portfolio');
+
+        if (openDataBtn && dataModal && closeDataBtn) {
+            openDataBtn.addEventListener('click', () => dataModal.classList.remove('hidden'));
+            closeDataBtn.addEventListener('click', () => dataModal.classList.add('hidden'));
+            dataModal.addEventListener('click', (e) => { if (e.target === dataModal) dataModal.classList.add('hidden'); });
         }
 
         // AI Chatbot Logic (Gemini call left as-is; apiKey must be added by you if needed)
         const chatWindow = document.getElementById('chat-window');
         const chatInput = document.getElementById('chat-input');
         const sendBtn = document.getElementById('send-btn');
-        const apiKey = ""; // Leave as-is
+        const apiKey = ""; // Add API key if you plan to call Gemini
 
         const professionalContext = `
-            Vatsal Soni is a Business and Data Analyst with an MBA in Business Analytics and a B.E. in Mechanical Engineering. 
-            He is skilled in Power BI, Tableau, Looker Studio, Advanced Excel, Google Sheets, MySQL, Python, SolidWorks, and AutoCAD. 
+            Vatsal Soni is a Business and Data Analyst with an MBA in Business Analytics and a B.E. in Mechanical Engineering.
+            He is skilled in Power BI, Tableau, Looker Studio, Advanced Excel, Google Sheets, MySQL, Python, SolidWorks, and AutoCAD.
             His professional skills include Business Process Automation, Predictive Modeling, Trend Data Analysis, GAP Analysis, Inventory Management, and E-commerce Platforms like Amazon Seller Central and eBay.
-            His work experience includes a Data Analyst role at CHARUSAT University and a Data Analyst position at Acorn Universal Consultancy LLP. 
+            His work experience includes a Data Analyst role at CHARUSAT University and a Data Analyst position at Acorn Universal Consultancy LLP.
             Key achievements include developing a quiz webpage, pioneering a predictive sales potential project, and automating business processes.
         `;
 
@@ -815,7 +600,7 @@
 
             appendMessage(userMessage, 'user');
             chatInput.value = '';
-            
+
             const typingIndicator = createTypingIndicator();
             chatWindow.appendChild(typingIndicator);
             chatWindow.scrollTop = chatWindow.scrollHeight;
@@ -826,7 +611,7 @@
                 appendMessage(response, 'ai');
             } catch (error) {
                 console.error("Error calling Gemini API:", error);
-                chatWindow.removeChild(typingIndicator);
+                if (typingIndicator && typingIndicator.parentNode) chatWindow.removeChild(typingIndicator);
                 appendMessage("Sorry, I'm having trouble connecting right now.", 'ai');
             }
         };
@@ -834,14 +619,12 @@
         const callGemini = async (prompt) => {
             if (!apiKey) throw new Error('No API key provided for Gemini');
             const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
-            
-            const systemPrompt = `You are a helpful AI assistant for Vatsal Soni's portfolio website. Your role is to answer questions about Vatsal's professional background, skills, and experience based ONLY on the following context. Be concise and professional. If the question is outside this context, politely decline to answer. CONTEXT: ${professionalContext}`;
+
+            const systemPrompt = `You are a helpful AI assistant for Vatsal Soni's portfolio website. Answer based ONLY on the context provided. CONTEXT: ${professionalContext}`;
 
             const payload = {
                 contents: [{ parts: [{ text: prompt }] }],
-                 systemInstruction: {
-                    parts: [{ text: systemPrompt }]
-                },
+                systemInstruction: { parts: [{ text: systemPrompt }] },
             };
 
             const response = await fetch(apiUrl, {
@@ -850,14 +633,11 @@
                 body: JSON.stringify(payload)
             });
 
-            if (!response.ok) {
-                throw new Error(`API request failed with status ${response.status}`);
-            }
-
+            if (!response.ok) throw new Error(`API request failed with status ${response.status}`);
             const result = await response.json();
-            return result.candidates[0].content.parts[0].text;
+            return result.candidates?.[0]?.content?.parts?.[0]?.text || "Sorry, I couldn't generate an answer.";
         };
-        
+
         const appendMessage = (message, sender) => {
             const messageDiv = document.createElement('div');
             messageDiv.classList.add('chat-bubble', sender === 'user' ? 'user-bubble' : 'ai-bubble', 'rounded-lg', 'p-3');
@@ -869,334 +649,13 @@
         const createTypingIndicator = () => {
             const indicatorDiv = document.createElement('div');
             indicatorDiv.classList.add('chat-bubble', 'ai-bubble', 'rounded-lg', 'p-3', 'typing-indicator');
-            indicatorDiv.innerHTML = `<div class="flex items-center space-x-1"><div class="w-2 h-2 bg-slate-400 rounded-full animate-pulse"></div><div class="w-2 h-2 bg-slate-400 rounded-full animate-pulse [animation-delay:0.2s]"></div><div class="w-2 h-2 bg-slate-400 rounded-full animate-pulse [animation-delay:0.4s]"></div></div>`;
+            indicatorDiv.innerHTML = `<div class="flex items-center space-x-1"><div class="w-2 h-2 bg-slate-400 rounded-full animate-pulse"></div><div class="w-2 h-2 bg-slate-400 rounded-full animate-pulse"></div><div class="w-2 h-2 bg-slate-400 rounded-full animate-pulse"></div></div>`;
             return indicatorDiv;
         };
 
         sendBtn.addEventListener('click', sendMessage);
-        chatInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') {
-                sendMessage();
-            }
-        });
+        chatInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') sendMessage(); });
 
     </script>
 </body>
 </html>
-
-
-        <!-- AI Chatbot Section -->
-        <section id="ai-chatbot" class="py-24 bg-slate-50">
-            <div class="container mx-auto px-6" data-aos="fade-up">
-                <h2 class="text-4xl font-bold text-center text-slate-900 mb-4">Ask My AI Assistant</h2>
-                <p class="text-lg text-center text-slate-600 mb-12 max-w-2xl mx-auto">Have questions about my skills or experience? Chat with my AI assistant, powered by Gemini, to get instant answers.</p>
-                <div class="max-w-2xl mx-auto bg-white rounded-lg shadow-lg p-4">
-                    <div id="chat-window" class="h-96 overflow-y-auto mb-4 p-4 space-y-4 flex flex-col">
-                        <!-- Chat messages will be appended here -->
-                         <div class="chat-bubble ai-bubble rounded-lg p-3">
-                            <p class="text-sm">Hello! I'm Vatsal's AI assistant. Ask me anything about his professional background.</p>
-                        </div>
-                    </div>
-                    <div class="flex">
-                        <input type="text" id="chat-input" class="flex-grow border rounded-l-lg p-3 focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="Ask about a skill or project...">
-                        <button id="send-btn" class="bg-indigo-600 text-white px-6 py-3 rounded-r-lg hover:bg-indigo-700 transition-colors duration-300">
-                            <i data-feather="send"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Strengths Section -->
-        <section id="strengths" class="py-24 bg-white">
-            <div class="container mx-auto px-6" data-aos="fade-up">
-                <h2 class="text-4xl font-bold text-center text-slate-900 mb-12">Core Strengths</h2>
-                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                    <div class="bg-slate-50 p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300"><i data-feather="filter" class="w-12 h-12 text-indigo-600 mb-4"></i><h3 class="text-xl font-bold mb-2">Data Cleaning & Preparation</h3><p class="text-slate-600">Excel in transforming raw data into structured formats, ensuring integrity and quality for accurate analysis.</p></div>
-                    <div class="bg-slate-50 p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300"><i data-feather="bar-chart-2" class="w-12 h-12 text-indigo-600 mb-4"></i><h3 class="text-xl font-bold mb-2">Exploratory Data Analysis</h3><p class="text-slate-600">Adept at visualizing data to uncover insights, identify trends, and spot key anomalies.</p></div>
-                    <div class="bg-slate-50 p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300"><i data-feather="trending-up" class="w-12 h-12 text-indigo-600 mb-4"></i><h3 class="text-xl font-bold mb-2">Statistical Proficiency</h3><p class="text-slate-600">Strong foundation in statistical methods to interpret data, find correlations, and make informed decisions.</p></div>
-                    <div class="bg-slate-50 p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300"><i data-feather="cpu" class="w-12 h-12 text-indigo-600 mb-4"></i><h3 class="text-xl font-bold mb-2">Predictive Modeling</h3><p class="text-slate-600">Skilled in using ML algorithms to develop predictive models that forecast outcomes and identify patterns.</p></div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Projects Section -->
-        <section id="projects" class="py-24 bg-slate-50">
-            <div class="container mx-auto px-6" data-aos="fade-up">
-                <h2 class="text-4xl font-bold text-center text-slate-900 mb-12">Projects & Research</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="bg-white rounded-lg overflow-hidden shadow-lg transform hover:-translate-y-2 transition-transform duration-300"><img src="https://placehold.co/600x400/e0e7ff/4338ca?text=Quiz+Webpage" alt="Quiz Webpage" class="w-full h-56 object-cover"><div class="p-6"><h3 class="text-xl font-bold text-slate-900 mb-2">Interactive Quiz Web Page</h3><p class="text-slate-600">Developed an engaging HTML webpage for a university quiz competition to enhance participant interaction.</p></div></div>
-                    <div class="bg-white rounded-lg overflow-hidden shadow-lg transform hover:-translate-y-2 transition-transform duration-300"><img src="https://placehold.co/600x400/e0e7ff/4338ca?text=Sales+Forecasting" alt="Sales Potential Project" class="w-full h-56 object-cover"><div class="p-6"><h3 class="text-xl font-bold text-slate-900 mb-2">Sales Potential & Forecasting</h3><p class="text-slate-600">Pioneered a project to forecast future sales and generate demand through meticulous data analysis.</p></div></div>
-                    <div class="bg-white rounded-lg overflow-hidden shadow-lg transform hover:-translate-y-2 transition-transform duration-300"><img src="https://placehold.co/600x400/e0e7ff/4338ca?text=Digital+Marketing" alt="Digital Marketing Research" class="w-full h-56 object-cover"><div class="p-6"><h3 class="text-xl font-bold text-slate-900 mb-2">Digital Marketing Impact Study</h3><p class="text-slate-600">Conducted research on the impact of digital marketing on consumer behaviour to model advertising effects.</p></div></div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Education & Courses Section -->
-        <section id="education" class="py-24 bg-white">
-            <div class="container mx-auto px-6" data-aos="fade-up">
-                <div class="grid lg:grid-cols-2 gap-16">
-                    <div>
-                        <h2 class="text-4xl font-bold text-center text-slate-900 mb-12">Education</h2>
-                        <div class="space-y-8">
-                            <div class="bg-slate-50 p-8 rounded-lg shadow-md"><h3 class="text-xl font-bold text-slate-900">M.B.A. in Business Analytics</h3><p class="text-indigo-600 font-medium my-2">Charotar University of Science & Technology</p><p class="text-slate-600">GPA: 8.01 / 10.00</p></div>
-                            <div class="bg-slate-50 p-8 rounded-lg shadow-md"><h3 class="text-xl font-bold text-slate-900">B.E. in Mechanical Engineering</h3><p class="text-indigo-600 font-medium my-2">D. A. Degree Engineering & Technology</p><p class="text-slate-600">GPA: 8.63 / 10.00</p></div>
-                        </div>
-                    </div>
-                     <div>
-                        <h2 class="text-4xl font-bold text-center text-slate-900 mb-12">Training & Courses</h2>
-                        <div class="space-y-8">
-                            <div class="bg-slate-50 p-8 rounded-lg shadow-md"><h3 class="text-xl font-bold text-slate-900">Applied AI</h3><p class="text-slate-600">Completed intensive training on practical applications of Artificial Intelligence.</p></div>
-                            <div class="bg-slate-50 p-8 rounded-lg shadow-md"><h3 class="text-xl font-bold text-slate-900">Power BI Workshop</h3><p class="text-slate-600">Focused training on data visualization and advanced dashboard creation with Power BI.</p></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contact" class="py-24 bg-slate-50">
-            <div class="container mx-auto px-6 text-center" data-aos="zoom-in">
-                <h2 class="text-4xl font-bold text-slate-900 mb-4">Get In Touch</h2>
-                <p class="text-lg mb-8 max-w-2xl mx-auto text-slate-600">
-                    I'm currently open to new opportunities and collaborations. Feel free to reach out if you have a project in mind or just want to connect!
-                </p>
-                <div class="flex justify-center mt-10 space-x-6">
-                    <a href="mailto:vatsalsoni908@gmail.com" aria-label="Email" class="text-slate-500 hover:text-indigo-600 transition-colors duration-300"><i data-feather="mail" class="w-10 h-10"></i></a>
-                    <a href="https://www.linkedin.com/in/vatsal-soni-02a7191a7" target="_blank" aria-label="LinkedIn" class="text-slate-500 hover:text-indigo-600 transition-colors duration-300"><i data-feather="linkedin" class="w-10 h-10"></i></a>
-                    <a href="https://github.com/vatsalsoni17" target="_blank" aria-label="GitHub" class="text-slate-500 hover:text-indigo-600 transition-colors duration-300"><i data-feather="github" class="w-10 h-10"></i></a>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer class="bg-white border-t border-slate-200">
-        <div class="container mx-auto px-6 py-6 text-center text-slate-500">
-            <p>&copy; 2024 Vatsal Soni. All Rights Reserved.</p>
-        </div>
-    </footer>
-    
-    <!-- Particles.js -->
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-
-    <script>
-        // AOS Initialization
-        AOS.init({
-            duration: 800,
-            once: true,
-        });
-
-        // Feather Icons Initialization
-        feather.replace();
-
-        // Mobile Menu Toggle
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-        mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-
-        document.querySelectorAll('#mobile-menu a, .nav-link').forEach(link => {
-            link.addEventListener('click', () => {
-                if (!mobileMenu.classList.contains('hidden')) {
-                    mobileMenu.classList.add('hidden');
-                }
-            });
-        });
-
-        // Header scroll effect
-        const header = document.getElementById('header');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                header.classList.add('shadow-lg');
-            } else {
-                header.classList.remove('shadow-lg');
-            }
-        });
-        
-        // Active navigation link highlighting on scroll
-        const sections = document.querySelectorAll('main section');
-        const navLinks = document.querySelectorAll('.nav-link');
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    navLinks.forEach(link => {
-                        link.classList.remove('nav-link-active');
-                        if (link.getAttribute('href').substring(1) === entry.target.id) {
-                            link.classList.add('nav-link-active');
-                        }
-                    });
-                }
-            });
-        }, {
-            threshold: 0.5
-        });
-
-        sections.forEach(section => {
-            observer.observe(section);
-        });
-
-        // Particles.js configuration
-        particlesJS('particles-js', {
-          "particles": {
-            "number": {
-              "value": 80,
-              "density": {
-                "enable": true,
-                "value_area": 800
-              }
-            },
-            "color": {
-              "value": "#4f46e5"
-            },
-            "shape": {
-              "type": "circle",
-            },
-            "opacity": {
-              "value": 0.5,
-              "random": false,
-            },
-            "size": {
-              "value": 3,
-              "random": true,
-            },
-            "line_linked": {
-              "enable": true,
-              "distance": 150,
-              "color": "#7c3aed",
-              "opacity": 0.4,
-              "width": 1
-            },
-            "move": {
-              "enable": true,
-              "speed": 6,
-              "direction": "none",
-              "random": false,
-              "straight": false,
-              "out_mode": "out",
-              "bounce": false,
-            }
-          },
-          "interactivity": {
-            "detect_on": "canvas",
-            "events": {
-              "onhover": {
-                "enable": true,
-                "mode": "repulse"
-              },
-              "onclick": {
-                "enable": true,
-                "mode": "push"
-              },
-              "resize": true
-            },
-            "modes": {
-              "repulse": {
-                "distance": 100,
-                "duration": 0.4
-              },
-              "push": {
-                "particles_nb": 4
-              },
-            }
-          },
-          "retina_detect": true
-        });
-
-        // AI Chatbot Logic
-        const chatWindow = document.getElementById('chat-window');
-        const chatInput = document.getElementById('chat-input');
-        const sendBtn = document.getElementById('send-btn');
-        const apiKey = ""; // Leave as-is
-
-        const professionalContext = `
-            Vatsal Soni is a Business and Data Analyst with an MBA in Business Analytics and a B.E. in Mechanical Engineering. 
-            He is skilled in Power BI, Tableau, Looker Studio, Advanced Excel, Google Sheets, MySQL, Python, SolidWorks, and AutoCAD. 
-            His professional skills include Business Process Automation, Predictive Modeling, Trend Data Analysis, GAP Analysis, Inventory Management, and E-commerce Platforms like Amazon Seller Central and eBay.
-            His work experience includes a Data Analyst role at CHARUSAT University and a Data Analyst position at Acorn Universal Consultancy LLP. 
-            Key achievements include developing a quiz webpage, pioneering a predictive sales potential project, and automating business processes.
-        `;
-
-        const sendMessage = async () => {
-            const userMessage = chatInput.value.trim();
-            if (!userMessage) return;
-
-            appendMessage(userMessage, 'user');
-            chatInput.value = '';
-            
-            const typingIndicator = createTypingIndicator();
-            chatWindow.appendChild(typingIndicator);
-            chatWindow.scrollTop = chatWindow.scrollHeight;
-
-            try {
-                const response = await callGemini(userMessage);
-                chatWindow.removeChild(typingIndicator);
-                appendMessage(response, 'ai');
-            } catch (error) {
-                console.error("Error calling Gemini API:", error);
-                chatWindow.removeChild(typingIndicator);
-                appendMessage("Sorry, I'm having trouble connecting right now.", 'ai');
-            }
-        };
-
-        const callGemini = async (prompt) => {
-            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
-            
-            const systemPrompt = `You are a helpful AI assistant for Vatsal Soni's portfolio website. Your role is to answer questions about Vatsal's professional background, skills, and experience based ONLY on the following context. Be concise and professional. If the question is outside this context, politely decline to answer. CONTEXT: ${professionalContext}`;
-
-            const payload = {
-                contents: [{ parts: [{ text: prompt }] }],
-                 systemInstruction: {
-                    parts: [{ text: systemPrompt }]
-                },
-            };
-
-            const response = await fetch(apiUrl, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(payload)
-            });
-
-            if (!response.ok) {
-                throw new Error(`API request failed with status ${response.status}`);
-            }
-
-            const result = await response.json();
-            return result.candidates[0].content.parts[0].text;
-        };
-        
-        const appendMessage = (message, sender) => {
-            const messageDiv = document.createElement('div');
-            messageDiv.classList.add('chat-bubble', sender === 'user' ? 'user-bubble' : 'ai-bubble', 'rounded-lg', 'p-3');
-            messageDiv.innerHTML = `<p class="text-sm">${message}</p>`;
-            chatWindow.appendChild(messageDiv);
-            chatWindow.scrollTop = chatWindow.scrollHeight;
-        };
-
-        const createTypingIndicator = () => {
-            const indicatorDiv = document.createElement('div');
-            indicatorDiv.classList.add('chat-bubble', 'ai-bubble', 'rounded-lg', 'p-3', 'typing-indicator');
-            indicatorDiv.innerHTML = `<div class="flex items-center space-x-1"><div class="w-2 h-2 bg-slate-400 rounded-full animate-pulse"></div><div class="w-2 h-2 bg-slate-400 rounded-full animate-pulse [animation-delay:0.2s]"></div><div class="w-2 h-2 bg-slate-400 rounded-full animate-pulse [animation-delay:0.4s]"></div></div>`;
-            return indicatorDiv;
-        };
-
-        sendBtn.addEventListener('click', sendMessage);
-        chatInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') {
-                sendMessage();
-            }
-        });
-
-    </script>
-</body>
-</html>
-
-
-
-
-
-
-
-
