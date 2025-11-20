@@ -2,8 +2,8 @@
 <html lang="en" class="scroll-smooth">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Vatsal Soni | Data Intelligence & Amazon Growth</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>Vatsal Soni | Data Analyst & Amazon Consultant</title>
   <meta name="description" content="Portfolio of Vatsal Soni - Business & Data Analyst and Amazon Consultant.">
 
   <!-- Tailwind CSS -->
@@ -14,8 +14,8 @@
         extend: {
           colors: {
             primary: '#4f46e5', // Indigo 600
-            secondary: '#0f172a', // Slate 900
-            accent: '#8b5cf6', // Violet 500
+            dark: '#0f172a',    // Slate 900
+            amazon: '#ff9900',  // Amazon Orange
           },
           fontFamily: {
             sans: ['Poppins', 'sans-serif'],
@@ -38,637 +38,545 @@
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
   <style>
-    body { font-family: 'Poppins', sans-serif; background-color: #f8fafc; overflow-x: hidden; }
+    body { font-family: 'Poppins', sans-serif; background-color: #f8fafc; overflow-x: hidden; -webkit-tap-highlight-color: transparent; }
     
-    /* Gradient Text */
-    .text-gradient { 
-      background-clip: text; 
-      -webkit-background-clip: text; 
-      color: transparent; 
-      background-image: linear-gradient(135deg, #4f46e5 0%, #9333ea 100%); 
+    /* Smooth Transitions for Accordions */
+    .accordion-content {
+      transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out, padding 0.3s ease;
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+    }
+    
+    .accordion-item.active .accordion-content {
+      max-height: 500px; /* Arbitrary large height */
+      opacity: 1;
+      padding-top: 12px;
     }
 
-    /* Glassmorphism Card */
-    .glass-card {
-      background: rgba(255, 255, 255, 0.7);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.3);
-    }
+    .accordion-icon { transition: transform 0.3s ease; }
+    .accordion-item.active .accordion-icon { transform: rotate(180deg); }
 
-    /* Custom Scrollbar */
-    ::-webkit-scrollbar { width: 8px; }
-    ::-webkit-scrollbar-track { background: #f1f1f1; }
-    ::-webkit-scrollbar-thumb { background: #c7c7c7; border-radius: 4px; }
-    ::-webkit-scrollbar-thumb:hover { background: #4f46e5; }
-
-    /* Timeline Styles */
-    .timeline-line { position: absolute; left: 24px; top: 0; bottom: 0; width: 2px; background: #e2e8f0; z-index: 0; }
-    
-    /* Floating Chatbot */
-    .chat-widget { position: fixed; bottom: 2rem; right: 2rem; z-index: 50; }
+    /* Chat Widget Mobile Fixes */
     .chat-window { 
-      opacity: 0; 
-      transform: translateY(20px) scale(0.95); 
-      pointer-events: none; 
-      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: all 0.3s ease;
+      transform-origin: bottom right;
     }
-    .chat-window.open { opacity: 1; transform: translateY(0) scale(1); pointer-events: auto; }
     
-    /* Expandable Cards */
-    .expandable-content { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-in-out, opacity 0.4s ease; opacity: 0; }
-    .expanded .expandable-content { max-height: 500px; opacity: 1; margin-top: 1rem; }
-    .arrow-icon { transition: transform 0.3s ease; }
-    .expanded .arrow-icon { transform: rotate(180deg); }
+    /* Mobile Menu Animation */
+    #mobile-menu { transition: max-height 0.3s ease-in-out; max-height: 0; overflow: hidden; }
+    #mobile-menu.open { max-height: 400px; }
   </style>
 </head>
 
-<body class="text-slate-700 antialiased selection:bg-indigo-100 selection:text-indigo-700">
+<body class="text-slate-700 antialiased">
 
   <!-- Navigation -->
-  <header id="header" class="fixed top-0 w-full z-40 transition-all duration-300 bg-white/80 backdrop-blur-md border-b border-slate-100">
-    <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-      <a href="#home" class="text-2xl font-bold tracking-tight text-slate-900">Vatsal<span class="text-primary">.</span></a>
-      
-      <!-- Desktop Menu -->
-      <div class="hidden md:flex space-x-8 text-sm font-medium text-slate-600">
-        <a href="#services" class="hover:text-primary transition-colors">Services</a>
-        <a href="#experience" class="hover:text-primary transition-colors">Experience</a>
-        <a href="#skills" class="hover:text-primary transition-colors">Skills</a>
-        <a href="#projects" class="hover:text-primary transition-colors">Projects</a>
-      </div>
-      
-      <div class="hidden md:block">
-        <a href="#contact" class="bg-primary hover:bg-indigo-700 text-white px-5 py-2.5 rounded-full text-sm font-medium transition-all shadow-lg shadow-indigo-500/30">Let's Talk</a>
-      </div>
+  <header class="fixed top-0 w-full z-50 bg-white/95 backdrop-blur-sm border-b border-slate-200 shadow-sm">
+    <div class="container mx-auto px-4 md:px-6 py-4">
+      <div class="flex justify-between items-center">
+        <a href="#home" class="text-xl md:text-2xl font-bold text-slate-900">Vatsal<span class="text-primary">.</span></a>
+        
+        <!-- Desktop Links -->
+        <div class="hidden md:flex space-x-8 text-sm font-medium text-slate-600">
+          <a href="#services" class="hover:text-primary transition-colors">Services</a>
+          <a href="#amazon" class="hover:text-primary transition-colors">Amazon</a>
+          <a href="#experience" class="hover:text-primary transition-colors">Experience</a>
+          <a href="#projects" class="hover:text-primary transition-colors">Projects</a>
+        </div>
 
-      <!-- Mobile Menu Button -->
-      <button id="mobile-menu-btn" class="md:hidden text-slate-700 focus:outline-none">
-        <i data-feather="menu"></i>
-      </button>
-    </nav>
+        <div class="hidden md:block">
+          <a href="#contact" class="bg-primary hover:bg-indigo-700 text-white px-5 py-2 rounded-full text-sm font-medium transition-all">Contact Me</a>
+        </div>
 
-    <!-- Mobile Menu Dropdown -->
-    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-100 absolute w-full">
-      <div class="flex flex-col p-4 space-y-4 font-medium text-slate-600">
-        <a href="#services" class="block hover:text-primary">Services</a>
-        <a href="#experience" class="block hover:text-primary">Experience</a>
-        <a href="#projects" class="block hover:text-primary">Projects</a>
-        <a href="#contact" class="block text-primary font-bold">Contact Me</a>
+        <!-- Mobile Hamburger -->
+        <button id="mobile-menu-btn" class="md:hidden p-2 text-slate-700 focus:outline-none">
+          <i data-feather="menu" class="w-6 h-6"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Dropdown -->
+    <div id="mobile-menu" class="bg-white border-t border-slate-100 md:hidden shadow-lg">
+      <div class="flex flex-col p-4 space-y-4 font-medium text-slate-600 text-center">
+        <a href="#services" class="block py-2 hover:text-primary hover:bg-slate-50 rounded-lg mobile-link">Data Services</a>
+        <a href="#amazon" class="block py-2 hover:text-primary hover:bg-slate-50 rounded-lg mobile-link">Amazon Consulting</a>
+        <a href="#experience" class="block py-2 hover:text-primary hover:bg-slate-50 rounded-lg mobile-link">Experience</a>
+        <a href="#contact" class="block py-2 text-primary font-bold bg-indigo-50 rounded-lg mobile-link">Let's Talk</a>
       </div>
     </div>
   </header>
 
-  <main>
+  <main class="pt-20">
+    
     <!-- Hero Section -->
-    <section id="home" class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
-      <!-- Abstract Background Shapes -->
-      <div class="absolute top-0 left-0 w-full h-full overflow-hidden -z-10">
-        <div class="absolute top-[-10%] right-[-5%] w-96 h-96 bg-purple-200 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob"></div>
-        <div class="absolute top-[-10%] left-[-5%] w-96 h-96 bg-indigo-200 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-2000"></div>
-        <div class="absolute bottom-[-20%] left-[20%] w-96 h-96 bg-pink-200 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-4000"></div>
-        <div id="particles-js" class="absolute inset-0"></div>
+    <section id="home" class="relative min-h-[85vh] flex items-center justify-center bg-white">
+      <!-- Mobile-safe Background -->
+      <div class="absolute inset-0 overflow-hidden -z-10">
+        <div class="absolute -top-20 -right-20 w-64 h-64 bg-indigo-100 rounded-full mix-blend-multiply filter blur-3xl opacity-70"></div>
+        <div class="absolute top-40 -left-20 w-72 h-72 bg-purple-100 rounded-full mix-blend-multiply filter blur-3xl opacity-70"></div>
       </div>
 
-      <div class="container mx-auto px-6 text-center relative z-10" data-aos="fade-up" data-aos-duration="1000">
-        <div class="inline-block px-4 py-1.5 mb-6 text-sm font-semibold tracking-wider text-indigo-600 uppercase bg-indigo-50 rounded-full border border-indigo-100">
-          Available for Hire
-        </div>
-        <h1 class="text-5xl md:text-7xl font-bold text-slate-900 mb-6 tracking-tight">
+      <div class="container mx-auto px-4 text-center" data-aos="fade-up">
+        <span class="inline-block py-1 px-3 rounded-full bg-indigo-50 text-indigo-600 text-xs font-bold tracking-wider uppercase mb-4 border border-indigo-100">
+          Available for Projects
+        </span>
+        <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold text-slate-900 mb-6 leading-tight">
           Data Driven.<br />
-          <span class="text-gradient">Business Focused.</span>
+          <span class="text-primary">Business Focused.</span>
         </h1>
-        <p class="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto mb-10 leading-relaxed">
-          I help businesses decode complexity. From <b>Data Analytics</b> pipelines to <b>Amazon Seller</b> growth strategies, I turn raw numbers into revenue.
+        <p class="text-base md:text-xl text-slate-600 max-w-2xl mx-auto mb-8 leading-relaxed">
+          I transform raw data into profit. Specialized in <b>Data Analytics</b> automation and <b>Amazon Seller</b> growth strategies.
         </p>
-        <div class="flex flex-col sm:flex-row justify-center gap-4">
-          <a href="#services" class="px-8 py-3.5 rounded-full bg-primary text-white font-semibold hover:bg-indigo-700 transition-all shadow-lg shadow-indigo-500/30 transform hover:-translate-y-1">View Services</a>
-          <a href="#projects" class="px-8 py-3.5 rounded-full bg-white text-slate-700 font-semibold border border-slate-200 hover:bg-slate-50 transition-all transform hover:-translate-y-1">See Portfolio</a>
+        <div class="flex flex-col sm:flex-row justify-center gap-3">
+          <a href="#services" class="px-8 py-3.5 rounded-full bg-primary text-white font-semibold hover:bg-indigo-700 transition-transform active:scale-95 shadow-lg shadow-indigo-200">View Services</a>
+          <a href="#projects" class="px-8 py-3.5 rounded-full bg-white text-slate-700 font-semibold border border-slate-200 hover:bg-slate-50 transition-transform active:scale-95">Portfolio</a>
         </div>
       </div>
     </section>
 
-    <!-- SERVICE 1: DATA ANALYTICS -->
-    <section id="services" class="py-24 bg-white relative">
-      <div class="container mx-auto px-6">
-        <div class="text-center mb-16" data-aos="fade-up">
-          <h2 class="text-sm font-bold text-primary tracking-widest uppercase mb-2">Expertise</h2>
-          <h3 class="text-3xl md:text-4xl font-bold text-slate-900">Data Analyst Services</h3>
-          <p class="text-slate-500 mt-4 max-w-2xl mx-auto">Transforming messy spreadsheets into automated dashboards and actionable insights.</p>
+    <!-- DATA SERVICES -->
+    <section id="services" class="py-16 md:py-24 bg-slate-50">
+      <div class="container mx-auto px-4 md:px-6">
+        <div class="text-center mb-12">
+          <h2 class="text-xs font-bold text-primary tracking-widest uppercase mb-2">Expertise</h2>
+          <h3 class="text-3xl font-bold text-slate-900">Data Analyst Services</h3>
         </div>
 
-        <div class="grid lg:grid-cols-2 gap-12 items-start">
-          <!-- Service Info -->
-          <div data-aos="fade-right">
-            <div class="bg-slate-50 rounded-2xl p-8 border border-slate-100 h-full">
-              <div class="w-14 h-14 bg-indigo-100 rounded-xl flex items-center justify-center mb-6 text-primary">
-                <i data-feather="bar-chart-2" class="w-7 h-7"></i>
-              </div>
-              <h4 class="text-2xl font-bold mb-4">Turn Data into Decisions</h4>
-              <p class="text-slate-600 mb-6 leading-relaxed">
-                I specialize in end-to-end data solutions. Whether you need a one-time cleanup of your Excel files or a fully automated Power BI dashboard that updates daily, I have you covered.
-              </p>
-              
-              <div class="space-y-4 mb-8">
-                <div class="flex items-start">
-                  <i data-feather="check" class="w-5 h-5 text-green-500 mt-1 mr-3 flex-shrink-0"></i>
-                  <span class="text-slate-700 text-sm"><b>Dashboarding:</b> Power BI, Looker Studio, Tableau</span>
-                </div>
-                <div class="flex items-start">
-                  <i data-feather="check" class="w-5 h-5 text-green-500 mt-1 mr-3 flex-shrink-0"></i>
-                  <span class="text-slate-700 text-sm"><b>Automation:</b> Python scripts & Power Query to save hours of manual work</span>
-                </div>
-                <div class="flex items-start">
-                  <i data-feather="check" class="w-5 h-5 text-green-500 mt-1 mr-3 flex-shrink-0"></i>
-                  <span class="text-slate-700 text-sm"><b>Forecasting:</b> Predictive models to plan inventory and sales</span>
-                </div>
-              </div>
-
-              <button onclick="document.getElementById('data-modal').classList.remove('hidden')" class="w-full py-3 rounded-lg border border-indigo-200 text-primary font-medium hover:bg-indigo-50 transition-colors">
-                View Data Portfolio
-              </button>
+        <div class="flex flex-col lg:flex-row gap-10">
+          <!-- Description -->
+          <div class="lg:w-1/2 bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-slate-100 h-fit">
+            <div class="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mb-6 text-primary">
+              <i data-feather="bar-chart-2"></i>
             </div>
-          </div>
-
-          <!-- Pricing Cards (Data) -->
-          <div class="space-y-4" data-aos="fade-left">
-            <!-- Starter -->
-            <div class="bg-white border border-slate-200 rounded-xl p-5 cursor-pointer hover:shadow-md transition-shadow group toggle-card" tabindex="0">
-              <div class="flex justify-between items-center">
-                <div>
-                  <h5 class="font-bold text-slate-900">Starter Analysis</h5>
-                  <p class="text-primary font-bold">₹5,000 <span class="text-xs text-slate-400 font-normal">/project</span></p>
-                </div>
-                <i data-feather="chevron-down" class="text-slate-400 arrow-icon"></i>
-              </div>
-              <div class="expandable-content text-sm text-slate-600">
-                <ul class="list-disc list-inside space-y-1 mt-3 ml-1">
-                  <li>Basic Dashboard (1-2 Pages)</li>
-                  <li>Data Cleaning (1 Source)</li>
-                  <li>One-time Insight Report</li>
-                </ul>
-                <a href="mailto:vatsalsoni908@gmail.com" class="block mt-3 text-primary font-medium">Book Now &rarr;</a>
-              </div>
-            </div>
-
-            <!-- Growth -->
-            <div class="bg-white border-2 border-indigo-100 rounded-xl p-5 cursor-pointer shadow-sm hover:shadow-md transition-shadow group toggle-card relative overflow-hidden" tabindex="0">
-              <div class="absolute top-0 right-0 bg-indigo-100 text-indigo-700 text-[10px] px-2 py-1 rounded-bl-lg font-bold">POPULAR</div>
-              <div class="flex justify-between items-center">
-                <div>
-                  <h5 class="font-bold text-slate-900">Business Intelligence</h5>
-                  <p class="text-primary font-bold">₹15,000 <span class="text-xs text-slate-400 font-normal">/month</span></p>
-                </div>
-                <i data-feather="chevron-down" class="text-slate-400 arrow-icon"></i>
-              </div>
-              <div class="expandable-content text-sm text-slate-600">
-                <ul class="list-disc list-inside space-y-1 mt-3 ml-1">
-                  <li>Automated Multi-source Dashboards</li>
-                  <li>Weekly Performance Reports</li>
-                  <li>Sales Forecasting</li>
-                </ul>
-                <a href="mailto:vatsalsoni908@gmail.com" class="block mt-3 text-primary font-medium">Book Now &rarr;</a>
-              </div>
-            </div>
-
-            <!-- Enterprise -->
-            <div class="bg-white border border-slate-200 rounded-xl p-5 cursor-pointer hover:shadow-md transition-shadow group toggle-card" tabindex="0">
-              <div class="flex justify-between items-center">
-                <div>
-                  <h5 class="font-bold text-slate-900">Enterprise Analytics</h5>
-                  <p class="text-primary font-bold">₹35,000+ <span class="text-xs text-slate-400 font-normal">/month</span></p>
-                </div>
-                <i data-feather="chevron-down" class="text-slate-400 arrow-icon"></i>
-              </div>
-              <div class="expandable-content text-sm text-slate-600">
-                <ul class="list-disc list-inside space-y-1 mt-3 ml-1">
-                  <li>Full Data Pipeline Setup</li>
-                  <li>Custom Machine Learning Models</li>
-                  <li>Dedicated Analyst Support</li>
-                </ul>
-                <a href="mailto:vatsalsoni908@gmail.com" class="block mt-3 text-primary font-medium">Contact for Quote &rarr;</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SERVICE 2: AMAZON CONSULTING -->
-    <section id="amazon" class="py-24 bg-slate-50">
-      <div class="container mx-auto px-6">
-        <div class="text-center mb-16">
-          <h2 class="text-sm font-bold text-orange-500 tracking-widest uppercase mb-2">E-Commerce</h2>
-          <h3 class="text-3xl md:text-4xl font-bold text-slate-900">Amazon Seller Consulting</h3>
-          <p class="text-slate-500 mt-4 max-w-2xl mx-auto">Optimizing listings, pricing, and inventory for maximum profitability.</p>
-        </div>
-
-        <div class="grid lg:grid-cols-2 gap-12 items-start lg:flex-row-reverse">
-          <!-- Pricing Cards (Amazon) - Order switched for visual interest -->
-          <div class="space-y-4 lg:order-1" data-aos="fade-right">
-             <!-- Basic -->
-             <div class="bg-white border border-slate-200 rounded-xl p-5 cursor-pointer hover:shadow-md transition-shadow group toggle-card" tabindex="0">
-              <div class="flex justify-between items-center">
-                <div>
-                  <h5 class="font-bold text-slate-900">Listing Fixer</h5>
-                  <p class="text-orange-500 font-bold">₹4,000 <span class="text-xs text-slate-400 font-normal">/month</span></p>
-                </div>
-                <i data-feather="chevron-down" class="text-slate-400 arrow-icon"></i>
-              </div>
-              <div class="expandable-content text-sm text-slate-600">
-                <ul class="list-disc list-inside space-y-1 mt-3 ml-1">
-                  <li>5 Listing Optimizations (SEO/Images)</li>
-                  <li>Weekly Price Health Check</li>
-                  <li>Monthly Sales Report</li>
-                </ul>
-              </div>
-            </div>
-
-            <!-- Standard -->
-            <div class="bg-white border-2 border-orange-100 rounded-xl p-5 cursor-pointer shadow-sm hover:shadow-md transition-shadow group toggle-card relative" tabindex="0">
-              <div class="flex justify-between items-center">
-                <div>
-                  <h5 class="font-bold text-slate-900">Seller Growth</h5>
-                  <p class="text-orange-500 font-bold">₹12,000 <span class="text-xs text-slate-400 font-normal">/month</span></p>
-                </div>
-                <i data-feather="chevron-down" class="text-slate-400 arrow-icon"></i>
-              </div>
-              <div class="expandable-content text-sm text-slate-600">
-                <ul class="list-disc list-inside space-y-1 mt-3 ml-1">
-                  <li>Everything in Basic</li>
-                  <li>Competitor & Keyword Research</li>
-                  <li>A/B Testing Suggestions</li>
-                </ul>
-              </div>
-            </div>
-
-            <!-- Premium -->
-            <div class="bg-white border border-slate-200 rounded-xl p-5 cursor-pointer hover:shadow-md transition-shadow group toggle-card" tabindex="0">
-              <div class="flex justify-between items-center">
-                <div>
-                  <h5 class="font-bold text-slate-900">Full Management</h5>
-                  <p class="text-orange-500 font-bold">₹24,000 <span class="text-xs text-slate-400 font-normal">/month</span></p>
-                </div>
-                <i data-feather="chevron-down" class="text-slate-400 arrow-icon"></i>
-              </div>
-              <div class="expandable-content text-sm text-slate-600">
-                <ul class="list-disc list-inside space-y-1 mt-3 ml-1">
-                  <li>PPC/Ads Management</li>
-                  <li>Daily Sales Dashboard</li>
-                  <li>Inventory Planning & Restock Alerts</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          <!-- Service Info -->
-          <div data-aos="fade-left" class="lg:order-2">
-            <div class="bg-white rounded-2xl p-8 border border-slate-100 shadow-lg shadow-orange-500/5 h-full">
-              <div class="w-14 h-14 bg-orange-100 rounded-xl flex items-center justify-center mb-6 text-orange-600">
-                <i data-feather="shopping-bag" class="w-7 h-7"></i>
-              </div>
-              <h4 class="text-2xl font-bold mb-4">Scale Your Store</h4>
-              <p class="text-slate-600 mb-6 leading-relaxed">
-                Stop guessing with your Amazon business. I use tools like <b>Helium10</b> and <b>Keepa</b> combined with custom data analysis to find profitable gaps and optimize your operations.
-              </p>
-              
-              <div class="flex flex-wrap gap-2 mb-8">
-                <span class="px-3 py-1 bg-slate-100 text-slate-600 text-xs font-bold rounded-full">Helium10</span>
-                <span class="px-3 py-1 bg-slate-100 text-slate-600 text-xs font-bold rounded-full">Keepa</span>
-                <span class="px-3 py-1 bg-slate-100 text-slate-600 text-xs font-bold rounded-full">PPC</span>
-                <span class="px-3 py-1 bg-slate-100 text-slate-600 text-xs font-bold rounded-full">SEO</span>
-              </div>
-
-              <button onclick="document.getElementById('amazon-modal').classList.remove('hidden')" class="w-full py-3 rounded-lg bg-orange-500 text-white font-medium hover:bg-orange-600 transition-colors shadow-lg shadow-orange-500/20">
-                View Sample Results
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- EXPERIENCE -->
-    <section id="experience" class="py-24 bg-white">
-      <div class="container mx-auto px-6 max-w-4xl">
-        <h2 class="text-3xl font-bold text-center text-slate-900 mb-16">Professional Journey</h2>
-        
-        <div class="relative pl-8 border-l-2 border-slate-100 space-y-12">
-          
-          <!-- Job 1 -->
-          <div class="relative" data-aos="fade-up">
-            <div class="absolute -left-[41px] top-0 w-6 h-6 rounded-full bg-primary border-4 border-white shadow-sm"></div>
-            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
-              <h3 class="text-xl font-bold text-slate-900">Business Administrative Personnel</h3>
-              <span class="text-sm font-medium text-indigo-600 bg-indigo-50 px-3 py-1 rounded-full w-fit mt-2 sm:mt-0">09/2024 - Present</span>
-            </div>
-            <p class="text-slate-500 font-medium mb-4">Internal Quality Assurance Cell, CHARUSAT University</p>
-            <ul class="list-disc list-outside ml-4 space-y-2 text-slate-600 text-sm leading-relaxed">
-              <li>Cleaned and organized institutional data for NAAC inspections.</li>
-              <li>Developed interactive dashboards in Power BI & Looker Studio for stakeholders.</li>
-              <li>Created an interactive HTML quiz module for IQAC events.</li>
+            <h4 class="text-2xl font-bold mb-4">Turn Spreadsheets into Strategy</h4>
+            <p class="text-slate-600 mb-6 text-sm md:text-base">
+              Stop wasting hours in Excel. I build automated dashboards and cleaning pipelines so you can focus on decisions, not data entry.
+            </p>
+            <ul class="space-y-3 mb-8">
+              <li class="flex items-center text-sm text-slate-700"><i data-feather="check-circle" class="w-4 h-4 text-green-500 mr-2"></i> Power BI & Looker Studio Dashboards</li>
+              <li class="flex items-center text-sm text-slate-700"><i data-feather="check-circle" class="w-4 h-4 text-green-500 mr-2"></i> Python/SQL Data Automation</li>
+              <li class="flex items-center text-sm text-slate-700"><i data-feather="check-circle" class="w-4 h-4 text-green-500 mr-2"></i> Sales Forecasting Models</li>
             </ul>
+            <button onclick="openModal('data-modal')" class="w-full py-3 rounded-lg border-2 border-indigo-100 text-primary font-bold text-sm hover:bg-indigo-50 transition-colors">
+              View Portfolio Examples
+            </button>
           </div>
 
-          <!-- Job 2 -->
-          <div class="relative" data-aos="fade-up">
-            <div class="absolute -left-[41px] top-0 w-6 h-6 rounded-full bg-slate-300 border-4 border-white shadow-sm"></div>
-            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
-              <h3 class="text-xl font-bold text-slate-900">Data Analyst</h3>
-              <span class="text-sm font-medium text-slate-500 bg-slate-100 px-3 py-1 rounded-full w-fit mt-2 sm:mt-0">06/2023 - 08/2024</span>
+          <!-- Mobile-Friendly Accordion Pricing -->
+          <div class="lg:w-1/2 space-y-4">
+            
+            <!-- Card 1 -->
+            <div class="bg-white border border-slate-200 rounded-xl overflow-hidden accordion-item">
+              <button class="w-full flex justify-between items-center p-5 text-left focus:outline-none active:bg-slate-50" onclick="toggleAccordion(this)">
+                <div>
+                  <div class="font-bold text-slate-900">Starter Analysis</div>
+                  <div class="text-primary font-bold text-lg">₹5,000 <span class="text-xs text-slate-400 font-normal">/project</span></div>
+                </div>
+                <i data-feather="chevron-down" class="accordion-icon text-slate-400"></i>
+              </button>
+              <div class="accordion-content bg-slate-50 px-5">
+                <div class="pb-5 text-sm text-slate-600">
+                  <ul class="list-disc list-inside space-y-2 mb-4">
+                    <li>1-2 Page Dashboard</li>
+                    <li>Single Data Source Cleanup</li>
+                    <li>One-time Insights Report</li>
+                  </ul>
+                  <a href="mailto:vatsalsoni908@gmail.com?subject=Starter Data Project" class="block w-full py-2 text-center bg-primary text-white rounded-lg font-medium">Book Now</a>
+                </div>
+              </div>
             </div>
-            <p class="text-slate-500 font-medium mb-4">Acorn Universal Consultancy LLP</p>
-            <ul class="list-disc list-outside ml-4 space-y-2 text-slate-600 text-sm leading-relaxed">
-              <li>Automated daily business processes to increase team productivity.</li>
-              <li>Designed an efficient inventory management system for real-time tracking.</li>
-              <li>Built predictive sales models to identify revenue opportunities.</li>
-            </ul>
-          </div>
 
+            <!-- Card 2 (Popular) -->
+            <div class="bg-white border-2 border-indigo-500 rounded-xl overflow-hidden accordion-item shadow-md">
+              <button class="w-full flex justify-between items-center p-5 text-left focus:outline-none active:bg-indigo-50" onclick="toggleAccordion(this)">
+                <div>
+                  <div class="flex items-center gap-2">
+                    <span class="font-bold text-slate-900">Business Growth</span>
+                    <span class="text-[10px] bg-indigo-600 text-white px-2 py-0.5 rounded-full uppercase">Best Value</span>
+                  </div>
+                  <div class="text-primary font-bold text-lg">₹15,000 <span class="text-xs text-slate-400 font-normal">/month</span></div>
+                </div>
+                <i data-feather="chevron-down" class="accordion-icon text-slate-400"></i>
+              </button>
+              <div class="accordion-content bg-indigo-50 px-5">
+                <div class="pb-5 text-sm text-slate-600">
+                  <ul class="list-disc list-inside space-y-2 mb-4">
+                    <li>Automated Multi-source Dashboards</li>
+                    <li>Weekly Performance Reports</li>
+                    <li>Inventory & Sales Forecasting</li>
+                  </ul>
+                  <a href="mailto:vatsalsoni908@gmail.com?subject=Growth Data Project" class="block w-full py-2 text-center bg-primary text-white rounded-lg font-medium">Book Now</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="bg-white border border-slate-200 rounded-xl overflow-hidden accordion-item">
+              <button class="w-full flex justify-between items-center p-5 text-left focus:outline-none active:bg-slate-50" onclick="toggleAccordion(this)">
+                <div>
+                  <div class="font-bold text-slate-900">Enterprise</div>
+                  <div class="text-primary font-bold text-lg">₹35,000+ <span class="text-xs text-slate-400 font-normal">/month</span></div>
+                </div>
+                <i data-feather="chevron-down" class="accordion-icon text-slate-400"></i>
+              </button>
+              <div class="accordion-content bg-slate-50 px-5">
+                <div class="pb-5 text-sm text-slate-600">
+                  <ul class="list-disc list-inside space-y-2 mb-4">
+                    <li>Full Data Pipeline Engineering</li>
+                    <li>Custom ML/AI Models</li>
+                    <li>Dedicated Analyst Support</li>
+                  </ul>
+                  <a href="mailto:vatsalsoni908@gmail.com?subject=Enterprise Project" class="block w-full py-2 text-center border border-indigo-200 text-primary rounded-lg font-medium">Contact for Quote</a>
+                </div>
+              </div>
+            </div>
+
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- SKILLS GRID -->
-    <section id="skills" class="py-24 bg-slate-50">
-      <div class="container mx-auto px-6">
-        <h2 class="text-3xl font-bold text-center text-slate-900 mb-12">Technical Arsenal</h2>
-        
-        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
-          <!-- Skill Cards -->
-          <div class="bg-white p-6 rounded-xl shadow-sm text-center hover:-translate-y-1 transition-transform duration-300">
-            <img src="https://www.vectorlogo.zone/logos/microsoft_powerbi/microsoft_powerbi-icon.svg" class="h-10 mx-auto mb-3" alt="PowerBI">
-            <p class="font-semibold text-sm">Power BI</p>
-          </div>
-          <div class="bg-white p-6 rounded-xl shadow-sm text-center hover:-translate-y-1 transition-transform duration-300">
-            <img src="https://www.vectorlogo.zone/logos/python/python-icon.svg" class="h-10 mx-auto mb-3" alt="Python">
-            <p class="font-semibold text-sm">Python</p>
-          </div>
-          <div class="bg-white p-6 rounded-xl shadow-sm text-center hover:-translate-y-1 transition-transform duration-300">
-            <img src="https://www.vectorlogo.zone/logos/mysql/mysql-icon.svg" class="h-10 mx-auto mb-3" alt="MySQL">
-            <p class="font-semibold text-sm">MySQL</p>
-          </div>
-          <div class="bg-white p-6 rounded-xl shadow-sm text-center hover:-translate-y-1 transition-transform duration-300">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/3/34/Microsoft_Office_Excel_%282019%E2%80%93present%29.svg" class="h-10 mx-auto mb-3" alt="Excel">
-            <p class="font-semibold text-sm">Adv. Excel</p>
-          </div>
-          <div class="bg-white p-6 rounded-xl shadow-sm text-center hover:-translate-y-1 transition-transform duration-300">
-            <img src="https://www.vectorlogo.zone/logos/google_analytics/google_analytics-icon.svg" class="h-10 mx-auto mb-3" alt="Looker">
-            <p class="font-semibold text-sm">Looker</p>
-          </div>
-           <div class="bg-white p-6 rounded-xl shadow-sm text-center hover:-translate-y-1 transition-transform duration-300">
-            <img src="https://www.vectorlogo.zone/logos/amazon/amazon-icon.svg" class="h-10 mx-auto mb-3" alt="Amazon">
-            <p class="font-semibold text-sm">Seller Central</p>
-          </div>
+    <!-- AMAZON SERVICES -->
+    <section id="amazon" class="py-16 md:py-24 bg-white">
+      <div class="container mx-auto px-4 md:px-6">
+        <div class="text-center mb-12">
+          <h2 class="text-xs font-bold text-amazon tracking-widest uppercase mb-2">E-Commerce</h2>
+          <h3 class="text-3xl font-bold text-slate-900">Amazon Consulting</h3>
         </div>
 
-        <div class="flex flex-wrap justify-center gap-3 mt-12">
-           <span class="px-4 py-2 rounded-full bg-white border border-slate-200 text-sm text-slate-600 shadow-sm">Predictive Modeling</span>
-           <span class="px-4 py-2 rounded-full bg-white border border-slate-200 text-sm text-slate-600 shadow-sm">Gap Analysis</span>
-           <span class="px-4 py-2 rounded-full bg-white border border-slate-200 text-sm text-slate-600 shadow-sm">Process Automation</span>
-           <span class="px-4 py-2 rounded-full bg-white border border-slate-200 text-sm text-slate-600 shadow-sm">Inventory Mgmt</span>
+        <div class="flex flex-col lg:flex-row-reverse gap-10">
+          <!-- Description -->
+          <div class="lg:w-1/2 bg-slate-50 p-6 md:p-8 rounded-2xl shadow-sm border border-slate-100 h-fit">
+            <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-6 text-amazon">
+              <i data-feather="shopping-bag"></i>
+            </div>
+            <h4 class="text-2xl font-bold mb-4">Optimize Listings & Sales</h4>
+            <p class="text-slate-600 mb-6 text-sm md:text-base">
+              I combine data skills with Amazon Seller Central expertise to find profitable keywords, optimize pricing, and manage inventory efficiently.
+            </p>
+            <div class="flex flex-wrap gap-2 mb-6">
+              <span class="px-3 py-1 bg-white border border-slate-200 rounded-full text-xs font-bold text-slate-600">Helium10</span>
+              <span class="px-3 py-1 bg-white border border-slate-200 rounded-full text-xs font-bold text-slate-600">Keepa</span>
+              <span class="px-3 py-1 bg-white border border-slate-200 rounded-full text-xs font-bold text-slate-600">PPC Ads</span>
+            </div>
+            <button onclick="openModal('amazon-modal')" class="w-full py-3 rounded-lg bg-amazon text-white font-bold text-sm hover:bg-orange-600 transition-colors shadow-lg shadow-orange-200">
+              View Sample Work
+            </button>
+          </div>
+
+          <!-- Amazon Pricing -->
+          <div class="lg:w-1/2 space-y-4">
+             <!-- Card 1 -->
+             <div class="bg-white border border-slate-200 rounded-xl overflow-hidden accordion-item">
+              <button class="w-full flex justify-between items-center p-5 text-left focus:outline-none active:bg-slate-50" onclick="toggleAccordion(this)">
+                <div>
+                  <div class="font-bold text-slate-900">Listing Optimization</div>
+                  <div class="text-amazon font-bold text-lg">₹4,000 <span class="text-xs text-slate-400 font-normal">/month</span></div>
+                </div>
+                <i data-feather="chevron-down" class="accordion-icon text-slate-400"></i>
+              </button>
+              <div class="accordion-content bg-slate-50 px-5">
+                <div class="pb-5 text-sm text-slate-600">
+                  <ul class="list-disc list-inside space-y-2 mb-4">
+                    <li>5 Listings (SEO + Images)</li>
+                    <li>Weekly Price Health Check</li>
+                    <li>Monthly Report</li>
+                  </ul>
+                  <a href="mailto:vatsalsoni908@gmail.com" class="block w-full py-2 text-center border border-slate-300 rounded-lg font-medium">Inquire</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="bg-white border-2 border-orange-200 rounded-xl overflow-hidden accordion-item shadow-sm">
+              <button class="w-full flex justify-between items-center p-5 text-left focus:outline-none active:bg-orange-50" onclick="toggleAccordion(this)">
+                <div>
+                  <div class="font-bold text-slate-900">Seller Growth</div>
+                  <div class="text-amazon font-bold text-lg">₹12,000 <span class="text-xs text-slate-400 font-normal">/month</span></div>
+                </div>
+                <i data-feather="chevron-down" class="accordion-icon text-slate-400"></i>
+              </button>
+              <div class="accordion-content bg-orange-50 px-5">
+                <div class="pb-5 text-sm text-slate-600">
+                  <ul class="list-disc list-inside space-y-2 mb-4">
+                    <li>Competitor Research</li>
+                    <li>Keyword A/B Testing</li>
+                    <li>Listing Optimization</li>
+                  </ul>
+                  <a href="mailto:vatsalsoni908@gmail.com" class="block w-full py-2 text-center bg-amazon text-white rounded-lg font-medium">Book Now</a>
+                </div>
+              </div>
+            </div>
+
+             <!-- Card 3 -->
+             <div class="bg-white border border-slate-200 rounded-xl overflow-hidden accordion-item">
+              <button class="w-full flex justify-between items-center p-5 text-left focus:outline-none active:bg-slate-50" onclick="toggleAccordion(this)">
+                <div>
+                  <div class="font-bold text-slate-900">Full Management</div>
+                  <div class="text-amazon font-bold text-lg">₹24,000 <span class="text-xs text-slate-400 font-normal">/month</span></div>
+                </div>
+                <i data-feather="chevron-down" class="accordion-icon text-slate-400"></i>
+              </button>
+              <div class="accordion-content bg-slate-50 px-5">
+                <div class="pb-5 text-sm text-slate-600">
+                  <ul class="list-disc list-inside space-y-2 mb-4">
+                    <li>PPC Ad Management</li>
+                    <li>Daily Sales Dashboard</li>
+                    <li>Inventory Restock Planning</li>
+                  </ul>
+                  <a href="mailto:vatsalsoni908@gmail.com" class="block w-full py-2 text-center border border-slate-300 rounded-lg font-medium">Inquire</a>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- PROJECTS -->
-    <section id="projects" class="py-24 bg-white">
-      <div class="container mx-auto px-6">
-        <h2 class="text-3xl font-bold text-center text-slate-900 mb-12">Selected Projects</h2>
+    <!-- SKILLS & EXPERIENCE (Compact for Mobile) -->
+    <section id="experience" class="py-16 bg-slate-900 text-white">
+      <div class="container mx-auto px-4">
+        <h2 class="text-2xl font-bold text-center mb-12">Experience & Tools</h2>
         
-        <div class="grid md:grid-cols-3 gap-8">
+        <div class="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto">
+          <div>
+             <h3 class="text-lg font-bold text-indigo-400 mb-6 border-b border-slate-700 pb-2">Work History</h3>
+             <div class="space-y-8">
+                <div>
+                  <div class="flex justify-between items-start">
+                    <h4 class="font-bold">Business Admin Personnel</h4>
+                    <span class="text-xs bg-slate-800 px-2 py-1 rounded">Present</span>
+                  </div>
+                  <p class="text-sm text-slate-400">CHARUSAT University (IQAC)</p>
+                  <p class="text-xs text-slate-500 mt-2">Data cleaning, dashboarding, NAAC compliance.</p>
+                </div>
+                <div>
+                  <div class="flex justify-between items-start">
+                    <h4 class="font-bold">Data Analyst</h4>
+                    <span class="text-xs bg-slate-800 px-2 py-1 rounded">2023-2024</span>
+                  </div>
+                  <p class="text-sm text-slate-400">Acorn Universal Consultancy</p>
+                  <p class="text-xs text-slate-500 mt-2">Automation, inventory systems, sales forecasting.</p>
+                </div>
+             </div>
+          </div>
           
-          <!-- Project 1 -->
-          <div class="group rounded-xl overflow-hidden border border-slate-100 hover:shadow-xl transition-all duration-300 bg-white">
-            <div class="h-48 bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-white">
-              <i data-feather="trending-up" class="w-12 h-12"></i>
-            </div>
-            <div class="p-6">
-              <h3 class="font-bold text-lg mb-2 text-slate-900">Sales Forecasting Model</h3>
-              <p class="text-slate-500 text-sm mb-4 line-clamp-3">Time-series forecasting models with seasonality decomposition and scenario planning to optimize supply chain decisions.</p>
-              <button onclick="alert('Details: Used Python (pandas/statsmodels) to predict monthly sales with 85% accuracy.')" class="text-primary font-medium text-sm flex items-center group-hover:translate-x-1 transition-transform">
-                View Details <i data-feather="arrow-right" class="w-4 h-4 ml-1"></i>
-              </button>
-            </div>
-          </div>
-
-          <!-- Project 2 -->
-          <div class="group rounded-xl overflow-hidden border border-slate-100 hover:shadow-xl transition-all duration-300 bg-white">
-            <div class="h-48 bg-gradient-to-br from-slate-700 to-slate-900 flex items-center justify-center text-white">
-              <i data-feather="code" class="w-12 h-12"></i>
-            </div>
-            <div class="p-6">
-              <h3 class="font-bold text-lg mb-2 text-slate-900">Interactive Quiz Module</h3>
-              <p class="text-slate-500 text-sm mb-4 line-clamp-3">Built a responsive HTML/JS quiz engine with local storage scoring and timer logic for university events.</p>
-               <button onclick="alert('Details: A fully responsive web app deployed for IQAC events.')" class="text-primary font-medium text-sm flex items-center group-hover:translate-x-1 transition-transform">
-                View Details <i data-feather="arrow-right" class="w-4 h-4 ml-1"></i>
-              </button>
-            </div>
-          </div>
-
-          <!-- Project 3 -->
-          <div class="group rounded-xl overflow-hidden border border-slate-100 hover:shadow-xl transition-all duration-300 bg-white">
-            <div class="h-48 bg-gradient-to-br from-orange-400 to-red-500 flex items-center justify-center text-white">
-              <i data-feather="target" class="w-12 h-12"></i>
-            </div>
-            <div class="p-6">
-              <h3 class="font-bold text-lg mb-2 text-slate-900">Ad Spend Impact Analysis</h3>
-              <p class="text-slate-500 text-sm mb-4 line-clamp-3">Digital marketing attribution modeling to optimize ad spend allocation across multiple channels.</p>
-               <button onclick="alert('Details: Analyzed conversion rates to reduce CPA by 15%.')" class="text-primary font-medium text-sm flex items-center group-hover:translate-x-1 transition-transform">
-                View Details <i data-feather="arrow-right" class="w-4 h-4 ml-1"></i>
-              </button>
+          <div>
+            <h3 class="text-lg font-bold text-indigo-400 mb-6 border-b border-slate-700 pb-2">Tech Stack</h3>
+            <div class="grid grid-cols-3 gap-4 text-center">
+              <div class="bg-slate-800 p-3 rounded-lg">
+                <img src="https://www.vectorlogo.zone/logos/microsoft_powerbi/microsoft_powerbi-icon.svg" class="h-8 mx-auto mb-2" alt="PBI">
+                <p class="text-[10px]">Power BI</p>
+              </div>
+              <div class="bg-slate-800 p-3 rounded-lg">
+                <img src="https://www.vectorlogo.zone/logos/python/python-icon.svg" class="h-8 mx-auto mb-2" alt="Python">
+                <p class="text-[10px]">Python</p>
+              </div>
+              <div class="bg-slate-800 p-3 rounded-lg">
+                <img src="https://www.vectorlogo.zone/logos/google_analytics/google_analytics-icon.svg" class="h-8 mx-auto mb-2" alt="Looker">
+                <p class="text-[10px]">Looker</p>
+              </div>
+              <div class="bg-slate-800 p-3 rounded-lg">
+                <img src="https://www.vectorlogo.zone/logos/mysql/mysql-icon.svg" class="h-8 mx-auto mb-2" alt="SQL">
+                <p class="text-[10px]">MySQL</p>
+              </div>
+              <div class="bg-slate-800 p-3 rounded-lg">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/3/34/Microsoft_Office_Excel_%282019%E2%80%93present%29.svg" class="h-8 mx-auto mb-2" alt="Excel">
+                <p class="text-[10px]">Excel</p>
+              </div>
+              <div class="bg-slate-800 p-3 rounded-lg">
+                <img src="https://www.vectorlogo.zone/logos/amazon/amazon-icon.svg" class="h-8 mx-auto mb-2" alt="Amz">
+                <p class="text-[10px]">Seller</p>
+              </div>
             </div>
           </div>
-
         </div>
       </div>
     </section>
 
-    <!-- FOOTER / CONTACT -->
-    <footer id="contact" class="bg-slate-900 text-white py-16">
-      <div class="container mx-auto px-6 text-center">
-        <h2 class="text-3xl font-bold mb-6">Ready to optimize your business?</h2>
-        <p class="text-slate-400 max-w-2xl mx-auto mb-10">Whether you need a dashboard, a sales forecast, or an Amazon strategy, I'm here to help.</p>
+    <!-- FOOTER -->
+    <footer id="contact" class="bg-white pt-16 pb-24 md:pb-16 border-t border-slate-200">
+      <div class="container mx-auto px-4 text-center">
+        <h2 class="text-2xl font-bold mb-4 text-slate-900">Let's Work Together</h2>
+        <p class="text-slate-500 mb-8">Ready to optimize your data or Amazon store?</p>
         
-        <div class="flex justify-center gap-6 mb-12">
-          <a href="mailto:vatsalsoni908@gmail.com" class="bg-white/10 hover:bg-white/20 p-4 rounded-full transition-colors backdrop-blur-sm">
-            <i data-feather="mail" class="w-6 h-6"></i>
-          </a>
-          <a href="https://www.linkedin.com/in/vatsal-soni-02a7191a7" target="_blank" class="bg-white/10 hover:bg-white/20 p-4 rounded-full transition-colors backdrop-blur-sm">
-            <i data-feather="linkedin" class="w-6 h-6"></i>
-          </a>
-          <a href="https://github.com/vatsalsoni17" target="_blank" class="bg-white/10 hover:bg-white/20 p-4 rounded-full transition-colors backdrop-blur-sm">
-            <i data-feather="github" class="w-6 h-6"></i>
-          </a>
+        <div class="flex justify-center gap-6 mb-8">
+          <a href="mailto:vatsalsoni908@gmail.com" class="text-slate-400 hover:text-primary"><i data-feather="mail"></i></a>
+          <a href="https://www.linkedin.com/in/vatsal-soni-02a7191a7" class="text-slate-400 hover:text-primary"><i data-feather="linkedin"></i></a>
+          <a href="https://github.com/vatsalsoni17" class="text-slate-400 hover:text-primary"><i data-feather="github"></i></a>
         </div>
-        
-        <div class="text-slate-500 text-sm">
-          &copy; 2024 Vatsal Soni. All Rights Reserved.
-        </div>
+        <p class="text-xs text-slate-400">&copy; 2024 Vatsal Soni.</p>
       </div>
     </footer>
+
   </main>
 
-  <!-- MODALS (Hidden by default) -->
-  
-  <!-- Data Portfolio Modal -->
-  <div id="data-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 backdrop-blur-sm p-4 transition-opacity">
-    <div class="bg-white rounded-2xl max-w-2xl w-full max-h-[80vh] overflow-y-auto shadow-2xl">
-      <div class="p-6 border-b sticky top-0 bg-white flex justify-between items-center">
-        <h3 class="text-xl font-bold">Data Analyst Portfolio</h3>
-        <button onclick="document.getElementById('data-modal').classList.add('hidden')" class="text-slate-400 hover:text-slate-600"><i data-feather="x"></i></button>
+  <!-- MODALS -->
+  <div id="data-modal" class="hidden fixed inset-0 z-[60] flex items-end md:items-center justify-center bg-black/50 p-4 backdrop-blur-sm transition-opacity opacity-0" onclick="closeModal(this)">
+    <div class="bg-white w-full md:max-w-lg rounded-t-2xl md:rounded-2xl max-h-[80vh] overflow-y-auto" onclick="event.stopPropagation()">
+      <div class="p-5 border-b sticky top-0 bg-white flex justify-between items-center">
+        <h3 class="font-bold text-lg">Data Portfolio</h3>
+        <button onclick="closeModalById('data-modal')" class="p-2"><i data-feather="x"></i></button>
       </div>
       <div class="p-6 space-y-6">
         <div>
-          <h4 class="font-bold text-primary">Dashboard Development</h4>
-          <p class="text-slate-600 text-sm mt-1">Examples of interactive Power BI reports featuring drill-downs, slicers, and DAX measures.</p>
+          <h4 class="font-bold text-primary mb-2">Dashboard Development</h4>
+          <p class="text-sm text-slate-600">Examples of Power BI reports with drill-down capabilities.</p>
         </div>
-        <div class="h-px bg-slate-100"></div>
         <div>
-          <h4 class="font-bold text-primary">Data Cleaning Automation</h4>
-          <p class="text-slate-600 text-sm mt-1">Before/After examples of raw CSVs transformed into clean database tables using Python pandas.</p>
+          <h4 class="font-bold text-primary mb-2">Automated Cleaning</h4>
+          <p class="text-sm text-slate-600">Python scripts that turn 4 hours of manual Excel work into a 10-second click.</p>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Amazon Modal -->
-  <div id="amazon-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 backdrop-blur-sm p-4 transition-opacity">
-    <div class="bg-white rounded-2xl max-w-2xl w-full max-h-[80vh] overflow-y-auto shadow-2xl">
-      <div class="p-6 border-b sticky top-0 bg-white flex justify-between items-center">
-        <h3 class="text-xl font-bold">Amazon Consulting Samples</h3>
-        <button onclick="document.getElementById('amazon-modal').classList.add('hidden')" class="text-slate-400 hover:text-slate-600"><i data-feather="x"></i></button>
+  <div id="amazon-modal" class="hidden fixed inset-0 z-[60] flex items-end md:items-center justify-center bg-black/50 p-4 backdrop-blur-sm transition-opacity opacity-0" onclick="closeModal(this)">
+    <div class="bg-white w-full md:max-w-lg rounded-t-2xl md:rounded-2xl max-h-[80vh] overflow-y-auto" onclick="event.stopPropagation()">
+      <div class="p-5 border-b sticky top-0 bg-white flex justify-between items-center">
+        <h3 class="font-bold text-lg">Amazon Results</h3>
+        <button onclick="closeModalById('amazon-modal')" class="p-2"><i data-feather="x"></i></button>
       </div>
       <div class="p-6 space-y-6">
         <div>
-          <h4 class="font-bold text-orange-500">Listing Optimization</h4>
-          <p class="text-slate-600 text-sm mt-1">Keyword density improvements, title restructuring for mobile CTR, and A+ content layout.</p>
+          <h4 class="font-bold text-amazon mb-2">Listing Optimization</h4>
+          <p class="text-sm text-slate-600">Before/After SEO titles and A+ content that increased conversion by 12%.</p>
         </div>
-        <div class="h-px bg-slate-100"></div>
         <div>
-          <h4 class="font-bold text-orange-500">Inventory Logic</h4>
-          <p class="text-slate-600 text-sm mt-1">Google Sheet templates for calculating safety stock based on lead time deviation.</p>
+          <h4 class="font-bold text-amazon mb-2">Inventory Planner</h4>
+          <p class="text-sm text-slate-600">Google Sheets calculator for reorder points based on lead time.</p>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- FLOATING AI CHAT WIDGET -->
-  <div class="chat-widget">
-    <!-- Chat Window -->
-    <div id="chat-window" class="chat-window bg-white width-80 sm:w-96 h-[450px] rounded-2xl shadow-2xl border border-slate-200 flex flex-col mb-4">
-      <div class="bg-primary p-4 rounded-t-2xl flex justify-between items-center">
-        <div class="text-white font-semibold flex items-center gap-2">
-          <i data-feather="cpu" class="w-4 h-4"></i> AI Assistant
-        </div>
-        <button id="close-chat" class="text-indigo-200 hover:text-white"><i data-feather="x" class="w-4 h-4"></i></button>
+  <!-- FLOATING CHAT -->
+  <div class="fixed bottom-5 right-5 z-50">
+    <div id="chat-interface" class="hidden bg-white w-[85vw] md:w-80 rounded-xl shadow-2xl border border-slate-200 mb-4 overflow-hidden">
+      <div class="bg-primary p-3 flex justify-between items-center text-white">
+        <span class="font-medium text-sm">AI Assistant</span>
+        <button id="close-chat-btn"><i data-feather="x" class="w-4 h-4"></i></button>
       </div>
-      <div id="chat-messages" class="flex-1 p-4 overflow-y-auto space-y-3 bg-slate-50 text-sm">
-        <div class="bg-white border border-slate-200 p-3 rounded-lg rounded-tl-none shadow-sm max-w-[85%] text-slate-700">
-          Hi! I'm Vatsal's AI bot. Ask me about his skills, experience, or pricing.
-        </div>
+      <div class="h-64 bg-slate-50 p-3 overflow-y-auto text-sm space-y-2" id="chat-messages">
+        <div class="bg-white p-2 rounded border text-slate-700">Hi! Ask me about Vatsal's data services or pricing.</div>
       </div>
-      <div class="p-3 border-t bg-white rounded-b-2xl">
-        <div class="flex gap-2">
-          <input type="text" id="chat-input" placeholder="Type a question..." class="flex-1 border border-slate-300 rounded-full px-4 py-2 text-sm focus:outline-none focus:border-primary">
-          <button id="send-btn" class="bg-primary text-white p-2 rounded-full hover:bg-indigo-700 transition-colors"><i data-feather="send" class="w-4 h-4"></i></button>
-        </div>
+      <div class="p-2 bg-white border-t flex">
+        <input type="text" id="chat-input" placeholder="Type..." class="flex-1 text-sm outline-none px-2">
+        <button id="send-btn" class="text-primary font-bold text-sm px-2">Send</button>
       </div>
     </div>
-
-    <!-- Toggle Button -->
-    <button id="chat-toggle" class="bg-primary hover:bg-indigo-700 text-white p-4 rounded-full shadow-lg shadow-indigo-600/40 transition-all transform hover:scale-110 float-right">
-      <i data-feather="message-square" class="w-6 h-6"></i>
+    <button id="chat-toggle-btn" class="bg-primary text-white p-4 rounded-full shadow-lg hover:scale-110 transition-transform">
+      <i data-feather="message-circle" class="w-6 h-6"></i>
     </button>
   </div>
 
-  <!-- SCRIPTS -->
-  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
   <script>
-    // Initialize AOS
-    AOS.init({ once: true, offset: 100, duration: 800 });
-    
-    // Initialize Feather Icons
+    // Feather Icons
     feather.replace();
 
-    // Particles JS
-    particlesJS('particles-js', {
-      "particles": {
-        "number": { "value": 60, "density": { "enable": true, "value_area": 800 } },
-        "color": { "value": "#4f46e5" },
-        "shape": { "type": "circle" },
-        "opacity": { "value": 0.1 },
-        "size": { "value": 3, "random": true },
-        "line_linked": { "enable": true, "distance": 150, "color": "#4f46e5", "opacity": 0.1, "width": 1 },
-        "move": { "enable": true, "speed": 2 }
-      },
-      "interactivity": {
-        "detect_on": "canvas",
-        "events": { "onhover": { "enable": true, "mode": "repulse" } }
-      },
-      "retina_detect": true
-    });
+    // AOS Animation
+    AOS.init({ once: true, duration: 600, offset: 50 });
 
-    // Mobile Menu Toggle
+    // Mobile Menu Logic
     const menuBtn = document.getElementById('mobile-menu-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
+    const menu = document.getElementById('mobile-menu');
+    
     menuBtn.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
+      menu.classList.toggle('open');
+      // Toggle icon
+      const isOpen = menu.classList.contains('open');
+      menuBtn.innerHTML = isOpen ? '<i data-feather="x"></i>' : '<i data-feather="menu"></i>';
+      feather.replace();
     });
 
-    // Expandable Cards Logic
-    document.querySelectorAll('.toggle-card').forEach(card => {
-      card.addEventListener('click', () => {
-        card.classList.toggle('expanded');
+    // Close menu when clicking a link
+    document.querySelectorAll('.mobile-link').forEach(link => {
+      link.addEventListener('click', () => {
+        menu.classList.remove('open');
+        menuBtn.innerHTML = '<i data-feather="menu"></i>';
+        feather.replace();
       });
     });
 
-    // Chat Widget Logic
-    const chatToggle = document.getElementById('chat-toggle');
-    const chatWindow = document.getElementById('chat-window');
-    const closeChat = document.getElementById('close-chat');
+    // Robust Accordion Logic (Works on Touch)
+    function toggleAccordion(button) {
+      const item = button.parentElement;
+      const isActive = item.classList.contains('active');
+      
+      // Close all others
+      document.querySelectorAll('.accordion-item').forEach(acc => {
+        acc.classList.remove('active');
+      });
+
+      // Toggle current
+      if (!isActive) {
+        item.classList.add('active');
+      }
+    }
+
+    // Modal Logic
+    function openModal(id) {
+      const modal = document.getElementById(id);
+      modal.classList.remove('hidden');
+      // Small delay for opacity transition
+      setTimeout(() => modal.classList.remove('opacity-0'), 10);
+    }
+
+    function closeModalById(id) {
+      const modal = document.getElementById(id);
+      modal.classList.add('opacity-0');
+      setTimeout(() => modal.classList.add('hidden'), 300);
+    }
     
+    function closeModal(element) {
+      if (element === event.target) {
+        element.classList.add('opacity-0');
+        setTimeout(() => element.classList.add('hidden'), 300);
+      }
+    }
+
+    // Chat Widget
+    const chatToggle = document.getElementById('chat-toggle-btn');
+    const chatInterface = document.getElementById('chat-interface');
+    const closeChatBtn = document.getElementById('close-chat-btn');
+    const sendBtn = document.getElementById('send-btn');
+    const chatInput = document.getElementById('chat-input');
+    const chatMsgs = document.getElementById('chat-messages');
+
     chatToggle.addEventListener('click', () => {
-      chatWindow.classList.toggle('open');
+      chatInterface.classList.remove('hidden');
       chatToggle.classList.add('hidden');
     });
 
-    closeChat.addEventListener('click', () => {
-      chatWindow.classList.remove('open');
+    closeChatBtn.addEventListener('click', () => {
+      chatInterface.classList.add('hidden');
       chatToggle.classList.remove('hidden');
     });
 
-    // Simple Chat Simulation
-    const chatInput = document.getElementById('chat-input');
-    const sendBtn = document.getElementById('send-btn');
-    const messages = document.getElementById('chat-messages');
-
-    function addMessage(text, isUser = false) {
-      const div = document.createElement('div');
-      div.className = isUser 
-        ? 'bg-primary text-white p-3 rounded-lg rounded-tr-none shadow-sm ml-auto max-w-[85%] text-sm' 
-        : 'bg-white border border-slate-200 p-3 rounded-lg rounded-tl-none shadow-sm max-w-[85%] text-slate-700 text-sm';
-      div.textContent = text;
-      messages.appendChild(div);
-      messages.scrollTop = messages.scrollHeight;
-    }
-
-    sendBtn.addEventListener('click', () => {
-      const txt = chatInput.value.trim();
-      if(!txt) return;
-      addMessage(txt, true);
-      chatInput.value = '';
-      
-      // Simulate typing
-      setTimeout(() => {
-        addMessage("Thanks for asking! I'm a demo bot right now, but Vatsal can integrate me with Gemini/OpenAI to answer real questions about his data services.");
-      }, 800);
-    });
+    sendBtn.addEventListener('click', sendMessage);
     
-    chatInput.addEventListener('keypress', (e) => {
-      if(e.key === 'Enter') sendBtn.click();
-    });
+    function sendMessage() {
+      const txt = chatInput.value;
+      if(!txt) return;
+      
+      // User msg
+      const uDiv = document.createElement('div');
+      uDiv.className = "bg-primary text-white p-2 rounded ml-auto max-w-[80%]";
+      uDiv.innerText = txt;
+      chatMsgs.appendChild(uDiv);
+      chatInput.value = "";
+      chatMsgs.scrollTop = chatMsgs.scrollHeight;
 
+      // Dummy Bot msg
+      setTimeout(() => {
+        const bDiv = document.createElement('div');
+        bDiv.className = "bg-white border p-2 rounded mr-auto max-w-[80%]";
+        bDiv.innerText = "Thanks! I'm a demo bot. Please email Vatsal for real inquiries.";
+        chatMsgs.appendChild(bDiv);
+        chatMsgs.scrollTop = chatMsgs.scrollHeight;
+      }, 600);
+    }
   </script>
 </body>
 </html>
