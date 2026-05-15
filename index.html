@@ -3,369 +3,300 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vatsal Soni | Data Strategy & Business Intelligence</title>
+  <title>Vatsal Soni | Data Analytics & Business Growth</title>
+  <meta name="description" content="Impact-driven portfolio of Vatsal Soni, a Business and Data Analyst focused on profitability, pricing, and growth analytics." />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: '#4f46e5',
+            dark: '#0b1120'
+          },
+          fontFamily: {
+            sans: ['Inter', 'ui-sans-serif', 'system-ui']
+          }
+        }
+      }
+    };
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@300;500;800&family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      --bg: #0a0a0c;
-      --card-bg: #111114;
-      --text-main: #f4f4f7;
-      --text-dim: #94a3b8;
-      --brand: #6366f1; /* Indigo */
-      --brand-gradient: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
-      --accent: #f43f5e; /* Rose */
-      --border: rgba(255, 255, 255, 0.08);
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      background: var(--bg);
-      color: var(--text-main);
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-
-    h1, h2, h3 { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; }
-
-    /* Glass Navigation */
-    header {
-      position: fixed; top: 0; width: 100%; z-index: 1000;
-      background: rgba(10, 10, 12, 0.8);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-    }
-    nav {
-      max-width: 1200px; margin: 0 auto;
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 1.2rem 2rem;
-    }
-    .logo { font-size: 1.5rem; color: #fff; text-decoration: none; letter-spacing: -1px; }
-    .logo span { color: var(--brand); }
-    .nav-links a { color: var(--text-dim); text-decoration: none; margin-left: 2rem; font-size: 0.9rem; transition: 0.3s; }
-    .nav-links a:hover { color: var(--brand); }
-
-    /* Hero Section - High Impact */
-    #hero {
-      padding: 12rem 2rem 8rem;
-      text-align: center;
-      position: relative;
-    }
-    .hero-glow {
-      position: absolute; top: 10%; left: 50%; transform: translateX(-50%);
-      width: 60vw; height: 40vh; background: var(--brand);
-      filter: blur(120px); opacity: 0.15; z-index: -1;
-    }
-    .badge {
-      display: inline-block; padding: 6px 16px; border-radius: 100px;
-      background: rgba(99, 102, 241, 0.1); border: 1px solid rgba(99, 102, 241, 0.2);
-      color: var(--brand); font-size: 0.75rem; font-weight: 600; text-transform: uppercase; margin-bottom: 1.5rem;
-    }
-    h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); line-height: 1.1; margin-bottom: 1.5rem; letter-spacing: -2px; }
-    .hero-sub { color: var(--text-dim); max-width: 650px; margin: 0 auto 3rem; font-size: 1.1rem; }
-
-    .btn {
-      padding: 14px 32px; border-radius: 8px; font-weight: 600; text-decoration: none;
-      transition: all 0.3s; cursor: pointer; display: inline-block;
-    }
-    .btn-primary { background: var(--brand-gradient); color: white; border: none; box-shadow: 0 10px 20px rgba(99, 102, 241, 0.2); }
-    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(99, 102, 241, 0.3); }
-    .btn-outline { background: transparent; color: var(--text-main); border: 1px solid var(--border); }
-    .btn-outline:hover { background: rgba(255,255,255,0.05); border-color: var(--text-dim); }
-
-    /* Grid Layouts */
-    .section-padding { padding: 8rem 2rem; max-width: 1200px; margin: 0 auto; }
-    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
-
-    /* Modern Cards */
-    .card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      padding: 2.5rem; border-radius: 20px;
-      transition: 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
-    }
-    .card:hover { border-color: rgba(99, 102, 241, 0.5); transform: translateY(-10px); }
-
-    /* Projects & Certification Section */
-    .project-grid {
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 2rem;
-      margin-top: 3rem;
-    }
-    .project-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-    }
-    .project-img-wrapper {
-      width: 100%;
-      height: 300px;
-      background: #1a1a20;
-      border-bottom: 1px solid var(--border);
-      overflow: hidden;
-      position: relative;
-    }
-    .project-img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: top;
-      transition: transform 0.5s ease;
-    }
-    .project-card:hover .project-img {
-      transform: scale(1.05);
-    }
-    .project-info {
-      padding: 2rem;
-    }
-    .tech-tag {
-      font-size: 0.75rem;
-      padding: 4px 10px;
-      background: rgba(255,255,255,0.05);
-      border-radius: 6px;
-      margin-right: 8px;
-      color: var(--text-dim);
-    }
-    .cert-box {
-      background: linear-gradient(180deg, rgba(99, 102, 241, 0.05) 0%, rgba(10, 10, 12, 0) 100%);
-      border: 1px solid rgba(99, 102, 241, 0.2);
-      border-radius: 20px;
-      padding: 2.5rem;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
-    .cert-icon {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-    }
-    
-    /* Pricing Impact Calculator */
-    .calc-container {
-      background: #16161a; border: 1px solid var(--border);
-      border-radius: 24px; padding: 3rem; margin-top: 4rem;
-      box-shadow: 0 40px 100px rgba(0,0,0,0.4);
-    }
-    .slider-box { margin-bottom: 2rem; }
-    input[type=range] { width: 100%; height: 6px; border-radius: 5px; background: #333; accent-color: var(--brand); appearance: none; }
-    .res-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
-    .res-item { background: #0a0a0c; padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border); }
-    .res-val { font-size: 1.8rem; font-weight: 800; color: var(--brand); display: block; }
-    .res-lbl { font-size: 0.75rem; color: var(--text-dim); text-transform: uppercase; }
-
-    /* Animations */
-    .reveal { opacity: 0; transform: translateY(30px); transition: 0.8s ease-out; }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-
-    @media (max-width: 900px) {
-      .grid-2, .project-grid { grid-template-columns: 1fr; }
-      h1 { font-size: 2.8rem; }
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/feather-icons"></script>
 </head>
-<body>
-
-<header>
-  <nav>
-    <a href="#" class="logo">VAT SAL<span>.</span></a>
-    <div class="nav-links">
-      <a href="#projects">Work</a>
-      <a href="#services">Services</a>
-      <a href="#contact" class="btn btn-primary" style="padding: 8px 20px; font-size: 0.8rem;">Let's Talk</a>
-    </div>
-  </nav>
-</header>
-
-<main>
-  <section id="hero">
-    <div class="hero-glow"></div>
-    <div class="badge">Solving business puzzles with data</div>
-    <h1>Stop Guessing.<br><span style="color: var(--brand)">Start Growing.</span></h1>
-    <p class="hero-sub">I help companies turn messy data into high-converting pricing strategies and automated profitability dashboards.</p>
-    <div class="hero-btns">
-      <a href="#projects" class="btn btn-primary">View My Work</a>
-    </div>
-  </section>
-
-  <section class="section-padding reveal">
-    <div class="grid-2">
-      <div>
-        <h2 style="font-size: 2.5rem; margin-bottom: 1.5rem;">The Profitability Logic</h2>
-        <p style="color: var(--text-dim); margin-bottom: 2rem;">As a Mechanical Engineer turned MBA, I don't just look at rows and columns. I look at the <strong>engine</strong> of your business. If your margins are leaking, I find the hole.</p>
-        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-            <span class="badge" style="background: rgba(255,255,255,0.05); border: 1px solid var(--border); color: var(--text-main);">SQL</span>
-            <span class="badge" style="background: rgba(255,255,255,0.05); border: 1px solid var(--border); color: var(--text-main);">Python</span>
-            <span class="badge" style="background: rgba(255,255,255,0.05); border: 1px solid var(--border); color: var(--text-main);">Power BI</span>
-            <span class="badge" style="background: rgba(255,255,255,0.05); border: 1px solid var(--border); color: var(--text-main);">DAX</span>
-        </div>
+<body class="bg-slate-50 text-slate-700 antialiased">
+  <header class="fixed top-0 inset-x-0 z-50 border-b border-slate-200/80 bg-white/90 backdrop-blur">
+    <nav class="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6">
+      <a href="#home" class="text-lg font-extrabold tracking-tight text-slate-900">Vatsal<span class="text-brand">.</span></a>
+      <div class="hidden items-center gap-7 text-sm font-medium md:flex">
+        <a class="hover:text-brand" href="#about">About & Experience</a>
+        <a class="hover:text-brand" href="#services">Services</a>
+        <a class="hover:text-brand" href="#projects">Projects</a>
+        <a class="hover:text-brand" href="#contact">Contact</a>
       </div>
-      <div class="card">
-        <h3 style="margin-bottom: 1rem; color: var(--brand);">24h Turnaround</h3>
-        <p style="color: var(--text-dim);">I specialize in "Quick Wins"—cleaning one messy dataset to answer your most burning business question by tomorrow.</p>
+      <button id="mobile-menu-btn" class="rounded-lg p-2 md:hidden" aria-label="Open menu">
+        <i data-feather="menu" class="h-5 w-5"></i>
+      </button>
+    </nav>
+    <div id="mobile-menu" class="hidden border-t border-slate-100 bg-white md:hidden">
+      <div class="mx-auto flex max-w-6xl flex-col gap-2 px-4 py-4 text-sm font-medium sm:px-6">
+        <a class="rounded-lg px-2 py-2 hover:bg-slate-100" href="#about">About & Experience</a>
+        <a class="rounded-lg px-2 py-2 hover:bg-slate-100" href="#services">Services</a>
+        <a class="rounded-lg px-2 py-2 hover:bg-slate-100" href="#projects">Projects</a>
+        <a class="rounded-lg px-2 py-2 hover:bg-slate-100" href="#contact">Contact</a>
       </div>
     </div>
-  </section>
+  </header>
 
-  <!-- NEW PROJECTS & CERTIFICATION SECTION -->
-  <section id="projects" class="section-padding reveal" style="padding-top: 0;">
-    <div style="text-align: left; margin-bottom: 1rem;">
-        <h2 style="font-size: 2.5rem;">Recent Work & Certifications</h2>
-        <p style="color: var(--text-dim);">Turning raw datasets into interactive, executive-ready insights.</p>
-    </div>
-    
-    <div class="project-grid">
-      
-      <!-- Power BI Dashboard Project -->
-      <div class="project-card">
-        <div class="project-img-wrapper">
-          <!-- REPLACE 'dashboard-ss.png' WITH YOUR ACTUAL IMAGE FILENAME -->
-          <img src="dashboard-ss.png" alt="Sales and Revenue Overview Power BI Dashboard" class="project-img" onerror="this.src='https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1000&q=80'">
-        </div>
-        <div class="project-info">
-          <div style="margin-bottom: 1rem;">
-            <span class="tech-tag">Power BI</span>
-            <span class="tech-tag">Data Modeling</span>
-            <span class="tech-tag">DAX</span>
-          </div>
-          <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem;">FMCG Sales & Revenue Dashboard</h3>
-          <p style="color: var(--text-dim); margin-bottom: 1.5rem;">
-            Designed a comprehensive interactive dashboard tracking $203K+ in revenue and 43K+ sold units across multiple years. Implemented dynamic YoY growth metrics, monthly performance trends, and dual-axis charts comparing revenue against sales volume across diverse product categories.
-          </p>
-        </div>
-      </div>
-
-      <!-- Certification Card -->
-      <div class="cert-box">
-        <div class="cert-icon">🎓</div>
-        <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem;">Advanced Power BI Certification</h3>
-        <p style="color: var(--text-dim); margin-bottom: 1.5rem; font-size: 0.95rem;">
-          Recently completed intensive training focused on advanced data modeling, complex DAX calculations, Power Query transformations, and dynamic visual storytelling.
-        </p>
-        <!-- REPLACE 'certificate.png' WITH YOUR ACTUAL CERTIFICATE FILENAME -->
-        <a href="certificate.png" target="_blank" class="btn btn-outline" style="font-size: 0.9rem; padding: 10px 24px;">View Certificate</a>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- MARGIN CALCULATOR SECTION -->
-  <section class="section-padding reveal">
-    <div style="text-align: center; margin-bottom: 4rem;">
-        <h2 style="font-size: 2.5rem;">Interactive Margin Lab</h2>
-        <p style="color: var(--text-dim);">Slide the bars to see how much "hidden" money you lose with aggressive discounting.</p>
-    </div>
-    <div class="calc-container">
-      <div class="grid-2">
+  <main id="home" class="pt-28">
+    <section class="relative overflow-hidden">
+      <div class="absolute -top-32 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-indigo-200/60 blur-3xl"></div>
+      <div class="mx-auto grid max-w-6xl items-center gap-10 px-4 pb-16 sm:px-6 md:grid-cols-2 md:pb-24">
         <div>
-          <div class="slider-box">
-            <label class="res-lbl">Current Revenue (₹)</label>
-            <input type="range" id="rev" min="100000" max="10000000" step="100000" value="1000000">
-            <div style="display:flex; justify-content:space-between; margin-top:10px;">
-                <span id="rev-v" style="font-weight:700;">₹10L</span>
+          <p class="mb-4 inline-flex items-center gap-2 rounded-full border border-indigo-100 bg-indigo-50 px-4 py-1 text-xs font-semibold uppercase tracking-wider text-brand">
+            <i data-feather="zap" class="h-3.5 w-3.5"></i> Available for freelance and consulting
+          </p>
+          <h1 class="mb-5 text-4xl font-extrabold leading-tight text-slate-900 sm:text-5xl lg:text-6xl">
+            Turning raw data into
+            <span class="text-brand">real business growth</span>
+          </h1>
+          <p class="mb-8 max-w-xl text-base leading-relaxed text-slate-600 sm:text-lg">
+            I help founders and teams identify margin leaks, optimize pricing, and improve operational decisions using advanced Power BI dashboards, Python, and AI automation.
+          </p>
+          <div class="flex flex-wrap items-center gap-3">
+            <a href="#projects" class="rounded-full bg-brand px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-indigo-200 transition hover:-translate-y-0.5 hover:bg-indigo-700">See Case Studies</a>
+            <a href="assets/Vatsal_Soni_Data_Analytics_Mini_Portfolio.pdf" target="_blank" class="rounded-full border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-700 transition hover:bg-slate-100">Open Portfolio PDF</a>
+          </div>
+          <div class="mt-8 grid grid-cols-3 gap-4 rounded-2xl border border-slate-200 bg-white p-4 text-center">
+            <div>
+              <p class="text-2xl font-extrabold text-slate-900">2+</p>
+              <p class="text-xs text-slate-500">Years Experience</p>
+            </div>
+            <div>
+              <p class="text-2xl font-extrabold text-slate-900">20+</p>
+              <p class="text-xs text-slate-500">Analytical Projects</p>
+            </div>
+            <div>
+              <p class="text-2xl font-extrabold text-slate-900">100%</p>
+              <p class="text-xs text-slate-500">Business Focused</p>
             </div>
           </div>
-          <div class="slider-box">
-            <label class="res-lbl">Base Margin %</label>
-            <input type="range" id="mgn" min="5" max="60" value="30">
-            <div id="mgn-v" style="font-weight:700; margin-top:10px;">30%</div>
-          </div>
-          <div class="slider-box">
-            <label class="res-lbl" style="color: var(--accent);">Discount Applied %</label>
-            <input type="range" id="disc" min="0" max="40" value="10" style="accent-color: var(--accent);">
-            <div id="disc-v" style="font-weight:700; color: var(--accent); margin-top:10px;">10%</div>
-          </div>
         </div>
-        <div class="res-grid">
-          <div class="res-item">
-            <span class="res-lbl">Healthy Profit</span>
-            <span class="res-val" id="r-base">₹3,00,000</span>
-          </div>
-          <div class="res-item" style="border-color: var(--accent);">
-            <span class="res-lbl">Eroded Profit</span>
-            <span class="res-val" id="r-net" style="color: var(--accent);">₹2,00,000</span>
-          </div>
-          <div class="res-item">
-            <span class="res-lbl">Profit Loss %</span>
-            <span class="res-val" id="r-pct">33%</span>
+        <div class="mx-auto max-w-md">
+          <div class="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-xl shadow-slate-200">
+            <!-- REPLACE THIS WITH YOUR PROFILE IMAGE -->
+            <img src="assets/Vatsal.jpg" alt="Vatsal Soni" class="h-full w-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?fit=crop&w=800&q=80'" />
           </div>
         </div>
       </div>
+    </section>
+
+    <!-- ABOUT & EXPERIENCE SECTION -->
+    <section id="about" class="border-y border-slate-200 bg-white py-16">
+      <div class="mx-auto max-w-6xl px-4 sm:px-6">
+        
+        <div class="grid gap-12 md:grid-cols-[1fr_1.2fr]">
+          
+          <!-- About Details & Skills -->
+          <div>
+            <p class="mb-3 text-xs font-bold uppercase tracking-widest text-brand">About me</p>
+            <h2 class="mb-4 text-3xl font-bold text-slate-900">Business-minded analyst with execution depth</h2>
+            <p class="mb-4 text-slate-600">With a Mechanical Engineering background and an MBA in Business Analytics, I bridge data and strategy to drive measurable outcomes. I have hands-on experience in business-oriented analytics, operations reporting, and developing automated MIS dashboards.</p>
+            
+            <h3 class="mt-8 mb-4 text-lg font-bold text-slate-900">Core Technical Stack</h3>
+            <div class="grid grid-cols-2 gap-3 text-sm font-medium text-slate-700">
+              <span class="flex items-center gap-2 rounded-lg border border-slate-200 bg-slate-50 px-3 py-2"><i data-feather="pie-chart" class="h-4 w-4 text-brand"></i> Advanced Power BI & DAX</span>
+              <span class="flex items-center gap-2 rounded-lg border border-slate-200 bg-slate-50 px-3 py-2"><i data-feather="table" class="h-4 w-4 text-brand"></i> Advanced Excel</span>
+              <span class="flex items-center gap-2 rounded-lg border border-slate-200 bg-slate-50 px-3 py-2"><i data-feather="terminal" class="h-4 w-4 text-brand"></i> Python (Basic)</span>
+              <span class="flex items-center gap-2 rounded-lg border border-slate-200 bg-slate-50 px-3 py-2"><i data-feather="cpu" class="h-4 w-4 text-brand"></i> AI Automation / NLP</span>
+              <span class="flex items-center gap-2 rounded-lg border border-slate-200 bg-slate-50 px-3 py-2"><i data-feather="database" class="h-4 w-4 text-brand"></i> SQL / MySQL</span>
+              <span class="flex items-center gap-2 rounded-lg border border-slate-200 bg-slate-50 px-3 py-2"><i data-feather="bar-chart" class="h-4 w-4 text-brand"></i> MIS Reporting</span>
+            </div>
+          </div>
+
+          <!-- Professional Experience Timeline -->
+          <div>
+            <h3 class="mb-6 text-2xl font-bold text-slate-900">Professional Experience</h3>
+            
+            <div class="relative border-l border-slate-200 pl-6 pb-8">
+              <div class="absolute -left-1.5 top-1.5 h-3 w-3 rounded-full bg-brand"></div>
+              <h4 class="text-lg font-bold text-slate-900">Business Administrative Personnel (IQAC)</h4>
+              <p class="text-sm font-semibold text-brand mb-2">CHARUSAT University • 09/2024 - Present</p>
+              <ul class="text-sm text-slate-600 space-y-1 list-disc ml-4">
+                <li>Developed interactive Power BI dashboards for student, event, and course analytics to monitor performance metrics.</li>
+                <li>Designed KPI tracking and implemented dynamic filters/drill-down features for detailed data analysis.</li>
+                <li>Automated Excel-based MIS reporting processes and data consolidation, improving turnaround time.</li>
+                <li>Supported process optimization and compliance audits by transforming raw data into structured insights.</li>
+              </ul>
+            </div>
+
+            <div class="relative border-l border-slate-200 pl-6">
+              <div class="absolute -left-1.5 top-1.5 h-3 w-3 rounded-full bg-slate-300"></div>
+              <h4 class="text-lg font-bold text-slate-900">Data Analyst</h4>
+              <p class="text-sm font-semibold text-slate-500 mb-2">Acorn Universal Consultancy LLP • 06/2023 – 08/2024</p>
+              <ul class="text-sm text-slate-600 space-y-1 list-disc ml-4">
+                <li>Built sales and inventory analysis reports to identify demand patterns and stock optimization opportunities.</li>
+                <li>Developed Excel-based forecasting and performance tracking models for international markets.</li>
+                <li>Automated recurring data preparation tasks, significantly reducing manual effort.</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services" class="py-16">
+      <div class="mx-auto max-w-6xl px-4 sm:px-6">
+        <div class="mb-10 text-center">
+          <p class="text-xs font-bold uppercase tracking-widest text-brand">Services</p>
+          <h2 class="mt-2 text-3xl font-bold text-slate-900">High-impact analytics support</h2>
+        </div>
+        <div class="grid gap-5 md:grid-cols-3">
+          <article class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+            <h3 class="text-lg font-bold text-slate-900">Starter Analysis</h3>
+            <p class="mt-2 text-sm text-slate-600">Quick wins for one dataset and one business question.</p>
+            <p class="mt-4 text-2xl font-extrabold text-brand">₹5,000</p>
+          </article>
+          <article class="rounded-2xl border-2 border-brand bg-white p-6 shadow-lg shadow-indigo-100">
+            <p class="mb-2 inline-block rounded-full bg-indigo-100 px-2 py-1 text-[10px] font-semibold uppercase text-brand">Most popular</p>
+            <h3 class="text-lg font-bold text-slate-900">Growth Analytics</h3>
+            <p class="mt-2 text-sm text-slate-600">Ongoing monthly dashboards, tracking, and recommendations.</p>
+            <p class="mt-4 text-2xl font-extrabold text-brand">₹15,000 / month</p>
+          </article>
+          <article class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+            <h3 class="text-lg font-bold text-slate-900">Enterprise Support</h3>
+            <p class="mt-2 text-sm text-slate-600">Custom analytics workflows, automations, and advisory.</p>
+            <p class="mt-4 text-2xl font-extrabold text-brand">₹35,000+</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS SECTION (Expanded to include CV projects & Images) -->
+    <section id="projects" class="bg-slate-900 py-16 text-white">
+      <div class="mx-auto max-w-6xl px-4 sm:px-6">
+        <div class="mb-10 text-center">
+          <p class="text-xs font-bold uppercase tracking-widest text-indigo-300">Featured work</p>
+          <h2 class="mt-2 text-3xl font-bold">Portfolio Case Studies</h2>
+        </div>
+        
+        <div class="grid gap-6 md:grid-cols-2">
+          
+          <!-- POWER BI PROJECT CARD -->
+          <div class="rounded-2xl border border-slate-700 bg-slate-800/80 overflow-hidden flex flex-col">
+            <!-- PLACE YOUR POWER BI SCREENSHOT HERE -->
+            <!-- Save your image as 'powerbi-ss.png' in the same folder -->
+            <div class="h-48 bg-slate-800 border-b border-slate-700 overflow-hidden">
+                <img src="powerbi-ss.png" alt="Power BI Dashboard Screenshot" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80'">
+            </div>
+            <div class="p-6 flex-1">
+                <span class="text-xs font-bold text-indigo-300 uppercase tracking-wider mb-2 block">Power BI & DAX</span>
+                <h3 class="text-xl font-bold">Executive MIS & Sales Dashboard</h3>
+                <p class="mt-3 text-sm text-slate-300">Designed highly interactive Power BI dashboards to track KPIs, monitor engagement, and compare revenue vs sales volume. Implemented complex DAX measures, dynamic filters, and drill-down functionality.</p>
+            </div>
+          </div>
+
+          <!-- NLP AI PROJECT CARD -->
+          <div class="rounded-2xl border border-slate-700 bg-slate-800/80 p-6 flex flex-col">
+            <span class="text-xs font-bold text-indigo-300 uppercase tracking-wider mb-2 block">Python & AI Automation</span>
+            <h3 class="text-xl font-bold">AI-Based NLP Event Classification</h3>
+            <p class="mt-3 text-sm text-slate-300">Designed and deployed a BERT-based NLP model to classify 2500+ institutional events into NEP-2020 pillars using semantic understanding.</p>
+            <ul class="mt-4 space-y-2 text-sm text-slate-200">
+              <li>• Automated mapping & analytics system</li>
+              <li>• Hybrid approach (BERT + keyword extraction + rules)</li>
+              <li>• Drastically reduced manual categorization time</li>
+            </ul>
+          </div>
+
+          <!-- EXCEL PROFITABILITY PROJECT CARD -->
+          <div class="rounded-2xl border border-slate-700 bg-slate-800/80 p-6 flex flex-col">
+            <span class="text-xs font-bold text-indigo-300 uppercase tracking-wider mb-2 block">Advanced Excel</span>
+            <h3 class="text-xl font-bold">Furniture Profitability Analysis</h3>
+            <p class="mt-3 text-sm text-slate-300">Analyzed furniture sales data to identify high-profit customer segments and top-performing cities. Used advanced pivot tables to compare sales, profit, and contribution.</p>
+            <ul class="mt-4 space-y-2 text-sm text-slate-200">
+              <li>• Identified key profit drivers</li>
+              <li>• Discount Impact: Proved discounts >20% cause negative margins up to -123%</li>
+              <li>• Recommended actionable pricing strategies</li>
+            </ul>
+          </div>
+
+          <!-- WEB APP PROJECT CARD -->
+          <div class="rounded-2xl border border-slate-700 bg-slate-800/80 overflow-hidden flex flex-col">
+            <!-- PLACE YOUR WEB APP / QUIZ SCREENSHOT HERE -->
+            <!-- Save your image as 'quiz-ss.png' in the same folder -->
+            <div class="h-48 bg-slate-800 border-b border-slate-700 overflow-hidden">
+                <img src="quiz-ss.png" alt="Quiz App Screenshot" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=800&q=80'">
+            </div>
+            <div class="p-6 flex-1">
+                <span class="text-xs font-bold text-indigo-300 uppercase tracking-wider mb-2 block">Web & Automation</span>
+                <h3 class="text-xl font-bold">Interactive Quiz Web Application</h3>
+                <p class="mt-3 text-sm text-slate-300">Developed a dynamic quiz interface with automated scoring. Enabled real-time participation for multiple users, utilizing AI-assisted development tools (HTML/CSS/JS) to accelerate implementation.</p>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="mt-10 text-center">
+            <a href="assets/Vatsal_Soni_Data_Analytics_Mini_Portfolio.pdf" target="_blank" class="inline-flex items-center gap-2 rounded-full bg-brand px-6 py-3 text-sm font-semibold text-white hover:bg-indigo-700 transition">
+                View Full PDF Portfolio <i data-feather="arrow-up-right" class="h-4 w-4"></i>
+            </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER / CONTACT -->
+  <footer id="contact" class="border-t border-slate-200 bg-white py-14">
+    <div class="mx-auto max-w-6xl px-4 text-center sm:px-6">
+      <h2 class="text-3xl font-bold text-slate-900">Let’s build your next data win</h2>
+      <p class="mx-auto mt-3 max-w-2xl text-slate-600">If you want better reporting, better pricing, and better decisions, I can help.</p>
+      
+      <div class="mt-8 flex flex-col items-center gap-2 text-slate-700 font-medium">
+          <p><i data-feather="mail" class="inline h-4 w-4 mr-2 text-brand"></i> vatsalsoni908@gmail.com</p>
+          <p><i data-feather="phone" class="inline h-4 w-4 mr-2 text-brand"></i> +91-7698221021</p>
+          <p><i data-feather="map-pin" class="inline h-4 w-4 mr-2 text-brand"></i> Nadiad, Gujarat, India</p>
+      </div>
+
+      <div class="mt-8 flex flex-wrap justify-center gap-3">
+        <a href="mailto:vatsalsoni908@gmail.com" class="rounded-full bg-brand px-6 py-3 text-sm font-semibold text-white transition hover:bg-indigo-700 hover:-translate-y-0.5">Email Me</a>
+        <a href="https://www.linkedin.com/in/vatsal-soni-02a7191a7" target="_blank" class="rounded-full border border-slate-300 px-6 py-3 text-sm font-semibold text-slate-700 transition hover:bg-slate-100 hover:-translate-y-0.5">LinkedIn</a>
+        <a href="https://github.com/vatsalsoni17" target="_blank" class="rounded-full border border-slate-300 px-6 py-3 text-sm font-semibold text-slate-700 transition hover:bg-slate-100 hover:-translate-y-0.5">GitHub</a>
+      </div>
+      <p class="mt-12 text-xs text-slate-400">© <span id="year"></span> Vatsal Soni. All rights reserved.</p>
     </div>
-  </section>
-</main>
+  </footer>
 
-<footer style="padding: 4rem 2rem; border-top: 1px solid var(--border); text-align: center;">
-    <h2 style="margin-bottom: 2rem;">Ready to find your missing margins?</h2>
-    <a href="mailto:vatsalsoni908@gmail.com" class="btn btn-primary">Send me an Email</a>
-    <p style="margin-top: 3rem; color: var(--text-dim); font-size: 0.8rem;">© 2026 VATSAL SONI. BUILT FOR GROWTH.</p>
-</footer>
+  <script>
+    // Initialize Feather Icons
+    feather.replace();
 
-<script>
-  // Intersection Observer for scroll reveal animations
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
-  });
-  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+    // Mobile Menu Logic
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+      menuBtn.innerHTML = mobileMenu.classList.contains('hidden')
+        ? '<i data-feather="menu" class="h-5 w-5"></i>'
+        : '<i data-feather="x" class="h-5 w-5"></i>';
+      feather.replace();
+    });
 
-  // Improved Indian Currency Formatter
-  function fmt(n) {
-    return '₹' + n.toLocaleString('en-IN');
-  }
+    document.querySelectorAll('#mobile-menu a').forEach((link) => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+        menuBtn.innerHTML = '<i data-feather="menu" class="h-5 w-5"></i>';
+        feather.replace();
+      });
+    });
 
-  // Format large numbers to Lakhs/Crores for the slider label
-  function formatLakhs(n) {
-    if (n >= 10000000) return '₹' + (n / 10000000) + 'Cr';
-    if (n >= 100000) return '₹' + (n / 100000) + 'L';
-    return fmt(n);
-  }
-
-  function calc() {
-    const rev = +document.getElementById('rev').value;
-    const mgn = +document.getElementById('mgn').value;
-    const disc = +document.getElementById('disc').value;
-    
-    // Update labels
-    document.getElementById('rev-v').textContent = formatLakhs(rev);
-    document.getElementById('mgn-v').textContent = mgn + '%';
-    document.getElementById('disc-v').textContent = disc + '%';
-
-    // CORRECTED BUSINESS MATH
-    const cost = rev * (1 - (mgn / 100));        // Cost remains fixed
-    const baseProfit = rev - cost;               // Normal profit
-    const discountedRev = rev * (1 - (disc / 100));
-    const netProfit = discountedRev - cost;      // Discount hits bottom line directly
-    
-    // Calculate profit erosion percentage
-    const lossPct = baseProfit > 0 ? ((baseProfit - netProfit) / baseProfit) * 100 : 0;
-
-    // Update UI
-    document.getElementById('r-base').textContent = fmt(Math.round(baseProfit));
-    
-    const rNetEl = document.getElementById('r-net');
-    rNetEl.textContent = fmt(Math.round(netProfit));
-    
-    // Turn the text red if the discount results in a net loss
-    if (netProfit < 0) {
-      rNetEl.style.color = '#f43f5e'; // Rose/Red
-    } else {
-      rNetEl.style.color = 'var(--accent)';
-    }
-
-    document.getElementById('r-pct').textContent = Math.round(lossPct) + '%';
-  }
-
-  ['rev','mgn','disc'].forEach(id => document.getElementById(id).addEventListener('input', calc));
-  
-  // Initialize Calculator on load
-  calc();
-</script>
+    // Auto Update Copyright Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
