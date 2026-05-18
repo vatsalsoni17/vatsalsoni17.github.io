@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Knowledge Quiz – IQAC</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #eaf3ff;
+      text-align: center;
+      margin: 0;
+      padding: 20px;
+    }
+
+    /* Logo Styling */
+    .header-logo {
+      width: 100%;
+      max-width: 600px; /* Adjust as needed */
+      height: auto;
+      margin: 0 auto 20px auto; /* Center and add bottom margin */
+      display: block; /* Ensures margin auto works */
+      /* Animation for initial load */
+      opacity: 0;
+      animation: fadeInFromTop 0.8s ease-out forwards 0.2s; /* Delay it slightly */
+    }
+
+    .supporting-logos {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap; /* Allows logos to wrap on smaller screens */
+      gap: 20px; /* Space between logos */
+      margin-bottom: 30px;
+      /* Animation for initial load */
+      opacity: 0;
+      animation: fadeInFromTop 0.8s ease-out forwards 0.5s; /* Delay it more */
+    }
+    .supporting-logos img {
+      height: 80px; /* Consistent height for smaller logos */
+      width: auto;
+      object-fit: contain; /* Ensures image scales within bounds without distortion */
+    }
+
+    h1 {
+      color: #333;
+      margin-bottom: 20px;
+      font-size: 2.5em;
+      /* Animation for initial load */
+      opacity: 0;
+      animation: fadeInFromTop 0.8s ease-out forwards 0.8s; /* Delay it even more */
+    }
+
+    /* Top Navigation Bar */
+    .nav-bar {
+      background-color: #0056b3;
+      padding: 10px 0;
+      margin-bottom: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      /* Animation for initial load */
+      opacity: 0;
+      animation: fadeInFromTop 0.8s ease-out forwards 1.1s; /* Delay it even more */
+    }
+    .nav-bar a {
+      color: white;
+      text-decoration: none;
+      padding: 10px 20px;
+      margin: 0 5px;
+      border-radius: 5px;
+      transition: background-color 0.3s ease, transform 0.2s ease; /* Added transform for hover */
+      font-weight: bold;
+    }
+    .nav-bar a:hover {
+      background-color: #007BFF;
+      transform: translateY(-2px); /* Slight lift on hover */
+    }
+    .nav-bar a.active {
+      background-color: #007BFF;
+      cursor: default;
+      box-shadow: inset 0 0 8px rgba(0,0,0,0.3); /* Subtle inner shadow for active */
+    }
+
+    /* Quiz Sections Container */
+    .quiz-sections-container {
+        max-width: 960px; /* Wider to accommodate 5 columns better */
+        margin: 0 auto;
+        text-align: left; /* Align section headings left */
+        /* Overall container fade in */
+        opacity: 0;
+        animation: fadeIn 0.8s ease-out forwards 1.4s; /* Delay after nav bar */
+    }
+
+    .quiz-section {
+        margin-bottom: 40px;
+        background-color: #ffffff;
+        padding: 25px;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .quiz-section h2 {
+        color: #0056b3;
+        margin-top: 0;
+        margin-bottom: 20px;
+        font-size: 1.6em;
+        border-bottom: 2px solid #e0e0e0;
+        padding-bottom: 10px;
+    }
+    .question-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* Responsive 5 columns */
+      gap: 20px; /* Increased gap for hexagon buttons */
+      justify-content: center;
+      margin-top: 15px;
+    }
+    .question-btn {
+      background: #007BFF;
+      color: white;
+      padding: 18px 0; /* Adjusted padding for hexagon shape */
+      border: none;
+      border-radius: 0; /* Crucial for clip-path to work fully */
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 1.1em;
+      transition: transform 0.2s ease; /* Transition only for lift */
+      position: relative; /* For pseudo-element positioning */
+      z-index: 1; /* To keep text above pseudo-element */
+      display: flex; /* To center number vertically */
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      min-height: 50px; /* Ensure a decent size */
+      
+      /* Hexagon shape */
+      clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+      -webkit-clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+      
+      /* No direct box-shadow on the main button, the ::before does it */
+      box-shadow: none; 
+      transform: translateY(0); /* Ensure no initial lift */
+    }
+
+    /* Pseudo-element for hexagon shadow */
+    .question-btn::before {
+        content: '';
+        position: absolute;
+        inset: 0; /* Covers the entire button area */
+        background: #007BFF; /* Base color for the shadow */
+        clip-path: inherit; /* Inherit the hexagon shape */
+        z-index: -1; /* Place behind the button */
+        transition: transform 0.2s ease, opacity 0.2s ease, background-color 0.3s ease;
+        transform: scale(1.03); /* Subtle initial shadow effect */
+        opacity: 0.6; /* Default shadow opacity */
+    }
+
+    .question-btn:hover:not(.answered) {
+        transform: translateY(-5px); /* Lift effect for hexagon button */
+    }
+    .question-btn:hover:not(.answered)::before {
+        background-color: #0056b3; /* Darker blue shadow on hover */
+        transform: scale(1.1) translateY(-5px); /* Larger shadow lift */
+        opacity: 0.9; /* More prominent shadow on hover */
+    }
+
+    .question-btn.answered {
+        background-color: #6c757d; /* Grey out correctly answered questions */
+        cursor: default; /* Change cursor if already answered */
+        transform: none; /* Ensure it doesn't lift if hovered when answered */
+    }
+    .question-btn.answered::before {
+        background-color: #6c757d; /* Grey shadow when answered */
+        transform: scale(1.03); /* Keep subtle shadow */
+        opacity: 0.6; /* Keep default opacity */
+        transition: transform 0.2s ease, opacity 0.2s ease, background-color 0.3s ease; /* Maintain smooth transition */
+    }
+    .question-btn.answered:hover::before {
+        background-color: #6c757d; /* No change on hover if answered */
+        transform: scale(1.03); /* No extra lift on hover if answered */
+        opacity: 0.6;
+    }
+
+
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background: rgba(0,0,0,0.7);
+      padding-top: 60px;
+    }
+    .modal-content {
+      background: white;
+      margin: 5% auto;
+      padding: 30px;
+      border-radius: 12px;
+      width: 80%;
+      max-width: 550px;
+      box-shadow: 0 8px 16px 0 rgba(0,0,0,0.4), 0 12px 40px 0 rgba(0,0,0,0.3);
+      animation-name: animatetop; /* Default open animation */
+      animation-duration: 0.4s;
+      text-align: left;
+    }
+
+    /* Animation Keyframes */
+    @keyframes fadeInFromTop {
+        from { opacity: 0; transform: translateY(-20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+    @keyframes animatetop { /* For opening modal */
+      from {top:-300px; opacity:0}
+      to {top:5%; opacity:1}
+    }
+    @keyframes animatetop-out { /* For closing modal */
+        from {top:5%; opacity:1}
+        to {top:-300px; opacity:0}
+    }
+    @keyframes correct-bounce {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.03); }
+        100% { transform: scale(1); }
+    }
+    @keyframes wrong-shake {
+        0%, 100% { transform: translateX(0); }
+        20%, 60% { transform: translateX(-5px); }
+        40%, 80% { transform: translateX(5px); }
+    }
+
+    .modal-content p#question {
+        font-size: 1.3em;
+        font-weight: bold;
+        margin-bottom: 25px;
+        color: #333;
+        line-height: 1.4;
+    }
+
+    .answer-btn {
+      display: block;
+      width: 100%;
+      margin: 10px 0;
+      padding: 14px;
+      background: #e9ecef;
+      border: 1px solid #ced4da;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 17px;
+      text-align: left;
+      transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.1s ease; /* Added transform for feedback */
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .answer-btn:not(.correct):not(.wrong):hover:not(:disabled) {
+        background-color: #d1e7dd; /* Light green on hover for unselected */
+        border-color: #a3da9e;
+        transform: translateY(-1px); /* Very slight lift on hover */
+    }
+    .answer-btn.correct {
+      background: #28a745 !important; /* Green */
+      color: white;
+      border-color: #28a745;
+      animation: correct-bounce 0.3s ease-out; /* Apply bounce animation */
+    }
+    .answer-btn.wrong {
+      background: #dc3545 !important; /* Red */
+      color: white;
+      border-color: #dc3545;
+      animation: wrong-shake 0.4s ease-out; /* Apply shake animation */
+    }
+    .answer-btn:disabled {
+        cursor: not-allowed;
+        opacity: 0.9;
+        box-shadow: none; /* No shadow when disabled */
+        transform: none; /* Remove any transform when disabled */
+    }
+
+    .modal-content .close-btn {
+        margin-top: 25px;
+        padding: 10px 25px;
+        background-color: #6c757d;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background-color 0.3s ease;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: fit-content;
+    }
+    .modal-content .close-btn:hover {
+        background-color: #5a6268;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+        .question-grid {
+            grid-template-columns: repeat(3, 1fr); /* 3 columns on medium screens */
+        }
+        .supporting-logos img {
+            height: 60px; /* Smaller logos on smaller screens */
+        }
+        .question-btn {
+            padding: 15px 0; /* Adjust padding for smaller hexagons */
+        }
+    }
+    @media (max-width: 480px) {
+        .question-grid {
+            grid-template-columns: repeat(2, 1fr); /* 2 columns on small screens */
+            gap: 10px; /* Smaller gap on small screens */
+        }
+        .level-btn { /* No longer used, but kept for consistency if needed */
+            font-size: 1em;
+            padding: 10px 15px;
+            margin: 0 5px;
+        }
+        .supporting-logos {
+            gap: 10px;
+        }
+        .supporting-logos img {
+            height: 50px;
+        }
+        .modal-content {
+            width: 95%;
+            margin: 10% auto;
+            padding: 15px;
+        }
+        .modal-content p#question {
+            font-size: 1.1em;
+        }
+        .answer-btn {
+            font-size: 15px;
+            padding: 10px;
+        }
+        .question-btn {
+            padding: 12px 0; /* Adjust padding for even smaller hexagons */
+        }
+    }
+  </style>
+</head>
+<body>
+  <!-- University Logo -->
+  <img src="charusat_university_logo.jpg" alt="CHARUSAT - Charotar University of Science and Technology" class="header-logo">
+
+  <!-- Supporting Logos -->
+  <div class="supporting-logos">
+    <img src="25_years_excellence_logo.png" alt="25 Years of Excellence" class="logo">
+    <img src="iqac_logo_with_text.png" alt="IQAC - Internal Quality Assurance Cell" class="logo">
+    <img src="naac_a_plus_grade.png" alt="NAAC Grade A+" class="logo">
+  </div>
+
+  <h1>Knowledge Quiz – IQAC</h1>
+
+  <div class="nav-bar">
+    <a href="#" id="nav-naac" onclick="showCategory('naac'); return false;">NAAC / AQAR</a>
+    <a href="#" id="nav-general" onclick="showCategory('general'); return false;">General Quality</a>
+    <a href="#" id="nav-admin" onclick="showCategory('admin'); return false;">Administrative Operations</a>
+  </div>
+
+  <div class="quiz-sections-container" id="quizSectionsContainer">
+    <!-- Quiz sections will be dynamically loaded here -->
+  </div>
+
+  <div class="modal" id="modal">
+    <div class="modal-content">
+      <p id="question"></p>
+      <div id="answers"></div>
+      <button class="close-btn" onclick="closeModal()">Close</button>
+    </div>
+  </div>
+
+  <script>
+    // Define ALL questions here. Only 'easy' level questions are included for all categories.
+    let questions = [
+      // Section A – NAAC / AQAR (40 Questions)
+      { q: "Full form of AQAR is:", a: ["Annual Quality Accreditation Report", "Annual Quality Assurance Report", "Annual Quantitative Accreditation Review", "Annual Quality Audit Report"], correct: 1, level: "easy", category: "naac", isAnsweredCorrectly: false },
+      { q: "AQAR is submitted to:", a: ["UGC", "AICTE", "NAAC", "NBA"], correct: 2, level: "easy", category: "naac", isAnsweredCorrectly: false },
+      { q: "How many criteria are there in NAAC assessment?", a: ["5", "6", "7", "8"], correct: 2, level: "easy", category: "naac", isAnsweredCorrectly: false },
+      { q: "Criterion 1 of NAAC is:", a: ["Governance and Leadership", "Infrastructure and Learning Resources", "Curricular Aspects", "Student Support and Progression"], correct: 2, level: "easy", category: "naac", isAnsweredCorrectly: false },
+      { q: "NAAC grading system is based on:", a: ["Percentage", "10-point grade", "CGPA", "Pass/Fail"], correct: 2, level: "easy", category: "naac", isAnsweredCorrectly: false },
+      { q: "NAAC accreditation is valid for:", a: ["3 years", "4 years", "5 years", "10 years"], correct: 2, level: "easy", category: "naac", isAnsweredCorrectly: false },
+      { q: "AQAR must be submitted every:", a: ["6 months", "Year", "3 years", "5 years"], correct: 1, level: "easy", category: "naac", isAnsweredCorrectly: false },
+      { q: "Which is not a NAAC criterion?", a: ["Curricular Aspects", "Research, Innovations and Extension", "Student Support and Progression", "University Finance and Accounts"], correct: 3, level: "easy", category: "naac", isAnsweredCorrectly: false },
+      { q: "NAAC uses:", a: ["A+, A, B+, B grading", "C to A++ grades", "Gold, Silver, Bronze", "Star ratings"], correct: 1, level: "easy", category: "naac", isAnsweredCorrectly: false },
+      { q: "DVV in AQAR stands for:", a: ["Detailed Verification Volume", "Data Validation and Verification", "Document Verification Value", "Data Value Volume"], correct: 1, level: "easy", category: "naac", isAnsweredCorrectly: false },
+      { q: "Which body funds NAAC?", a: ["UGC", "AICTE", "NIRF", "THE"], correct: 0, level: "easy", category: "naac", isAnsweredCorrectly: false },
+      { q: "Which is a quantitative metric in AQAR?", a: ["Student-Teacher Ratio", "Vision and Mission", "Academic Calendar", "Governance Chart"], correct: 0, level: "easy", category: "naac", isAnsweredCorrectly: false },
+      { q: "The main aim of NAAC is to:", a: ["Increase college income", "Enhance quality in higher education", "Reduce exams", "Increase staff count"], correct: 1, level: "easy", category: "naac", isAnsweredCorrectly: false },
+      { q: "Which of the following is qualitative?", a: ["Library seating capacity", "Feedback on teaching methods", "Student pass percentage", "Staff numbers"], correct: 1, level: "easy", category: "naac", isAnsweredCorrectly: false },
+      { q: "Which is a part of AQAR?", a: ["Mess menu", "Institutional data", "Alumni gifts", "Campus photographs only"], correct: 1, level: "easy", category: "naac", isAnsweredCorrectly: false },
+      { q: "NAAC’s full form is:", a: ["National Assessment and Accreditation Council", "National Academic Accreditation Commission", "National Accreditation Academic Council", "None of these"], correct: 0, level: "easy", category: "naac", isAnsweredCorrectly: false },
+      { q: "In NAAC grading, a score of 3.26 to 3.50 gets:", a: ["A+", "A", "B++", "C"], correct: 0, level: "easy", category: "naac", isAnsweredCorrectly: false },
+      { q: "Which is not a benefit of NAAC accreditation?", a: ["National recognition", "Quality improvement", "Automatic increase in student fees", "Better reputation"], correct: 2, level: "easy", category: "naac", isAnsweredCorrectly: false },
+      { q: "NAAC is headquartered in:", a: ["Delhi", "Mumbai", "Bengaluru", "Kolkata"], correct: 2, level: "easy", category: "naac", isAnsweredCorrectly: false },
+      { q: "Which is the last criterion in NAAC?", a: ["Curricular Aspects", "Research", "Institutional Values and Best Practices", "Student Support"], correct: 2, level: "easy", category: "naac", isAnsweredCorrectly: false },
+      { q: "AQAR submission format is available on:", a: ["NAAC website", "University notice board", "NIRF website", "AICTE portal"], correct: 0, level: "easy", category: "naac", isAnsweredCorrectly: false },
+      { q: "Peer Team Visit is part of:", a: ["NAAC accreditation process", "University convocation", "Alumni meeting", "NSS camp"], correct: 0, level: "easy", category: "naac", isAnsweredCorrectly: false },
+      { q: "NAAC cycle 1 means:", a: ["First NAAC application ever", "Second accreditation", "Annual review", "Only for PG colleges"], correct: 0, level: "easy", category: "naac", isAnsweredCorrectly: false },
+      { q: "NAAC’s seven criteria include:", a: ["Environment policy", "Governance, Leadership and Management", "Student Union politics", "Mess operations"], correct: 1, level: "easy", category: "naac", isAnsweredCorrectly: false },
+      { q: "Which ranking is separate from NAAC?", a: ["NIRF", "Both NAAC and NIRF are separate", "NAAC", "None"], correct: 1, level: "easy", category: "naac", isAnsweredCorrectly: false },
+      { q: "Which data is required in AQAR?", a: ["Student’s favorite food", "Number of research papers published", "Personal hobbies of faculty", "Number of office chairs"], correct: 1, level: "easy", category: "naac", isAnsweredCorrectly: false },
+      { q: "Which is not part of AQAR format?", a: ["Institutional data", "Best practices", "Action taken reports", "Sports tournament schedule only"], correct: 3, level: "easy", category: "naac", isAnsweredCorrectly: false },
+      { q: "Who signs the AQAR before submission?", a: ["Students’ council president", "Head of the Institution", "Head librarian", "Exam controller"], correct: 1, level: "easy", category: "naac", isAnsweredCorrectly: false },
+      { q: "AQAR year is calculated from:", a: ["Calendar year", "Academic year", "Financial year", "Semester cycle"], correct: 1, level: "easy", category: "naac", isAnsweredCorrectly: false },
+      { q: "Which is mandatory in NAAC AQAR?", a: ["College magazine copy", "IQAC report", "Student selfies", "Staff party photos"], correct: 1, level: "easy", category: "naac", isAnsweredCorrectly: false },
+      { q: "Which portal is used for AQAR?", a: ["AICTE", "NIRF", "NAAC portal", "None"], correct: 2, level: "easy", category: "naac", isAnsweredCorrectly: false },
+      { q: "NAAC uses which scale for grading?", a: ["1 to 10", "0 to 4 CGPA", "0 to 100", "1 to 7"], correct: 1, level: "easy", category: "naac", isAnsweredCorrectly: false },
+      { q: "Which is not an AQAR section?", a: ["Part A – Data", "Part B – Criteria", "Part C – Plan", "Part D – Financial reports"], correct: 3, level: "easy", category: "naac", isAnsweredCorrectly: false },
+      { q: "AQAR stands for:", a: ["Academic Quality and Review", "Annual Quality Assurance Report", "Assessment Quality Accreditation Review", "Accreditation Quality Annual Report"], correct: 1, level: "easy", category: "naac", isAnsweredCorrectly: false },
+      { q: "NAAC was established in:", a: ["1985", "1994", "2000", "2010"], correct: 1, level: "easy", category: "naac", isAnsweredCorrectly: false },
+      { q: "Who funds NAAC?", a: ["State Government", "UGC", "AICTE", "World Bank"], correct: 1, level: "easy", category: "naac", isAnsweredCorrectly: false },
+      { q: "Which criterion includes extension activities?", a: ["Curricular Aspects", "Research, Innovations and Extension", "Infrastructure", "Governance"], correct: 1, level: "easy", category: "naac", isAnsweredCorrectly: false },
+      { q: "Which is a qualitative metric?", a: ["Student intake number", "Faculty satisfaction feedback", "Pass percentage", "Number of labs"], correct: 1, level: "easy", category: "naac", isAnsweredCorrectly: false },
+      { q: "NAAC grades below 1.50 CGPA get:", a: ["A", "B", "C", "A++"], correct: 2, level: "easy", category: "naac", isAnsweredCorrectly: false },
+      { q: "AQAR promotes:", a: ["Continuous quality improvement", "More advertisements", "Less documentation", "Avoiding feedback"], correct: 0, level: "easy", category: "naac", isAnsweredCorrectly: false },
+
+      // Section B – General Quality (40 Questions)
+      { q: "Quality in a university is mainly about:", a: ["Maintaining high standards in teaching, research, and services", "Decorating the campus only", "Increasing the number of courses without quality checks", "None of the above"], correct: 0, level: "easy", category: "general", isAnsweredCorrectly: false },
+      { q: "Continuous improvement in processes is achieved through:", a: ["Regular reviews and feedback", "Doing things the same way forever", "Ignoring mistakes", "Avoiding student input"], correct: 0, level: "easy", category: "general", isAnsweredCorrectly: false },
+      { q: "True/False: Quality is everyone’s responsibility in a university, not just the management.", a: ["True", "False"], correct: 0, level: "easy", category: "general", isAnsweredCorrectly: false },
+      { q: "Which of these can be considered a quality measure?", a: ["Student satisfaction surveys", "Random guesses about performance", "Rumors from staff", "None of the above"], correct: 0, level: "easy", category: "general", isAnsweredCorrectly: false },
+      { q: "Benchmarking means:", a: ["Comparing with best practices in the field", "Copying others blindly", "Avoiding performance reviews", "Setting impossible goals"], correct: 0, level: "easy", category: "general", isAnsweredCorrectly: false },
+      { q: "True/False: Feedback from students and staff should be ignored if it is critical.", a: ["True", "False"], correct: 1, level: "easy", category: "general", isAnsweredCorrectly: false },
+      { q: "The main purpose of quality policies is to:", a: ["Guide consistent performance and improvement", "Increase paperwork only", "Restrict innovation", "Delay processes"], correct: 0, level: "easy", category: "general", isAnsweredCorrectly: false },
+      { q: "In CHARUSAT, quality in academics can be improved by:", a: ["Updating curriculum based on industry needs", "Skipping faculty training", "Ignoring technology upgrades", "Avoiding student projects"], correct: 0, level: "easy", category: "general", isAnsweredCorrectly: false },
+      { q: "True/False: Timely communication between departments supports quality.", a: ["True", "False"], correct: 0, level: "easy", category: "general", isAnsweredCorrectly: false },
+      { q: "A well-documented process helps in:", a: ["Consistency and clarity", "Confusion among staff", "Delays in work", "None of the above"], correct: 0, level: "easy", category: "general", isAnsweredCorrectly: false },
+      { q: "Which of these is an example of a Key Performance Indicator (KPI) for a university?", a: ["Placement rate of graduates", "Number of chairs in classrooms", "Wall colors in labs", "Number of parking spaces"], correct: 0, level: "easy", category: "general", isAnsweredCorrectly: false },
+      { q: "True/False: Clean and safe campus facilities are part of quality.", a: ["True", "False"], correct: 0, level: "easy", category: "general", isAnsweredCorrectly: false },
+      { q: "Which is the best method to ensure data accuracy?", a: ["Regular internal checks and audits", "Guesswork", "Avoiding review processes", "Using outdated data"], correct: 0, level: "easy", category: "general", isAnsweredCorrectly: false },
+      { q: "Quality culture in a university means:", a: ["All members value and work towards excellence", "Only top management cares about performance", "Following rules without understanding them", "Focusing only on academics and ignoring support services"], correct: 0, level: "easy", category: "general", isAnsweredCorrectly: false },
+      { q: "True/False: A process is efficient when it meets objectives with fewer resources without affecting quality.", a: ["True", "False"], correct: 0, level: "easy", category: "general", isAnsweredCorrectly: false },
+      { q: "Which of the following improves administrative quality?", a: ["Using standard operating procedures (SOPs)", "Skipping documentation", "Relying only on verbal instructions", "Avoiding teamwork"], correct: 0, level: "easy", category: "general", isAnsweredCorrectly: false },
+      { q: "Student feedback is useful because it:", a: ["Highlights strengths and improvement areas", "Increases complaints", "Slows work progress", "Creates confusion"], correct: 0, level: "easy", category: "general", isAnsweredCorrectly: false },
+      { q: "True/False: At CHARUSAT, quality also includes extracurricular activities and student engagement.", a: ["True", "False"], correct: 0, level: "easy", category: "general", isAnsweredCorrectly: false },
+      { q: "PDCA cycle stands for:", a: ["Plan-Do-Check-Act", "Prepare-Deliver-Control-Approve", "Process-Develop-Create-Analyze", "Plan-Design-Check-Approve"], correct: 0, level: "easy", category: "general", isAnsweredCorrectly: false },
+      { q: "The first step in solving a quality problem is to:", a: ["Identify the root cause", "Avoid discussing it", "Assign blame immediately", "Ignore it until it becomes serious"], correct: 0, level: "easy", category: "general", isAnsweredCorrectly: false },
+      { q: "True/False: Regular training for faculty and staff is important for maintaining quality.", a: ["True", "False"], correct: 0, level: "easy", category: "general", isAnsweredCorrectly: false },
+      { q: "Internal communication improves quality by:", a: ["Sharing clear, timely information", "Increasing confusion", "Avoiding transparency", "Hiding errors"], correct: 0, level: "easy", category: "general", isAnsweredCorrectly: false },
+      { q: "Which of these is a quality tool?", a: ["SWOT analysis", "Random surveys without purpose", "Ignoring feedback reports", "Delayed action plans"], correct: 0, level: "easy", category: "general", isAnsweredCorrectly: false },
+      { q: "True/False: Only final exam results are enough to measure quality in academics.", a: ["True", "False"], correct: 1, level: "easy", category: "general", isAnsweredCorrectly: false },
+      { q: "In CHARUSAT, a good quality service to students includes:", a: ["Prompt responses to queries", "Delaying processes unnecessarily", "Ignoring communication", "Complicated procedures"], correct: 0, level: "easy", category: "general", isAnsweredCorrectly: false },
+      { q: "Which is an example of preventive action in quality management?", a: ["Fixing a problem before it happens", "Waiting for a complaint first", "Ignoring warning signs", "Relying on assumptions"], correct: 0, level: "easy", category: "general", isAnsweredCorrectly: false },
+      { q: "True/False: Documentation of meetings and decisions is not important for quality.", a: ["True", "False"], correct: 1, level: "easy", category: "general", isAnsweredCorrectly: false },
+      { q: "The main benefit of teamwork for quality is:", a: ["Combining strengths to improve processes", "Increasing conflicts", "Avoiding cooperation", "Reducing efficiency"], correct: 0, level: "easy", category: "general", isAnsweredCorrectly: false },
+      { q: "Quality audits are done to:", a: ["Identify gaps and suggest improvements", "Reduce transparency", "Add unnecessary work", "Avoiding accountability"], correct: 0, level: "easy", category: "general", isAnsweredCorrectly: false },
+      { q: "True/False: Maintaining updated student records is part of quality management.", a: ["True", "False"], correct: 0, level: "easy", category: "general", isAnsweredCorrectly: false },
+      { q: "Which of these is a sign of good service quality?", a: ["Meeting deadlines consistently", "Frequent delays", "Unclear communication", "High error rates"], correct: 0, level: "easy", category: "general", isAnsweredCorrectly: false },
+      { q: "A culture of appreciation in the workplace helps:", a: ["Motivate staff to maintain quality", "Reduce employee morale", "Create negativity", "Avoid responsibility"], correct: 0, level: "easy", category: "general", isAnsweredCorrectly: false },
+      { q: "True/False: Using technology can support better quality in administration and academics.", a: ["True", "False"], correct: 0, level: "easy", category: "general", isAnsweredCorrectly: false },
+      { q: "A well-maintained feedback system should:", a: ["Be easy to access and respond to", "Be hidden from students", "Take months to analyze", "Ignore negative inputs"], correct: 0, level: "easy", category: "general", isAnsweredCorrectly: false },
+      { q: "Which is an example of an output-based quality measure?", a: ["Graduation rate", "Office location", "Number of chairs in seminar hall", "Building color"], correct: 0, level: "easy", category: "general", isAnsweredCorrectly: false },
+      { q: "True/False: Quality should be reviewed only once every five years.", a: ["True", "False"], correct: 1, level: "easy", category: "general", isAnsweredCorrectly: false },
+      { q: "In CHARUSAT, celebrating achievements of faculty and students helps in:", a: ["Encouraging a quality culture", "Wasting time", "Distracting from work", "Creating competition only"], correct: 0, level: "easy", category: "general", isAnsweredCorrectly: false },
+      { q: "The role of leadership in quality is to:", a: ["Set vision and support continuous improvement", "Avoid decision-making", "Focus only on profits", "Ignore staff inputs"], correct: 0, level: "easy", category: "general", isAnsweredCorrectly: false },
+      { q: "True/False: Proper infrastructure and facilities are part of delivering quality education.", a: ["True", "False"], correct: 0, level: "easy", category: "general", isAnsweredCorrectly: false },
+      { q: "The best way to sustain quality is to:", a: ["Make it part of daily work culture", "Treat it as a one-time project", "Assign it to one department only", "Avoiding regular reviews"], correct: 0, level: "easy", category: "general", isAnsweredCorrectly: false },
+
+      // Section C – Administrative Operations (40 Questions)
+      { q: "Which document acts as the official record of a university meeting?", a: ["Minutes of Meeting", "Attendance Sheet", "Agenda", "Circular"], correct: 0, level: "easy", category: "admin", isAnsweredCorrectly: false },
+      { q: "Filing documents in proper sequence is known as:", a: ["Archiving", "Random keeping", "Disposal", "Drafting"], correct: 0, level: "easy", category: "admin", isAnsweredCorrectly: false },
+      { q: "True/False: Confidential documents should be stored in locked cabinets or secure folders.", a: ["True", "False"], correct: 0, level: "easy", category: "admin", isAnsweredCorrectly: false },
+      { q: "Which is the most efficient way to communicate urgent information to staff?", a: ["Official Email", "Social Media Post", "Personal Chat", "Waiting for meetings"], correct: 0, level: "easy", category: "admin", isAnsweredCorrectly: false },
+      { q: "The official CHARUSAT domain for email communication is:", a: ["@gmail.com", "@charusat.ac.in", "@yahoo.com", "@charusatuniversity.com"], correct: 1, level: "easy", category: "admin", isAnsweredCorrectly: false },
+      { q: "True/False: Using personal email for official communication is recommended.", a: ["True", "False"], correct: 1, level: "easy", category: "admin", isAnsweredCorrectly: false },
+      { q: "What does SOP stand for?", a: ["Standard Operating Procedure", "Special Office Process", "Standard Office Planning", "Specific Official Process"], correct: 0, level: "easy", category: "admin", isAnsweredCorrectly: false },
+      { q: "Which is an example of an administrative responsibility?", a: ["Student record maintenance", "Teaching lectures", "Conducting lab experiments", "Sports coaching"], correct: 0, level: "easy", category: "admin", isAnsweredCorrectly: false },
+      { q: "True/False: All circulars should have a reference number and date before circulation.", a: ["True", "False"], correct: 0, level: "easy", category: "admin", isAnsweredCorrectly: false },
+      { q: "What is the main purpose of an attendance register?", a: ["Tracking participation", "Calculating budgets", "Advertising events", "Conducting exams"], correct: 0, level: "easy", category: "admin", isAnsweredCorrectly: false },
+      { q: "CHARUSAT uses ERP software for:", a: ["Managing academic & administrative records", "Social networking", "Playing games", "Video editing"], correct: 0, level: "easy", category: "admin", isAnsweredCorrectly: false },
+      { q: "True/False: Administrative deadlines should be documented and tracked.", a: ["True", "False"], correct: 0, level: "easy", category: "admin", isAnsweredCorrectly: false },
+      { q: "What is the best way to ensure smooth event coordination?", a: ["Preparing a checklist", "Waiting for instructions", "Avoiding written plans", "Deciding on the day of event"], correct: 0, level: "easy", category: "admin", isAnsweredCorrectly: false },
+      { q: "A properly drafted letter should have:", a: ["Date, reference number, subject, and signature", "Only a greeting and message", "No formatting rules", "Just the signature"], correct: 0, level: "easy", category: "admin", isAnsweredCorrectly: false },
+      { q: "True/False: Digital backups of important documents are unnecessary if physical copies are stored.", a: ["True", "False"], correct: 1, level: "easy", category: "admin", isAnsweredCorrectly: false },
+      { q: "Which is NOT an administrative operation?", a: ["Document filing", "Payroll processing", "Staff recruitment coordination", "Chemical lab analysis"], correct: 3, level: "easy", category: "admin", isAnsweredCorrectly: false },
+      { q: "A “Circular” is used for:", a: ["Internal communication of official notices", "Sharing personal opinions", "Informal chatting", "Social media updates"], correct: 0, level: "easy", category: "admin", isAnsweredCorrectly: false },
+      { q: "True/False: All official communication should be in formal language.", a: ["True", "False"], correct: 0, level: "easy", category: "admin", isAnsweredCorrectly: false },
+      { q: "The process of removing outdated files from active storage is called:", a: ["Weeding", "Dumping", "Archiving", "Shredding"], correct: 0, level: "easy", category: "admin", isAnsweredCorrectly: false },
+      { q: "In CHARUSAT, the central administrative block is called:", a: ["Administrative Building", "Central Office", "University Secretariat", "Main Office Block"], correct: 0, level: "easy", category: "admin", isAnsweredCorrectly: false },
+      { q: "True/False: Staff ID cards should be worn during office hours.", a: ["True", "False"], correct: 0, level: "easy", category: "admin", isAnsweredCorrectly: false },
+      { q: "Which software is commonly used for creating official reports?", a: ["MS Word", "Photoshop", "VLC Player", "Paint"], correct: 0, level: "easy", category: "admin", isAnsweredCorrectly: false },
+      { q: "The process of verifying data before submission is called:", a: ["Cross-checking", "Forwarding", "Archiving", "Drafting"], correct: 0, level: "easy", category: "admin", isAnsweredCorrectly: false },
+      { q: "True/False: Event budgets should be approved before expenses are made.", a: ["True", "False"], correct: 0, level: "easy", category: "admin", isAnsweredCorrectly: false },
+      { q: "In an office filing system, “Confidential” files should be:", a: ["Accessible to everyone", "Stored securely", "Left on desks overnight", "Sent via open email"], correct: 1, level: "easy", category: "admin", isAnsweredCorrectly: false },
+      { q: "Which is NOT a part of daily administrative work?", a: ["Handling correspondence", "Budget planning", "Conducting medical surgeries", "Scheduling meetings"], correct: 2, level: "easy", category: "admin", isAnsweredCorrectly: false },
+      { q: "True/False: Meeting agendas should be circulated before the meeting.", a: ["True", "False"], correct: 0, level: "easy", category: "admin", isAnsweredCorrectly: false },
+      { q: "The official CHARUSAT website is:", a: ["www.charusat.org", "www.charusat.ac.in", "www.charusatedu.com", "www.charusat.edu.in"], correct: 1, level: "easy", category: "admin", isAnsweredCorrectly: false },
+      { q: "Administrative records should be updated:", a: ["Regularly", "Once a year", "Only when asked", "Never"], correct: 0, level: "easy", category: "admin", isAnsweredCorrectly: false },
+      { q: "True/False: Using official templates ensures consistency in documentation.", a: ["True", "False"], correct: 0, level: "easy", category: "admin", isAnsweredCorrectly: false },
+      { q: "Payroll refers to:", a: ["Employee salary processing", "Printing exam papers", "Maintaining attendance registers", "Office cleaning"], correct: 0, level: "easy", category: "admin", isAnsweredCorrectly: false },
+      { q: "True/False: Only the HR department is responsible for keeping staff records.", a: ["True", "False"], correct: 1, level: "easy", category: "admin", isAnsweredCorrectly: false },
+      { q: "Which of the following is a key part of office communication etiquette?", a: ["Being clear and concise", "Using slang words", "Avoiding proofreading", "Sending incomplete messages"], correct: 0, level: "easy", category: "admin", isAnsweredCorrectly: false },
+      { q: "Document version control helps in:", a: ["Tracking changes in files", "Erasing old work", "Hiding information", "Random editing"], correct: 0, level: "easy", category: "admin", isAnsweredCorrectly: false },
+      { q: "True/False: Every outgoing letter must be recorded in the dispatch register.", a: ["True", "False"], correct: 0, level: "easy", category: "admin", isAnsweredCorrectly: false },
+      { q: "The first step in organizing an official event is:", a: ["Preparing an event proposal", "Sending invitations", "Booking a venue", "Printing certificates"], correct: 0, level: "easy", category: "admin", isAnsweredCorrectly: false },
+      { q: "True/False: Visitor logs are maintained to track people entering the campus.", a: ["True", "False"], correct: 0, level: "easy", category: "admin", isAnsweredCorrectly: false },
+      { q: "Official seals/stamps are used to:", a: ["Authenticate documents", "Decorate papers", "Mark personal items", "Hide information"], correct: 0, level: "easy", category: "admin", isAnsweredCorrectly: false },
+      { q: "True/False: Administrative efficiency improves with proper planning.", a: ["True", "False"], correct: 0, level: "easy", category: "admin", isAnsweredCorrectly: false },
+      { q: "The main goal of administrative operations is to:", a: ["Support smooth functioning of the university", "Replace academic activities", "Entertain visitors", "Avoid changes"], correct: 0, level: "easy", category: "admin", isAnsweredCorrectly: false },
+    ];
+
+    let questionButtons = new Array(questions.length); // Stores references to the button elements for each question
+    let currentActiveCategory = 'naac'; // Tracks which category is currently displayed
+
+    const categoryNames = {
+        naac: "Section A – NAAC / AQAR",
+        general: "Section B – General Quality",
+        admin: "Section C – Administrative Operations"
+    };
+
+    function showCategory(targetCategory) {
+      currentActiveCategory = targetCategory; // Update the active category
+      const quizSectionsContainer = document.getElementById("quizSectionsContainer");
+      quizSectionsContainer.innerHTML = ""; // Clear existing content
+
+      // Remove 'active' class from all nav links
+      document.querySelectorAll('.nav-bar a').forEach(link => {
+          link.classList.remove('active');
+      });
+      // Add 'active' class to the clicked nav link
+      document.getElementById(`nav-${targetCategory}`).classList.add('active');
+
+      // Create and render the single section for the target category
+      const sectionDiv = document.createElement("div");
+      sectionDiv.className = "quiz-section";
+      quizSectionsContainer.appendChild(sectionDiv);
+
+      const sectionTitle = document.createElement("h2");
+      sectionTitle.innerText = categoryNames[targetCategory];
+      sectionDiv.appendChild(sectionTitle);
+
+      const questionGridDiv = document.createElement("div");
+      questionGridDiv.className = "question-grid";
+      sectionDiv.appendChild(questionGridDiv);
+
+      const filteredQuestions = questions.filter(q => q.category === targetCategory);
+
+      // Loop through the filtered questions to assign local numbering
+      filteredQuestions.forEach((q, localIndex) => {
+          const originalIndex = questions.indexOf(q); // Get the original index from the master array (for state tracking)
+
+          let btn = document.createElement("button");
+          btn.className = "question-btn";
+          btn.innerText = localIndex + 1; // Display local question number (e.g., 1, 2, 3...)
+          btn.onclick = () => openQuestion(originalIndex); // Pass original index to modal
+          questionGridDiv.appendChild(btn);
+
+          // Store reference to the button using its original index (for persistent state)
+          questionButtons[originalIndex] = btn;
+
+          // If question was already answered correctly, apply 'answered' class
+          if (q.isAnsweredCorrectly) {
+              btn.classList.add("answered");
+          }
+      });
+    }
+
+    function openQuestion(originalIndex) {
+      document.getElementById("modal").style.display = "block";
+      const currentQ = questions[originalIndex];
+      // Note: The modal still shows the ORIGINAL global question number for context
+      // If you want it to show the local number (e.g., Q5 instead of Q45), you'd need to pass localIndex here.
+      // But typically, quizzes keep a consistent global Q# for all questions in the array.
+      document.getElementById("question").innerText = `Q${originalIndex + 1}: ${currentQ.q}`;
+      let ansDiv = document.getElementById("answers");
+      ansDiv.innerHTML = ""; // Clear previous answers
+
+      const qButton = questionButtons[originalIndex]; // Get reference to the main grid button
+
+      // Reset modal animation state for opening
+      const modalContent = document.querySelector("#modal .modal-content");
+      modalContent.style.animationName = 'animatetop';
+
+      // If the question has already been answered correctly, just display it with the correct choice highlighted and disabled
+      if (currentQ.isAnsweredCorrectly) {
+          currentQ.a.forEach((ans, index) => {
+              let btn = document.createElement("button");
+              btn.className = "answer-btn";
+              btn.innerText = ans;
+              if (index === currentQ.correct) {
+                  btn.classList.add("correct"); // Highlight the correct answer
+              }
+              btn.disabled = true; // Disable all buttons
+              ansDiv.appendChild(btn);
+          });
+      } else {
+          // If not yet correctly answered, allow interaction
+          currentQ.a.forEach((ans, index) => {
+              let btn = document.createElement("button");
+              btn.className = "answer-btn";
+              btn.innerText = ans;
+              btn.onclick = () => {
+                  // Clear previous feedback (red/green highlights) from all options for this specific question
+                  Array.from(ansDiv.children).forEach(b => {
+                      b.classList.remove("correct", "wrong");
+                      b.style.animation = ''; // Clear any previous animation
+                  });
+
+                  if (index === currentQ.correct) {
+                      btn.classList.add("correct"); // Mark the selected answer as correct
+                      // Disable all options once the correct answer is chosen
+                      Array.from(ansDiv.children).forEach(b => b.disabled = true);
+                      
+                      // Mark the question as correctly answered in our data
+                      currentQ.isAnsweredCorrectly = true;
+                      // Mark the grid button as answered (turns grey)
+                      qButton.classList.add("answered");
+                  } else {
+                      btn.classList.add("wrong"); // Mark the selected answer as wrong
+                      // Animation for wrong answer
+                      btn.style.animation = 'wrong-shake 0.4s ease-out';
+                      // Re-enable other options by not disabling them
+                  }
+              };
+              ansDiv.appendChild(btn);
+          });
+      }
+    }
+
+    function closeModal() {
+      const modal = document.getElementById("modal");
+      const modalContent = document.querySelector("#modal .modal-content");
+
+      // Apply closing animation
+      modalContent.style.animationName = 'animatetop-out';
+
+      // Listen for animation end to hide the modal completely
+      const handleAnimationEnd = () => {
+          modal.style.display = "none";
+          modalContent.removeEventListener('animationend', handleAnimationEnd);
+          // Reset animation name on content so it uses 'animatetop' for next open
+          modalContent.style.animationName = 'animatetop';
+      };
+      modalContent.addEventListener('animationend', handleAnimationEnd);
+    }
+
+    // Close modal if user clicks outside of it
+    window.onclick = function(event) {
+      let modal = document.getElementById("modal");
+      if (event.target == modal) {
+        closeModal();
+      }
+    }
+
+    // Initial render when the page loads: show the NAAC/AQAR section by default
+    window.onload = () => {
+      showCategory('naac'); // Display NAAC questions initially
+    };
+  </script>
+</body>
+</html>
