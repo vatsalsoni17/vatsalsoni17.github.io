@@ -148,9 +148,7 @@
   .cert-platform{padding:.3rem .9rem;border-radius:999px;font-size:.75rem;font-weight:800;letter-spacing:.05em;}
   .cert-platform.udemy{background:rgba(165,94,234,.2);color:#a45efa;border:1px solid rgba(165,94,234,.4);}
   .cert-platform.charusat{background:rgba(6,182,212,.15);color:var(--accent2);border:1px solid rgba(6,182,212,.3);}
-  .cert-date{font-size:.78rem;color:var(--muted);}
-  .cert-title{font-size:1rem;font-weight:800;margin-bottom:.3rem;line-height:1.4;}
-  .cert-meta{font-size:.8rem;color:var(--muted);margin-bottom:1rem;}
+  .cert-platform.google{background:rgba(66,133,244,.15);color:#4285f4;border:1px solid rgba(66,133,244,.3);}
   .cert-img-wrap{position:relative;border-radius:.7rem;overflow:hidden;cursor:pointer;border:1px solid var(--border);}
   .cert-thumb{width:100%;display:block;transition:transform .3s;}
   .cert-img-wrap:hover .cert-thumb{transform:scale(1.03);}
@@ -366,6 +364,35 @@
     </div>
     <div class="cert-grid reveal">
 
+      <!-- Google Data Analytics Certificate -->
+      <div class="cert-card">
+        <div class="cert-badge-row">
+          <span class="cert-platform google">Google</span>
+          <span class="cert-date">2026</span>
+        </div>
+        <div class="cert-title">Google Data Analytics Professional Certificate</div>
+        <div class="cert-meta">Google · Coursera · 8-Course Professional Certificate</div>
+        <div class="cert-img-wrap" onclick="openCert('cert-google')">
+          <img src="https://vatsalsoni17.github.io/Google_Data_Analytics_Professional_Certificate.jpg" alt="Google Data Analytics Certificate" class="cert-thumb" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+          <div style="display:none;align-items:center;justify-content:center;height:160px;background:linear-gradient(135deg,rgba(66,133,244,.15),rgba(52,168,83,.1));border-radius:.7rem;">
+            <span style="font-size:3rem;">🎓</span>
+          </div>
+          <div class="cert-overlay">🔍 View Certificate</div>
+        </div>
+        <div class="cert-outcomes">
+          <div class="cert-outcomes-title">Key Learning Outcomes</div>
+          <ul class="cert-list">
+            <li>Mastered the data analysis process: Ask, Prepare, Process, Analyze, Share, Act</li>
+            <li>Cleaned, transformed, and analyzed data using SQL and spreadsheets</li>
+            <li>Created compelling visualizations and dashboards in Tableau</li>
+            <li>Applied R programming for statistical analysis and data visualization</li>
+            <li>Built a professional portfolio with real-world case study projects</li>
+            <li>Developed skills in data-driven decision making and storytelling</li>
+          </ul>
+        </div>
+        <a href="https://vatsalsoni17.github.io/Google_Data_Analytics_Professional_Certificate.pdf" target="_blank" class="btn btn-outline btn-sm" style="margin-top:1rem;display:inline-block;">📄 View Certificate PDF</a>
+      </div>
+
       <!-- Power BI Certificate -->
       <div class="cert-card">
         <div class="cert-badge-row">
@@ -441,6 +468,24 @@
     </div>
     <div class="modal-body" style="text-align:center;">
       <img src="https://vatsalsoni17.github.io/Applied_AI_cert.jpg" alt="Applied AI Certificate" style="width:100%;border-radius:.8rem;"/>
+    </div>
+  </div>
+</div>
+
+<!-- ✅ NEW: Google Certificate Lightbox -->
+<div class="modal-overlay" id="cert-google">
+  <div class="modal-box" style="max-width:900px;">
+    <div class="modal-header">
+      <span class="modal-title">🏆 Google Data Analytics Professional Certificate</span>
+      <button class="modal-close" onclick="closeModal('cert-google')">✕</button>
+    </div>
+    <div class="modal-body" style="text-align:center;">
+      <iframe
+        src="https://vatsalsoni17.github.io/Google_Data_Analytics_Professional_Certificate.pdf"
+        style="width:100%;height:70vh;border-radius:.8rem;border:1px solid var(--border);"
+        title="Google Data Analytics Professional Certificate">
+      </iframe>
+      <a href="https://vatsalsoni17.github.io/Google_Data_Analytics_Professional_Certificate.pdf" target="_blank" class="btn btn-primary" style="margin-top:1.2rem;display:inline-block;">📄 Open Full PDF</a>
     </div>
   </div>
 </div>
@@ -650,129 +695,6 @@ df.<span class="fn">to_excel</span>(<span class="str">"NEP_BERT_Output.xlsx"</sp
   </div>
 </div>
 
-<!-- ══════ MODAL: Profitability Analysis ══════ -->
-<div class="modal-overlay" id="modal-profit">
-  <div class="modal-box">
-    <div class="modal-header">
-      <span class="modal-title">📊 Strategic Profitability Analysis — Furniture Market</span>
-      <button class="modal-close" onclick="closeModal('modal-profit')">✕</button>
-    </div>
-    <div class="modal-body">
-      <div class="analysis-card">
-        <h3>🛋️ Consumer Segment Dominance</h3>
-        <div class="seg-bar-wrap">
-          <div class="seg-label"><span>Consumer</span><span style="color:#4ade80;font-weight:700;">₹1,34,119</span></div>
-          <div class="seg-bar bar-consumer">Consumer — ₹1,34,119</div>
-        </div>
-        <div class="seg-bar-wrap" style="margin-top:.6rem;">
-          <div class="seg-label"><span>Corporate</span><span style="color:#60a5fa;font-weight:700;">₹91,979</span></div>
-          <div class="seg-bar bar-corporate">Corporate — ₹91,979</div>
-        </div>
-        <div class="seg-bar-wrap" style="margin-top:.6rem;">
-          <div class="seg-label"><span>Home Office</span><span style="color:#fb923c;font-weight:700;">₹60,298</span></div>
-          <div class="seg-bar bar-homeoffice">Home Office — ₹60,298</div>
-        </div>
-        <div class="insight-box" style="margin-top:1rem;">
-          <strong>Key Finding:</strong> The Consumer segment leads all categories, significantly outpacing Corporate and Home Office segments. Consumer demand drives the majority of total profit.
-        </div>
-      </div>
-      <div class="analysis-card">
-        <h3>🏙️ Top 3 Profit-Driving Cities</h3>
-        <p style="color:var(--muted);font-size:.88rem;">Collective profit generation: <strong style="color:#4ade80;">₹91,415</strong></p>
-        <div class="city-row">
-          <div class="city-badge">🥇 Vadodara</div>
-          <div class="city-badge" style="background:linear-gradient(135deg,#0e7490,#164e63);">🥈 Ahmedabad</div>
-          <div class="city-badge" style="background:linear-gradient(135deg,#92400e,#78350f);">🥉 Rajkot</div>
-        </div>
-        <div class="insight-box" style="margin-top:1rem;">
-          <strong>Recommendations:</strong> Prioritize inventory and promotions in Vadodara, Ahmedabad, and Rajkot. Evaluate pricing strategies for lower-performing segments and locations.
-        </div>
-      </div>
-      <p style="color:var(--muted);font-size:.78rem;text-align:center;margin-top:.5rem;">Analysis by Vatsal Soni · Tools used: Microsoft Excel</p>
-    </div>
-  </div>
-</div>
-
-<!-- ══════ MODAL: Discount Impact Analysis ══════ -->
-<div class="modal-overlay" id="modal-discount">
-  <div class="modal-box">
-    <div class="modal-header">
-      <span class="modal-title">📉 Discount Impact & Profit Margin Analysis</span>
-      <button class="modal-close" onclick="closeModal('modal-discount')">✕</button>
-    </div>
-    <div class="modal-body">
-      <div class="analysis-card">
-        <h3>📐 Profit Margin by Discount Range</h3>
-        <div class="disc-grid">
-          <div class="disc-box good">
-            <div class="disc-range">Discount Range: 0–20%</div>
-            <div class="disc-pct green">+27%</div>
-            <div style="color:#4ade80;font-weight:700;margin-top:.3rem;">₹4.21L Profit</div>
-            <div class="disc-note">Highest sales volume (₹19.34L). Profitability sweet spot.</div>
-          </div>
-          <div class="disc-box bad">
-            <div class="disc-range">Discount Range: 20–40%</div>
-            <div class="disc-pct red">–17%</div>
-            <div style="color:#f87171;font-weight:700;margin-top:.3rem;">(₹0.36L) Loss</div>
-            <div class="disc-note">Sales ₹2.34L. Severe margin erosion begins.</div>
-          </div>
-          <div class="disc-box ugly">
-            <div class="disc-range">Discount Range: 60–80%</div>
-            <div class="disc-pct red">–123%</div>
-            <div style="color:#f87171;font-weight:700;margin-top:.3rem;">(₹0.71L) Loss</div>
-            <div class="disc-note">Sales only ₹0.58L. Volume fails to compensate.</div>
-          </div>
-        </div>
-      </div>
-      <div class="analysis-card">
-        <h3>⚡ Key Findings & Action Plan</h3>
-        <div class="insight-box">
-          <strong>Finding:</strong> Discounts above 20% consistently produce negative profit margins, plummeting as low as –123% in the 60–80% range. Higher sales volumes at extreme discounts fail to recover losses.
-        </div>
-        <div class="insight-box" style="margin-top:.8rem;background:rgba(245,158,11,.08);border-color:rgba(245,158,11,.3);">
-          <strong style="color:var(--accent3);">⚠️ Action — Limit Discounts to 20%:</strong> Cap discount offerings beyond 20% and shift toward value-based pricing strategies to protect margins and stop profit leakage.
-        </div>
-      </div>
-      <p style="color:var(--muted);font-size:.78rem;text-align:center;margin-top:.5rem;">Analysis by Vatsal Soni · Tools used: Microsoft Excel</p>
-    </div>
-  </div>
-</div>
-
-<!-- ══════ MODAL: Power BI Dashboard ══════ -->
-<div class="modal-overlay" id="modal-powerbi">
-  <div class="modal-box">
-    <div class="modal-header">
-      <span class="modal-title">📊 Executive Sales Dashboard — Power BI</span>
-      <button class="modal-close" onclick="closeModal('modal-powerbi')">✕</button>
-    </div>
-    <div class="modal-body">
-      <div class="analysis-card">
-        <h3>📈 Dashboard Overview</h3>
-        <div style="border-radius:.7rem;overflow:hidden;border:1px solid var(--border);margin-bottom:1rem;">
-          <img src="https://vatsalsoni17.github.io/executive-sales-dashboard.png" alt="Executive Sales Dashboard" style="width:100%;display:block;"/>
-        </div>
-        <div class="insight-box">
-          <strong>What was built:</strong> A fully interactive Power BI dashboard tracking Revenue ($203.16K), Average Price, Sold Units (43K), and Available Stock (2M) with dynamic year filters (2017–2020).
-        </div>
-      </div>
-      <div class="analysis-card">
-        <h3>⚙️ Key Features Implemented</h3>
-        <ul class="exp-list" style="margin-top:.5rem;">
-          <li>Complex DAX measures for YoY growth tracking (15.64% → 46.34%)</li>
-          <li>Revenue &amp; Sales by Category chart with drill-down by subcategory</li>
-          <li>Monthly Performance tracking across all 12 months</li>
-          <li>Dynamic slicers for State, City, SubCategory, and Year</li>
-          <li>Combo chart (bar + line) for Revenue vs Sales volume comparison</li>
-        </ul>
-        <div class="insight-box" style="margin-top:1rem;background:rgba(6,182,212,.08);border-color:rgba(6,182,212,.3);">
-          <strong style="color:var(--accent2);">Top Category:</strong> Snacks &amp; Branded Foods led all categories with $72K revenue, followed by Fruits &amp; Vegetables ($45K). August was the highest-performing month at $31K.
-        </div>
-      </div>
-      <p style="color:var(--muted);font-size:.78rem;text-align:center;margin-top:.5rem;">Built by Vatsal Soni · Tools used: Power BI, DAX</p>
-    </div>
-  </div>
-</div>
-
 <script>
   // Scroll reveal
   const reveals = document.querySelectorAll('.reveal');
@@ -791,6 +713,7 @@ df.<span class="fn">to_excel</span>(<span class="str">"NEP_BERT_Output.xlsx"</sp
   // Modal controls
   function openModal(id) { document.getElementById(id).classList.add('open'); document.body.style.overflow='hidden'; }
   function closeModal(id) { document.getElementById(id).classList.remove('open'); document.body.style.overflow=''; }
+  function openCert(id) { openModal(id); }
   document.querySelectorAll('.modal-overlay').forEach(m => {
     m.addEventListener('click', e => { if(e.target === m) closeModal(m.id); });
   });
