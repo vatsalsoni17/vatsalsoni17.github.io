@@ -74,7 +74,7 @@
   #projects{background:var(--card);}
   .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;}
   .project-card{background:var(--bg);border:1px solid var(--border);border-radius:1rem;padding:1.8rem;transition:all .3s;position:relative;overflow:hidden;display:flex;flex-direction:column;}
-  .project-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(124,58,237,.05),rgba(6,182,212,.05));opacity:0;transition:.3s;}
+  .project-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(124,58,237,.05),rgba(6,182,212,.05));opacity:0;transition:.3s;pointer-events:none;}
   .project-card:hover::before{opacity:1;}
   .project-card:hover{border-color:var(--accent);transform:translateY(-4px);box-shadow:0 12px 40px rgba(124,58,237,.2);}
   .project-num{font-size:3rem;font-weight:900;color:var(--border);position:absolute;top:.5rem;right:1rem;line-height:1;}
@@ -353,7 +353,7 @@
       <div class="project-card">
         <span class="project-num">06</span>
         <span class="project-tag">Digital Product</span>
-        <div class="project-title">Automated Sales & Inventory Report Template (Excel)</div>
+        <div class="project-title">Automated Sales &amp; Inventory Report Template (Excel)</div>
         <div class="project-desc">Built a self-updating Excel reporting system — paste raw sales data in and category, region, product, and monthly breakdowns generate automatically using COUNTIF-based helper chains and INDEX/MATCH/LARGE/SMALL, with zero manual list maintenance. Includes a full auto-updating dashboard with KPI cards and 4 charts. Compatible with Excel 2007+, published as a commercial template.</div>
         <div class="project-tools"><span class="tool-tag">Excel</span><span class="tool-tag">Advanced Formulas</span><span class="tool-tag">Dashboard Design</span><span class="tool-tag">Automation</span><span class="tool-tag">Product Development</span></div>
         <div class="project-actions">
