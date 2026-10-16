@@ -141,24 +141,23 @@
   .insight-box strong{color:var(--accent3);}
 
   /* Certifications */
-  .cert-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:2rem;}
-  .cert-card{background:var(--bg);border:1px solid var(--border);border-radius:1rem;padding:1.8rem;transition:all .3s;display:flex;flex-direction:column;}
+  .cert-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.5rem;align-items:start;}
+  .cert-card{background:var(--bg);border:1px solid var(--border);border-radius:1rem;padding:1.25rem;transition:all .3s;display:flex;flex-direction:column;gap:.75rem;}
   .cert-card:hover{border-color:var(--accent);transform:translateY(-4px);box-shadow:0 12px 40px rgba(124,58,237,.2);}
-  .cert-badge-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:.8rem;}
+  .cert-badge-row{display:flex;justify-content:space-between;align-items:center;gap:.75rem;}
   .cert-platform{padding:.3rem .9rem;border-radius:999px;font-size:.75rem;font-weight:800;letter-spacing:.05em;}
   .cert-platform.udemy{background:rgba(165,94,234,.2);color:#a45efa;border:1px solid rgba(165,94,234,.4);}
   .cert-platform.charusat{background:rgba(6,182,212,.15);color:var(--accent2);border:1px solid rgba(6,182,212,.3);}
   .cert-platform.google{background:rgba(66,133,244,.15);color:#4285f4;border:1px solid rgba(66,133,244,.3);}
-  .cert-img-wrap{position:relative;border-radius:.7rem;overflow:hidden;cursor:pointer;border:1px solid var(--border);}
-  .cert-thumb{width:100%;display:block;transition:transform .3s;}
+  .cert-date{font-size:.8rem;color:var(--muted);white-space:nowrap;}
+  .cert-title{font-size:1rem;line-height:1.35;font-weight:800;min-height:2.7em;}
+  .cert-meta{font-size:.82rem;line-height:1.45;color:var(--muted);min-height:2.4em;}
+  .cert-img-wrap{position:relative;display:block;height:155px;border-radius:.7rem;overflow:hidden;border:1px solid var(--border);background:#f8fafc;}
+  .cert-thumb{width:100%;height:100%;display:block;object-fit:contain;transition:transform .3s;}
   .cert-img-wrap:hover .cert-thumb{transform:scale(1.03);}
-  .cert-overlay{position:absolute;inset:0;background:rgba(0,0,0,.5);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.95rem;opacity:0;transition:opacity .3s;}
+  .cert-overlay{position:absolute;inset:0;background:rgba(0,0,0,.5);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.9rem;opacity:0;transition:opacity .3s;color:#fff;}
   .cert-img-wrap:hover .cert-overlay{opacity:1;}
-  .cert-outcomes{margin-top:1rem;background:var(--card);border-radius:.8rem;padding:1rem;}
-  .cert-outcomes-title{font-size:.78rem;text-transform:uppercase;letter-spacing:.1em;color:var(--accent2);font-weight:700;margin-bottom:.6rem;}
-  .cert-list{list-style:none;padding:0;}
-  .cert-list li{color:var(--muted);font-size:.85rem;line-height:1.6;padding-left:1rem;position:relative;margin-bottom:.3rem;}
-  .cert-list li::before{content:'▹';position:absolute;left:0;color:var(--accent);}
+  .cert-link{align-self:flex-start;margin-top:auto;}
 
   @keyframes fadeUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
   @keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0);}50%{transform:translateX(-50%) translateY(8px);}}
@@ -380,146 +379,74 @@
 <section id="certifications">
   <div class="container">
     <div class="reveal">
+      <div class="section-label">Credentials</div<section id="certifications">
+  <div class="container">
+    <div class="reveal">
       <div class="section-label">Credentials</div>
       <h2 class="section-title">Certifications & <span>Learning</span></h2>
       <div class="divider"></div>
     </div>
-    <div class="cert-grid reveal">
 
-      <!-- SQL for Data Analysis and Business Insights -->
-      <div class="cert-card">
+    <div class="cert-grid reveal">
+      <article class="cert-card">
         <div class="cert-badge-row">
           <span class="cert-platform google">Coursera</span>
           <span class="cert-date">Oct 2026</span>
         </div>
+        <h3 class="cert-title">SQL for Data Analysis and Business Insights</h3>
+        <p class="cert-meta">Coursera · 9-course specialization</p>
+        <a class="cert-img-wrap" href="https://vatsalsoni17.github.io/SQL_for_Data_Analysis_Certificate.jpg" target="_blank" rel="noopener noreferrer" aria-label="View SQL certificate">
+          <img src="https://vatsalsoni17.github.io/SQL_for_Data_Analysis_Certificate.jpg" alt="SQL for Data Analysis certificate" class="cert-thumb"/>
+          <span class="cert-overlay">🔍 View Certificate</span>
+        </a>
+        <a href="https://coursera.org/verify/specialization/ZNTF82NUGCVT" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm cert-link">🔗 Verify Certificate</a>
+      </article>
 
-        <div class="cert-title">
-          SQL for Data Analysis and Business Insights Specialization
-        </div>
-
-        <div class="cert-meta">
-
-<div class="cert-img-wrap" onclick="openCert('cert-sql')">
-  <img
-    src="https://vatsalsoni17.github.io/SQL_for_Data_Analysis_Certificate.jpg"
-    alt="SQL Specialization Certificate"
-    class="cert-thumb"
-    onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
-  />
-  <div style="display:none;align-items:center;justify-content:center;height:160px;background:linear-gradient(135deg,rgba(66,133,244,.15),rgba(6,182,212,.1));border-radius:.7rem;">
-    <span style="font-size:3rem;">🎓</span>
-  </div>
-  <div class="cert-overlay">🔍 View Certificate</div>
-</div>
-
-        <div class="cert-outcomes">
-          <div class="cert-outcomes-title">Key Learning Areas</div>
-          <ul class="cert-list">
-            <li>SQL queries for data analysis and business reporting</li>
-            <li>Filtering, sorting, aggregating, and cleaning data</li>
-            <li>Joining tables and using subqueries and CTEs</li>
-            <li>Window functions for analytical queries</li>
-            <li>Analyzing business data to identify trends and insights</li>
-            <li>Applying SQL analysis to Power BI and business intelligence</li>
-          </ul>
-        </div>
-
-        <a
-          href="https://coursera.org/verify/specialization/ZNTF82NUGCVT"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="btn btn-outline btn-sm"
-          style="margin-top:1rem;display:inline-block;"
-        >🔗 Verify Certificate</a>
-      </div>
-
-      <!-- Google Data Analytics Certificate -->
-      <div class="cert-card">
+      <article class="cert-card">
         <div class="cert-badge-row">
           <span class="cert-platform google">Google</span>
           <span class="cert-date">2026</span>
         </div>
-        <div class="cert-title">Google Data Analytics Professional Certificate</div>
-        <div class="cert-meta">Google · Coursera · 8-Course Professional Certificate</div>
-        <div class="cert-img-wrap" onclick="openCert('cert-google')">
-          <img src="https://vatsalsoni17.github.io/Google_Data_Analytics_Professional_Certificate.jpg" alt="Google Data Analytics Certificate" class="cert-thumb" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
-          <div style="display:none;align-items:center;justify-content:center;height:160px;background:linear-gradient(135deg,rgba(66,133,244,.15),rgba(52,168,83,.1));border-radius:.7rem;">
-            <span style="font-size:3rem;">🎓</span>
-          </div>
-          <div class="cert-overlay">🔍 View Certificate</div>
-        </div>
-        <div class="cert-outcomes">
-          <div class="cert-outcomes-title">Key Learning Outcomes</div>
-          <ul class="cert-list">
-            <li>Mastered the data analysis process: Ask, Prepare, Process, Analyze, Share, Act</li>
-            <li>Cleaned, transformed, and analyzed data using SQL and spreadsheets</li>
-            <li>Created compelling visualizations and dashboards in Tableau</li>
-            <li>Applied R programming for statistical analysis and data visualization</li>
-            <li>Built a professional portfolio with real-world case study projects</li>
-            <li>Developed skills in data-driven decision making and storytelling</li>
-          </ul>
-        </div>
-        <a href="https://vatsalsoni17.github.io/Google_Data_Analytics_Professional_Certificate.pdf" target="_blank" class="btn btn-outline btn-sm" style="margin-top:1rem;display:inline-block;">📄 View Certificate PDF</a>
-      </div>
+        <h3 class="cert-title">Google Data Analytics Professional Certificate</h3>
+        <p class="cert-meta">Google · Coursera · 8-course certificate</p>
+        <a class="cert-img-wrap" href="https://vatsalsoni17.github.io/Google_Data_Analytics_Professional_Certificate.jpg" target="_blank" rel="noopener noreferrer" aria-label="View Google Data Analytics certificate">
+          <img src="https://vatsalsoni17.github.io/Google_Data_Analytics_Professional_Certificate.jpg" alt="Google Data Analytics certificate" class="cert-thumb"/>
+          <span class="cert-overlay">🔍 View Certificate</span>
+        </a>
+        <a href="https://vatsalsoni17.github.io/Google_Data_Analytics_Professional_Certificate.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm cert-link">📄 View Certificate</a>
+      </article>
 
-      <!-- Power BI Certificate -->
-      <div class="cert-card">
+      <article class="cert-card">
         <div class="cert-badge-row">
           <span class="cert-platform udemy">Udemy</span>
           <span class="cert-date">May 2026</span>
         </div>
-        <div class="cert-title">15 Days of Power BI — Complete Microsoft Power BI Bootcamp</div>
-        <div class="cert-meta">Instructors: Nikolai Schuler, Ligency, SuperDataScience Team · 16 hours</div>
-        <div class="cert-img-wrap" onclick="openCert('cert-pbi')">
-          <img src="https://vatsalsoni17.github.io/Power_BI_cert.jpg" alt="Power BI Certificate" class="cert-thumb"/>
-          <div class="cert-overlay">🔍 View Certificate</div>
-        </div>
-        <div class="cert-outcomes">
-          <div class="cert-outcomes-title">Key Learning Outcomes</div>
-          <ul class="cert-list">
-            <li>Connected and transformed multi-source datasets using Power Query</li>
-            <li>Wrote DAX measures for KPIs, YoY growth, running totals & profit margins</li>
-            <li>Built interactive dashboards with drill-down, slicers & dynamic filters</li>
-            <li>Created time series visualizations and trend forecasts</li>
-            <li>Published dashboards to Power BI Service for team collaboration</li>
-            <li>Optimized data models for speed and scalability in large environments</li>
-          </ul>
-        </div>
-        <a href="https://ude.my/UC-668d1614-5c12-4c25-a181-1a7b19b716b3" target="_blank" class="btn btn-outline btn-sm" style="margin-top:1rem;display:inline-block;">🔗 Verify Certificate</a>
-      </div>
+        <h3 class="cert-title">15 Days of Power BI — Complete Microsoft Power BI Bootcamp</h3>
+        <p class="cert-meta">Nikolai Schuler · Ligency · 16 hours</p>
+        <a class="cert-img-wrap" href="https://vatsalsoni17.github.io/Power_BI_cert.jpg" target="_blank" rel="noopener noreferrer" aria-label="View Power BI certificate">
+          <img src="https://vatsalsoni17.github.io/Power_BI_cert.jpg" alt="Power BI certificate" class="cert-thumb"/>
+          <span class="cert-overlay">🔍 View Certificate</span>
+        </a>
+        <a href="https://ude.my/UC-668d1614-5c12-4c25-a181-1a7b19b716b3" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm cert-link">🔗 Verify Certificate</a>
+      </article>
 
-      <!-- Applied AI Certificate -->
-      <div class="cert-card">
+      <article class="cert-card">
         <div class="cert-badge-row">
           <span class="cert-platform charusat">CHARUSAT</span>
           <span class="cert-date">Jun 2025</span>
         </div>
-        <div class="cert-title">Applied AI: From Data Visualization to Generative Models</div>
-        <div class="cert-meta">CMPICA, CHARUSAT University · 35 hours · Feb–Jun 2025</div>
-        <div class="cert-img-wrap" onclick="openCert('cert-ai')">
-          <img src="https://vatsalsoni17.github.io/Applied_AI_cert.jpg" alt="Applied AI Certificate" class="cert-thumb"/>
-          <div class="cert-overlay">🔍 View Certificate</div>
-        </div>
-        <div class="cert-outcomes">
-          <div class="cert-outcomes-title">Key Learning Outcomes</div>
-          <ul class="cert-list">
-            <li>Applied data visualization techniques to communicate complex insights</li>
-            <li>Explored machine learning fundamentals and model evaluation</li>
-            <li>Worked with Generative AI models and modern AI applications</li>
-            <li>Hands-on experience with real-world AI problem solving</li>
-            <li>Completed 35-hour intensive program with active participation</li>
-          </ul>
-        </div>
-      </div>
-
+        <h3 class="cert-title">Applied AI: From Data Visualization to Generative Models</h3>
+        <p class="cert-meta">CMPICA, CHARUSAT University · 35 hours</p>
+        <a class="cert-img-wrap" href="https://vatsalsoni17.github.io/Applied_AI_cert.jpg" target="_blank" rel="noopener noreferrer" aria-label="View Applied AI certificate">
+          <img src="https://vatsalsoni17.github.io/Applied_AI_cert.jpg" alt="Applied AI certificate" class="cert-thumb"/>
+          <span class="cert-overlay">🔍 View Certificate</span>
+        </a>
+      </article>
     </div>
   </div>
 </section>
 
-<!-- Certificate Lightbox -->
-<div class="modal-overlay" id="cert-pbi">
-  <div class="modal-box" style="max-width:900px;">
-    <div class="modal-header">
+v class="modal-header">
       <span class="modal-title">🏆 15 Days of Power BI — Certificate of Completion</span>
       <button class="modal-close" onclick="closeModal('cert-pbi')">✕</button>
     </div>
