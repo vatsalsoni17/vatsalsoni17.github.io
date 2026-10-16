@@ -141,7 +141,7 @@
   .insight-box strong{color:var(--accent3);}
 
   /* Certifications */
-  .cert-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:2rem;}
+  .cert-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:2rem;}
   .cert-card{background:var(--bg);border:1px solid var(--border);border-radius:1rem;padding:1.8rem;transition:all .3s;display:flex;flex-direction:column;}
   .cert-card:hover{border-color:var(--accent);transform:translateY(-4px);box-shadow:0 12px 40px rgba(124,58,237,.2);}
   .cert-badge-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:.8rem;}
@@ -165,7 +165,8 @@
   @keyframes modalIn{from{opacity:0;transform:scale(.95);}to{opacity:1;transform:scale(1);}}
   .reveal{opacity:0;transform:translateY(30px);transition:opacity .6s ease,transform .6s ease;}
   .reveal.visible{opacity:1;transform:none;}
-  @media(max-width:700px){.about-grid,.contact-grid,.disc-grid{grid-template-columns:1fr;}.about-img{display:none;}.exp-header{flex-direction:column;}}
+  @media(max-width:1000px){.cert-grid{grid-template-columns:repeat(2,minmax(0,1fr));}}
+  @media(max-width:700px){.about-grid,.contact-grid,.disc-grid,.cert-grid{grid-template-columns:1fr;}.about-img{display:none;}.exp-header{flex-direction:column;}}
 </style>
 
 <!-- Google Analytics 4 -->
